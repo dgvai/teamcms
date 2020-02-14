@@ -7,7 +7,7 @@
 <!-- Header -->
 <header id="home">
     <!-- Background Image -->
-    <div class="bg-img" style="background-image: url('{{asset('public/storage/sitebasics')}}/{{$site->home_banner}}');">
+    <div class="bg-img" style="background-image: url('{{asset('storage/sitebasics')}}/{{$site->home_banner}}');">
         <div class="overlay"></div>
     </div>
     <!-- /Background Image -->
@@ -20,8 +20,8 @@
                 <!-- Logo -->
                 <div class="navbar-brand">
                     <a href="{{route('home')}}">
-                        <img class="logo" src="{{asset('public/storage/sitebasics')}}/{{$site->logo}}" alt="logo">
-                        <img class="logo-alt" src="{{asset('public/storage/sitebasics')}}/{{$site->logo_alt}}" alt="logo">
+                        <img class="logo" src="{{asset('storage/sitebasics')}}/{{$site->logo}}" alt="logo">
+                        <img class="logo-alt" src="{{asset('storage/sitebasics')}}/{{$site->logo_alt}}" alt="logo">
                     </a>
                 </div>
                 <!-- /Logo -->

@@ -14,12 +14,12 @@ $site = SiteBasics::first();
     <title>@yield('title')</title>
     
 	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700%7CVarela+Round" rel="stylesheet">
-	<link type="text/css" rel="stylesheet" href="{{asset('public/frontends/css/bootstrap.min.css')}}" />
-	<link type="text/css" rel="stylesheet" href="{{asset('public/frontends/css/owl.carousel.css')}}" />
-	<link type="text/css" rel="stylesheet" href="{{asset('public/frontends/css/owl.theme.default.css')}}" />
-	<link type="text/css" rel="stylesheet" href="{{asset('public/frontends/css/magnific-popup.css')}}" />
-	<link rel="stylesheet" href="{{asset('public/frontends/css/font-awesome.css')}}">
-	<link rel="shortcut icon" href="{{asset('public/storage/sitebasics')}}/{{$site->favicon}}">
+	<link type="text/css" rel="stylesheet" href="{{asset('frontends/css/bootstrap.min.css')}}" />
+	<link type="text/css" rel="stylesheet" href="{{asset('frontends/css/owl.carousel.css')}}" />
+	<link type="text/css" rel="stylesheet" href="{{asset('frontends/css/owl.theme.default.css')}}" />
+	<link type="text/css" rel="stylesheet" href="{{asset('frontends/css/magnific-popup.css')}}" />
+	<link rel="stylesheet" href="{{asset('frontends/css/font-awesome.css')}}">
+	<link rel="shortcut icon" href="{{asset('storage/sitebasics')}}/{{$site->favicon}}">
 
     @include('frontend.css.style')
 
@@ -49,11 +49,11 @@ $site = SiteBasics::first();
 
 
 <!-- jQuery Plugins -->
-<script type="text/javascript" src="{{asset('public/frontends/js/jquery.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('public/frontends/js/bootstrap.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('public/frontends/js/owl.carousel.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('public/frontends/js/jquery.magnific-popup.js')}}"></script>
-<script type="text/javascript" src="{{asset('public/frontends/js/main.js')}}"></script>
+<script type="text/javascript" src="{{asset('frontends/js/jquery.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('frontends/js/bootstrap.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('frontends/js/owl.carousel.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('frontends/js/jquery.magnific-popup.js')}}"></script>
+<script type="text/javascript" src="{{asset('frontends/js/main.js')}}"></script>
 </html>
 @yield('scripts')
 

@@ -13,27 +13,66 @@
                 <h2 class="title">{{__('layout.commem')}}</h2>
             </div>
             <!-- /Section header -->
-            <div id="team-carousel" class="team-carousel">
-                <div class="item">
-                    <div class="team">
-                        <div class="team-img">
-                            <img class="img-responsive" src="{{asset('public')}}/img/team1.jpg" alt="">
-                        </div>
-                        <div class="team-content">
-                            <h3>John Doe</h3>
-                            <span>Web Designer</span>
-                        </div>
+            <div id="team-carousel" class="owl-carousel owl-theme">
+                <div class="team">
+                    <div class="team-img">
+                        <img class="img-responsive" src="{{asset('img/team1.jpg')}}" alt="">
+                    </div>
+                    <div class="team-content">
+                        <h3>John Doe</h3>
+                        <span>Web Designer</span>
+                    </div>
+                    <div class="team-social">
+                        <a href="#"><i class="fa fa-facebook-f"></i></a>
+                        <a href="#"><i class="fa fa-linkedin"></i></a>
+                        <a href="#"><i class="fa fa-facebook-f"></i></a>
+                        <a href="#"><i class="fa fa-external-link"></i></a>
+                    </div>
+                    
+                </div>
+                <div class="team">
+                    <div class="team-img">
+                        <img class="img-responsive" src="{{asset('img/team1.jpg')}}" alt="">
+                    </div>
+                    <div class="team-content">
+                        <h3>John Doe</h3>
+                        <span>Software and Web Developer</span>
+                    </div>
+                    <div class="team-social">
+                        <a href="#"><i class="fa fa-facebook-f"></i></a>
+                        <a href="#"><i class="fa fa-linkedin"></i></a>
+                        <a href="#"><i class="fa fa-twitter"></i></a>
+                        <a href="#"><i class="fa fa-external-link"></i></a>
                     </div>
                 </div>
-                <div class="item">
-                    <div class="team">
-                        <div class="team-img">
-                            <img class="img-responsive" src="{{asset('public')}}/img/team1.jpg" alt="">
-                        </div>
-                        <div class="team-content">
-                            <h3>John Doe</h3>
-                            <span>Web Designer</span>
-                        </div>
+                <div class="team">
+                    <div class="team-img">
+                        <img class="img-responsive" src="{{asset('img/team1.jpg')}}" alt="">
+                    </div>
+                    <div class="team-content">
+                        <h3>John Doe</h3>
+                        <span>Software and Web Developer</span>
+                    </div>
+                    <div class="team-social">
+                        <a href="#"><i class="fa fa-facebook-f"></i></a>
+                        <a href="#"><i class="fa fa-linkedin"></i></a>
+                        <a href="#"><i class="fa fa-external-link"></i></a>
+                    </div>
+                </div>
+                <div class="team">
+                    <div class="team-img">
+                        <img class="img-responsive" src="{{asset('img/team1.jpg')}}" alt="">
+                    </div>
+                    <div class="team-content">
+                        <h3>John Doe</h3>
+                        <span>Freelancer Programmer</span>
+                    </div>
+                    <div class="team-social">
+                        <a href="#"><i class="fa fa-facebook-f"></i></a>
+                        <a href="#"><i class="fa fa-linkedin"></i></a>
+                        <a href="#"><i class="fa fa-twitter"></i></a>
+                        <a href="#"><i class="fa fa-youtube"></i></a>
+                        <a href="#"><i class="fa fa-external-link"></i></a>
                     </div>
                 </div>
                 
@@ -50,31 +89,27 @@
 
 @section('scripts')
 <script>
-$(document).ready(()=>{
-	console.log('ready');
+$(document).ready(function() {
     $('#team-carousel').owlCarousel({
-        /*loop:true,
-        margin:10,
-        responsive:{
-            0:{
-                items:1,
-                nav:true
+		loop:true,
+		margin:15,
+		dots : true,
+        autoplay : true,
+        nav : true,
+		responsive:{
+			0: {
+				items: 1
+			},
+			640:{
+				items: 2
             },
-            480:{
-                items:3,
-                nav:true
-            },
-            768:{
-                items:5,
-                nav:true
+            980 : {
+                items: 4
             }
-        }*/
-		items : 10,
-		lazyLoad : true,
-		navigation : true
-    })
+		}
+	});
 })
 
 </script>
-@endsection
+@append
 

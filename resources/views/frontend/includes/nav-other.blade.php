@@ -15,7 +15,7 @@
                 <!-- Logo -->
                 <div class="navbar-brand">
                     <a href="index.html">
-                        <img class="logo" src="{{asset('public/storage/sitebasics')}}/{{$site->logo}}" alt="logo">
+                        <img class="logo" src="{{asset('storage/sitebasics')}}/{{$site->logo}}" alt="logo">
                     </a>
                 </div>
                 <!-- /Logo -->

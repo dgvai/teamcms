@@ -174,10 +174,10 @@ ul, ol {
 .title:after {
     content:"";
   	display:block;
-  	height:4px;
-  	width:40px;
+  	height:3px;
+  	width:100%;
   	background-color: {{$site->theme_color_primary}};
-    margin-top: 20px;
+    margin-top: 15px;
 }
 
 .text-center .title:after {
@@ -338,6 +338,7 @@ input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focu
         background-color: {{$site->theme_color_primary}};
         height: 2px;
         width: 0%;
+        margin: auto;
         -webkit-transition: 0.2s width;
         transition: 0.2s width;
     }
@@ -666,15 +667,17 @@ header {
 }
 
 .work .overlay {
-    background: #1C1D21;
+    background: {{$site->theme_color_secondary}};
     position: absolute;
-    top: 0px;
+    /* top: 0px; */
     left: 0px;
-    right: 0px;
+    /* right: 0px; */
     bottom: 0px;
     opacity: 0;
-    -webkit-transition: 0.2s opacity;
-    transition: 0.2s opacity;
+    width : 0%;
+    height : 0%;
+    -webkit-transition: 0.2s;
+    transition: 0.2s;
     -webkit-transition-delay: 0.2s;
     transition-delay: 0.2s;
 }
@@ -682,6 +685,8 @@ header {
 .work:hover .overlay {
     -webkit-transition-delay: 0s;
     transition-delay: 0s;
+    width: 100%;
+    height: 100%;
     opacity: 0.8;
 }
 
@@ -989,23 +994,25 @@ header {
     background-color: #F4F4F4;
     padding: 40px 20px;
     margin: 15px 0px;
+    height : 384px;
 }
 
 .team::after {
     content: "";
     background-color: #1C1D21;
     position: absolute;
-    left: 0;
     right: 0;
     top: 0;
     height: 0%;
+    width: 0%;
     z-index: 1;
-    -webkit-transition: 0.2s height;
-    transition: 0.2s height;
+    -webkit-transition: 0.2s;
+    transition: 0.2s;
 }
 
 .team:hover:after {
     height: 100%;
+    width: 100%;
 }
 
 .team-img {
@@ -1041,13 +1048,13 @@ header {
 }
 
 .team .team-content h3 {
-    margin-bottom: 10px;
+    margin-bottom: 5px;
     -webkit-transition: 0.2s color;
     transition: 0.2s color;
 }
 
 .team .team-content span {
-    font-size: 14px;
+    font-size: 0.8em;
     text-transform: uppercase;
     -webkit-transition: 0.2s color;
     transition: 0.2s color;
@@ -1063,17 +1070,18 @@ header {
 
 .team .team-social {
     position: absolute;
-    top: 0;
-    right: 0;
-    opacity: 0;
+    bottom: 0;
+    opacity: 1;
     -webkit-transition: 0.2s opacity;
     transition: 0.2s opacity;
+    z-index: 11;
 }
 
 .team .team-social a {
-    display: block;
-    line-height: 50px;
-    width: 50px;
+    display: inline-block;
+    width: 30px;
+    line-height: 30px;
+    margin-bottom: 10px;
     text-align: center;
     background-color: {{$site->theme_color_primary}};
     color: #FFF;
@@ -1081,6 +1089,12 @@ header {
 
 .team:hover .team-social {
     opacity: 1;
+}
+
+@media only screen and (max-width: 768px) {
+    .team {
+        height : 460px;
+    }
 }
 
 

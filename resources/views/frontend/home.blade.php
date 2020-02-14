@@ -12,4 +12,8 @@ $site = SiteBasics::first();
 @include('frontend.includes.recent-blogs')
 @include('frontend.includes.recent-events')
 @include('frontend.includes.teams')
+@include('frontend.includes.image-gallery')
+
+@include('frontend.includes.contact')
+@include('frontend.includes.counters')
 @endsection

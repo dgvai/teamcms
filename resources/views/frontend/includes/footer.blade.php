@@ -14,7 +14,7 @@
             <div class="col-md-12">
                 <div class="col-md-3">
                     <div class="footer-logo">
-                        <a href="index.html"><img src="{{asset('public/storage/sitebasics')}}/{{$site->logo_alt}}" alt="logo"></a>
+                        <a href="index.html"><img src="{{asset('storage/sitebasics')}}/{{$site->logo_alt}}" alt="logo"></a>
                         <p>{{$site->short_description}}</p>
                     </div>
                 </div>

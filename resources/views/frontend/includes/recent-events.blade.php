@@ -17,7 +17,7 @@
             <div class="col-md-4">
                 <div class="blog">
                     <div class="blog-img">
-                        <img class="img-responsive" src="{{asset('public')}}/img/blog1.jpg" alt="">
+                        <img class="img-responsive" src="{{asset('img/blog1.jpg')}}" alt="">
                     </div>
                     <div class="blog-content">
                         <ul class="blog-meta">
@@ -36,7 +36,7 @@
             <div class="col-md-4">
                 <div class="blog">
                     <div class="blog-img">
-                        <img class="img-responsive" src="{{asset('public')}}/img/blog2.jpg" alt="">
+                        <img class="img-responsive" src="{{asset('img/blog2.jpg')}}" alt="">
                     </div>
                     <div class="blog-content">
                         <ul class="blog-meta">
@@ -54,7 +54,7 @@
             <div class="col-md-4">
                 <div class="blog">
                     <div class="blog-img">
-                        <img class="img-responsive"  src="{{asset('public')}}/img/blog3.jpg" alt="">
+                        <img class="img-responsive"  src="{{asset('img/blog3.jpg')}}" alt="">
                     </div>
                     <div class="blog-content">
                         <ul class="blog-meta">
