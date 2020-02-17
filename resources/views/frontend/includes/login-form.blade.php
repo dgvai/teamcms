@@ -2,7 +2,7 @@
 
 ?>
 <div class="row my-5 py-5">
-    <div class="col-md-4 col-md-offset-4 col-lg-2 col-lg-offset-5">
+    <div class="col-md-4 col-md-offset-4 col-lg-4 col-lg-offset-4">
         <div class="panel panel-default">
               <div class="panel-heading">
                 <h3 class="panel-title">{{__('auth.pluc')}}</h3>

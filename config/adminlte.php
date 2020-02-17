@@ -14,7 +14,7 @@ return [
     |
     */
 
-    'title' => 'AdminLTE 3',
+    'title' => 'TeamCMS | AdminLTE 3',
     'title_prefix' => '',
     'title_postfix' => '',
 
@@ -30,7 +30,7 @@ return [
     |
     */
 
-    'logo' => '<b>Admin</b>LTE',
+    'logo' => '<b>Admin</b> Panel',
     'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
     'logo_img_class' => 'brand-image-xl',
     'logo_img_xl' => null,
@@ -92,8 +92,8 @@ return [
 
     'sidebar_mini' => true,
     'sidebar_collapse' => false,
-    'sidebar_collapse_auto_size' => false,
-    'sidebar_collapse_remember' => false,
+    'sidebar_collapse_auto_size' => true,
+    'sidebar_collapse_remember' => true,
     'sidebar_collapse_remember_no_transition' => true,
     'sidebar_scrollbar_theme' => 'os-theme-light',
     'sidebar_scrollbar_auto_hide' => 'l',
@@ -132,9 +132,9 @@ return [
     |
     */
 
-    'use_route_url' => false,
+    'use_route_url' => true,
 
-    'dashboard_url' => 'home',
+    'dashboard_url' => 'admin.dashboard',
 
     'logout_url' => 'logout',
 
@@ -142,9 +142,9 @@ return [
 
     'register_url' => 'register',
 
-    'password_reset_url' => 'password/reset',
+    'password_reset_url' => 'password.request',
 
-    'password_email_url' => 'password/email',
+    'password_email_url' => 'password.email',
 
     /*
     |--------------------------------------------------------------------------
@@ -178,74 +178,72 @@ return [
             'search' => true,
             'topnav' => true,
         ],
+        ['header' => 'TEAM MANAGEMENT'],
         [
-            'text'        => 'pages',
-            'url'         => '#',
-            'icon'        => 'far fa-fw fa-file',
-            'label'       => 4,
-            'label_color' => 'success',
-        ],
-        ['header' => 'account_settings'],
-        [
-            'text' => 'profile',
-            'url'  => 'admin/settings',
+            'text' => 'User Management',
+            'url'  => '#',
             'icon' => 'fas fa-fw fa-user',
         ],
         [
-            'text' => 'change_password',
-            'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-lock',
-        ],
-        [
-            'text'    => 'multilevel',
-            'icon'    => 'fas fa-fw fa-share',
+            'text' => 'Event Management',
+            'url'  => '#',
+            'icon' => 'fas fa-fw fa-calendar-alt',
             'submenu' => [
                 [
-                    'text' => 'level_one',
-                    'url'  => '#',
+                    'text' => 'Create Event',
+                    'url' => '#',
+                    'icon' => 'fas fa-fw fa-plus'
                 ],
                 [
-                    'text'    => 'level_one',
-                    'url'     => '#',
-                    'submenu' => [
-                        [
-                            'text' => 'level_two',
-                            'url'  => '#',
-                        ],
-                        [
-                            'text'    => 'level_two',
-                            'url'     => '#',
-                            'submenu' => [
-                                [
-                                    'text' => 'level_three',
-                                    'url'  => '#',
-                                ],
-                                [
-                                    'text' => 'level_three',
-                                    'url'  => '#',
-                                ],
-                            ],
-                        ],
-                    ],
+                    'text' => 'All Events',
+                    'url' => '#',
+                    'icon' => 'fas fa-fw fa-list'
+                ],
+            ]
+        ],
+        [
+            'text' => 'Blog Management',
+            'url'  => '#',
+            'icon' => 'fab fa-fw fa-blogger',
+        ],
+        ['header' => 'SITE MANAGEMENT'],
+        [
+            'text' => 'Front End Manager',
+            'url' => '#',
+            'icon' => 'fas fa-palette',
+            'submenu' => [
+                [
+                    'text' => 'Site Theme',
+                    'url' => '#',
+                    'icon' => 'fas fa-fw fa-paint-roller'
                 ],
                 [
-                    'text' => 'level_one',
-                    'url'  => '#',
+                    'text' => 'Site Basics',
+                    'url' => '#',
+                    'icon' => 'fas fa-fw fa-paint-brush'
                 ],
-            ],
+                [
+                    'text' => 'News Bulletins',
+                    'url' => '#',
+                    'icon' => 'fas fa-fw fa-rss-square'
+                ],
+                [
+                    'text' => 'Image Gallery',
+                    'url' => '#',
+                    'icon' => 'fas fa-fw fa-images'
+                ],
+            ]
         ],
-        ['header' => 'labels'],
         [
-            'text'       => 'important',
-            'icon_color' => 'red',
+            'text'  =>  'Mail Notifier',
+            'url'  => '#',
+            'icon' => 'fas fa-fw fa-envelope'
         ],
+        ['header' => 'Configurations'],
         [
-            'text'       => 'warning',
-            'icon_color' => 'yellow',
-        ],
-        [
-            'text'       => 'information',
-            'icon_color' => 'aqua',
+            'text' => 'Mail Configuration',
+            'url'  => '#',
+            'icon'  => 'fas fa-fw fa-tools'
         ],
     ],
 
@@ -267,7 +265,8 @@ return [
         JeroenNoten\LaravelAdminLte\Menu\Filters\ActiveFilter::class,
         JeroenNoten\LaravelAdminLte\Menu\Filters\SubmenuFilter::class,
         JeroenNoten\LaravelAdminLte\Menu\Filters\ClassesFilter::class,
-        JeroenNoten\LaravelAdminLte\Menu\Filters\GateFilter::class,
+        // JeroenNoten\LaravelAdminLte\Menu\Filters\GateFilter::class,
+        App\Custom\Filters\CustomGateFilter::class,
         JeroenNoten\LaravelAdminLte\Menu\Filters\LangFilter::class,
     ],
 
@@ -286,7 +285,7 @@ return [
     'plugins' => [
         [
             'name' => 'Datatables',
-            'active' => false,
+            'active' => true,
             'files' => [
                 [
                     'type' => 'js',
