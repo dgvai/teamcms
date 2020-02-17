@@ -17,7 +17,8 @@ $site = SiteBasics::first();
 	<link type="text/css" rel="stylesheet" href="{{asset('frontends/css/bootstrap.min.css')}}" />
 	<link type="text/css" rel="stylesheet" href="{{asset('frontends/css/owl.carousel.css')}}" />
 	<link type="text/css" rel="stylesheet" href="{{asset('frontends/css/owl.theme.default.css')}}" />
-	<link type="text/css" rel="stylesheet" href="{{asset('frontends/css/magnific-popup.css')}}" />
+    <link type="text/css" rel="stylesheet" href="{{asset('frontends/css/magnific-popup.css')}}" />
+    @yield('additional-css')
 	<link rel="stylesheet" href="{{asset('frontends/css/font-awesome.css')}}">
 	<link rel="shortcut icon" href="{{asset('storage/sitebasics')}}/{{$site->favicon}}">
 
@@ -53,7 +54,9 @@ $site = SiteBasics::first();
 <script type="text/javascript" src="{{asset('frontends/js/bootstrap.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('frontends/js/owl.carousel.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('frontends/js/jquery.magnific-popup.js')}}"></script>
+<script type="text/javascript" src="{{asset('frontends/js/popper.js')}}"></script>
 <script type="text/javascript" src="{{asset('frontends/js/main.js')}}"></script>
+@yield('additional-js')
 </html>
 @yield('scripts')
 

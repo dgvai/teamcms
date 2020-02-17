@@ -41,7 +41,7 @@
                 <!--/ icons -->
                 <!-- contact form -->
                 <div class="col-md-8">
-                    <form class="contact-form">
+                    <form class="base-form">
                         <input type="text" class="input" placeholder="Name">
                         <input type="email" class="input" placeholder="Email">
                         <input type="text" class="input" placeholder="Subject">

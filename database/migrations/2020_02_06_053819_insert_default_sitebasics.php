@@ -26,6 +26,13 @@ class InsertDefaultSitebasics extends Migration
         $site->theme_color_secondary = '#10161A';
         $site->home_banner = 'default-home-banner.jpg';
         $site->about_banner = 'default-about-banner.jpg';
+        $site->meta_page_titles = json_encode([ 'home' => null, 
+                                                'committee' => 'Committee Members',
+                                                'members' => 'All Members',
+                                                'events' => 'Events',
+                                                'blogs' => 'Blogs',
+                                                'about' => 'About',
+                                                ]);
         $site->contacts = json_encode(['phone' => '01700 000 000', 'email' => 'defaultemail@mail.com', 'address' => 'Default Address Location, City, Country']);
         $site->save();
     }
