@@ -33,9 +33,9 @@ class User extends Authenticatable
      */
     protected $casts = ['email_verified_at' => 'datetime',];
 
-    public function designation()
+    public function desig()
     {
-        return $this->hasOne('App\Models\Entities\Designation','id','designation');
+        return $this->hasOne('App\Models\Entities\UserDesignations','id','designation');
     }
 
     public function details()

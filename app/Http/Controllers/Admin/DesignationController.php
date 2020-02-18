@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Entities\SiteBasics;
 use App\Models\Entities\UserDesignations;
 use Illuminate\Http\Request;
 
@@ -19,6 +20,15 @@ class DesignationController extends Controller
     {
         if($request->name != null || $request->value != null)
         {
+            $oldRanksToChange = UserDesignations::where('value','>=',$request->value)->get();
+            if($oldRanksToChange->count() > 0)
+            {
+                foreach($oldRanksToChange as $rank)
+                {
+                    $rank->value += 1;
+                    $rank->save();
+                }
+            }
             $designation = new UserDesignations();
             $designation->name = $request->name;
             $designation->value = $request->value;
@@ -109,5 +119,13 @@ class DesignationController extends Controller
         $rankToActive->active = 1;
         $rankToActive->save();
         return response()->json(['success' => true]);
+    }
+
+    public function assignGeneral(Request $request)
+    {
+        $site = SiteBasics::first();
+        $site->member_rank = $request->rank;
+        $site->save();
+        return redirect()->back()->with('toast_success','General Membership Assigned!');
     }
 }

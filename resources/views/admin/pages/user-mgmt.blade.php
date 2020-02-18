@@ -1,5 +1,8 @@
 <?php 
 use App\Models\Entities\SiteBasics;
+use App\Models\Entities\UserDesignations;
+
+$ranks = UserDesignations::where('active',1)->get();
 $site = SiteBasics::first();
 ?>
 
@@ -16,13 +19,13 @@ $site = SiteBasics::first();
             @include('admin.widgets.info-box',['bg' => 'danger', 'title' => 'New Member Approval', 'data' => $newUsers->count(), 'icon' => 'fas fa-user-plus'])
         </div>
         <div class="col-md-3">
-            @include('admin.widgets.info-box',['bg' => 'info', 'title' => 'Current Members', 'data' => '2', 'icon' => 'fas fa-users'])
+            @include('admin.widgets.info-box',['bg' => 'info', 'title' => 'Current Members', 'data' => $currentMembers->count(), 'icon' => 'fas fa-users'])
         </div>
         <div class="col-md-3">
-            @include('admin.widgets.info-box',['bg' => 'warning', 'title' => 'Committee Members', 'data' => '1', 'icon' => 'fas fa-users-cog'])
+            @include('admin.widgets.info-box',['bg' => 'warning', 'title' => 'Committee Members', 'data' => $committeeUsers->count(), 'icon' => 'fas fa-users-cog'])
         </div>
         <div class="col-md-3">
-            @include('admin.widgets.info-box',['bg' => 'success', 'title' => 'Alumni Members', 'data' => '10', 'icon' => 'fas fa-user-tie'])
+            @include('admin.widgets.info-box',['bg' => 'success', 'title' => 'Alumni Members', 'data' => $alumniUsers->count(), 'icon' => 'fas fa-user-tie'])
         </div>
     </div>
 
@@ -39,9 +42,54 @@ $site = SiteBasics::first();
         <div class="col-md-6">
             @component('admin.widgets.card',['bg' => 'warning', 'title' => 'Rejected Members'])
                 @if($rejectedUsers->count() == 0)
-                @include('admin.widgets.alert',['type' => 'light', 'title' => 'No Members Rejected', 'data' => 'Currently no new memebers has requested to Join.'])
+                @include('admin.widgets.alert',['type' => 'light', 'title' => 'No Members Rejected', 'data' => 'Currently no new memebers has requested to join.'])
                 @else
                 @include('admin.includes.member-requests',['users' => $rejectedUsers])
+                @endif
+            @endcomponent
+        </div>
+        <div class="col-md-12">
+            @component('admin.widgets.card',['bg' => 'primary', 'title' => 'Assign Designation'])
+                @if($unassignedUsers->count() == 0)
+                @include('admin.widgets.alert',['type' => 'light', 'title' => 'No New Members', 'data' => 'Currently no new memeber left assign!'])
+                @else
+                @include('admin.includes.member-assign',['users' => $unassignedUsers, 'ranks' => $ranks])
+                @endif
+            @endcomponent
+        </div>
+        <div class="col-md-6">
+            @component('admin.widgets.card',['bg' => 'success', 'title' => 'Promote Members'])
+                @if($memberUsers->count() == 0)
+                @include('admin.widgets.alert',['type' => 'light', 'title' => 'No Members', 'data' => 'Currently no memebers assigned!'])
+                @else
+                @include('admin.includes.member-promote',['users' => $memberUsers, 'ranks' => $ranks])
+                @endif
+            @endcomponent
+        </div>
+        <div class="col-md-6">
+            @component('admin.widgets.card',['bg' => 'success', 'title' => 'Manage Committee'])
+                @if($committeeUsers->count() == 0)
+                @include('admin.widgets.alert',['type' => 'light', 'title' => 'No Members', 'data' => 'Currently no memebers assigned!'])
+                @else
+                @include('admin.includes.manage-committee',['users' => $committeeUsers, 'ranks' => $ranks])
+                @endif
+            @endcomponent
+        </div>
+        <div class="col-md-6">
+            @component('admin.widgets.card',['bg' => 'warning', 'title' => 'Move to Alumni'])
+                @if($currentMembers->count() == 0)
+                @include('admin.widgets.alert',['type' => 'light', 'title' => 'No Members', 'data' => 'Currently no memebers assigned!'])
+                @else
+                @include('admin.includes.move-alumni',['users' => $currentMembers])
+                @endif
+            @endcomponent
+        </div>
+        <div class="col-md-6">
+            @component('admin.widgets.card',['bg' => 'warning', 'title' => 'Alumni Manager'])
+                @if($alumniUsers->count() == 0)
+                @include('admin.widgets.alert',['type' => 'light', 'title' => 'No Members', 'data' => 'Currently no memebers assigned!'])
+                @else
+                @include('admin.includes.manage-alumni',['users' => $alumniUsers])
                 @endif
             @endcomponent
         </div>

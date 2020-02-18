@@ -30,6 +30,7 @@ class CreateSiteBasicsTable extends Migration
             $table->string('about_banner')->nullable();
             $table->text('meta_page_titles')->nullable();
             $table->text('contacts')->nullable();
+            $table->string('member_rank')->nullable();
             $table->timestamps();
         });
     }

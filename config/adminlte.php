@@ -199,13 +199,13 @@ return [
             'submenu' => [
                 [
                     'text' => 'Create Event',
-                    'url' => '#',
+                    'url' => '/team-admin/events/create',
                     'icon' => 'fas fa-fw fa-plus',
                     'can'  => 'manage-posts',
                 ],
                 [
                     'text' => 'All Events',
-                    'url' => '#',
+                    'url' => '/team-admin/events/manage',
                     'icon' => 'fas fa-fw fa-list',
                     'can'  => 'manage-posts',
                 ],
@@ -324,7 +324,7 @@ return [
         ],
         [
             'name' => 'Select2',
-            'active' => false,
+            'active' => true,
             'files' => [
                 [
                     'type' => 'js',

@@ -1,4 +1,4 @@
-<table id="two" class="table table-bordered table-hover">
+<table class="table table-bordered table-hover">
     <thead>
     <tr>
         <th>Rank</th>

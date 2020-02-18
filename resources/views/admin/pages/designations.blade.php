@@ -1,6 +1,8 @@
 <?php 
 use App\Models\Entities\SiteBasics;
+use App\Models\Entities\UserDesignations;
 $site = SiteBasics::first();
+$member_rank = ($site->member_rank == null) ? 'Unassigned' : UserDesignations::find($site->member_rank)->name;
 ?>
 
 @extends('adminlte::page')
@@ -21,6 +23,9 @@ $site = SiteBasics::first();
         <div class="col-md-3">
             @include('admin.widgets.info-box',['bg' => 'danger', 'title' => 'Inactive Designations', 'data' => $total->count()-$active->count(), 'icon' => 'fas fa-user-tag'])
         </div>
+        <div class="col-md-3">
+            @include('admin.widgets.info-box',['bg' => 'secondary', 'title' => 'General Member Designation', 'data' => $member_rank, 'icon' => 'fas fa-user-tag'])
+        </div>
     </div>
 
     <div class="row">
@@ -32,8 +37,13 @@ $site = SiteBasics::first();
                     @endcomponent
                 </div>
                 <div class="col-md-12">
+                    @component('admin.widgets.card',['bg' => 'info', 'title' => 'Select General Members Designation'])
+                        @include('admin.includes.select-general',['ranks' => $active])
+                    @endcomponent
+                </div>
+                <div class="col-md-12">
                     @component('admin.widgets.card',['bg' => 'danger', 'title' => 'All Designations'])
-                        @include('admin.includes.all-designations',['items' => $total])
+                        @include('admin.includes.all-designations',['items' => $total->sortBy('value')])
                     @endcomponent
                 </div>
                 

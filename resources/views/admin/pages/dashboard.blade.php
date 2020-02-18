@@ -17,7 +17,7 @@ $site = SiteBasics::first();
 @section('content')
     <div class="row">
         <div class="col-md-3">
-            @include('admin.widgets.small-box',['bg' => 'danger', 'title' => 'New Member Approval', 'data' => $count->new_members, 'url' => '#', 'icon' => 'fas fa-user-plus'])
+            @include('admin.widgets.small-box',['bg' => 'danger', 'title' => 'New Member Approval', 'data' => $count->new_members, 'url' => route('admin.users'), 'icon' => 'fas fa-user-plus'])
         </div>
         <div class="col-md-3">
             @include('admin.widgets.small-box',['bg' => 'info', 'title' => 'New Blog Approval', 'data' => '2', 'url' => '#', 'icon' => 'fas fa-rss'])
@@ -38,13 +38,13 @@ $site = SiteBasics::first();
                         @include('admin.widgets.info-box',['bg' => 'info', 'icon' => 'fas fa-user-friends', 'title' => 'Total Members', 'data' => $count->total_members])
                     </div>
                     <div class="col-md-6">
-                        @include('admin.widgets.info-box',['bg' => 'success', 'icon' => 'fas fa-users', 'title' => 'Current Members', 'data' => 0])
+                        @include('admin.widgets.info-box',['bg' => 'success', 'icon' => 'fas fa-users', 'title' => 'Current Members', 'data' => $count->current_members])
                     </div>
                     <div class="col-md-6">
-                        @include('admin.widgets.info-box',['bg' => 'warning', 'icon' => 'fas fa-users-cog', 'title' => 'Committee Members', 'data' => 0])
+                        @include('admin.widgets.info-box',['bg' => 'warning', 'icon' => 'fas fa-users-cog', 'title' => 'Committee Members', 'data' => $count->committee_members])
                     </div>
                     <div class="col-md-6">
-                        @include('admin.widgets.info-box',['bg' => 'secondary', 'icon' => 'fas fa-user-tie', 'title' => 'Alumni Members', 'data' => 0])
+                        @include('admin.widgets.info-box',['bg' => 'secondary', 'icon' => 'fas fa-user-tie', 'title' => 'Alumni Members', 'data' => $count->alumni_members])
                     </div>
                 </div>
             @endcomponent
