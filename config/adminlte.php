@@ -181,23 +181,33 @@ return [
         ['header' => 'TEAM MANAGEMENT'],
         [
             'text' => 'User Management',
-            'url'  => '#',
+            'url'  => '/team-admin/users',
             'icon' => 'fas fa-fw fa-user',
+            'can'  => 'manage-user',
+        ],
+        [
+            'text' => 'Team Designations',
+            'url'  => '/team-admin/designations',
+            'icon' => 'fas fa-fw fa-user-tag',
+            'can'  => 'manage-user',
         ],
         [
             'text' => 'Event Management',
             'url'  => '#',
             'icon' => 'fas fa-fw fa-calendar-alt',
+            'can'  => 'manage-posts',
             'submenu' => [
                 [
                     'text' => 'Create Event',
                     'url' => '#',
-                    'icon' => 'fas fa-fw fa-plus'
+                    'icon' => 'fas fa-fw fa-plus',
+                    'can'  => 'manage-posts',
                 ],
                 [
                     'text' => 'All Events',
                     'url' => '#',
-                    'icon' => 'fas fa-fw fa-list'
+                    'icon' => 'fas fa-fw fa-list',
+                    'can'  => 'manage-posts',
                 ],
             ]
         ],
@@ -205,45 +215,53 @@ return [
             'text' => 'Blog Management',
             'url'  => '#',
             'icon' => 'fab fa-fw fa-blogger',
+            'can'  => 'manage-posts',
         ],
         ['header' => 'SITE MANAGEMENT'],
         [
             'text' => 'Front End Manager',
             'url' => '#',
             'icon' => 'fas fa-palette',
+            'can'  => 'manage-frontend',
             'submenu' => [
                 [
                     'text' => 'Site Theme',
                     'url' => '#',
-                    'icon' => 'fas fa-fw fa-paint-roller'
+                    'icon' => 'fas fa-fw fa-paint-roller',
+                    'can'  => 'manage-frontend',
                 ],
                 [
                     'text' => 'Site Basics',
                     'url' => '#',
-                    'icon' => 'fas fa-fw fa-paint-brush'
+                    'icon' => 'fas fa-fw fa-paint-brush',
+                    'can'  => 'manage-frontend',
                 ],
                 [
                     'text' => 'News Bulletins',
                     'url' => '#',
-                    'icon' => 'fas fa-fw fa-rss-square'
+                    'icon' => 'fas fa-fw fa-rss-square',
+                    'can'  => 'manage-frontend',
                 ],
                 [
                     'text' => 'Image Gallery',
                     'url' => '#',
-                    'icon' => 'fas fa-fw fa-images'
+                    'icon' => 'fas fa-fw fa-images',
+                    'can'  => 'manage-frontend',
                 ],
             ]
         ],
         [
             'text'  =>  'Mail Notifier',
             'url'  => '#',
-            'icon' => 'fas fa-fw fa-envelope'
+            'icon' => 'fas fa-fw fa-envelope',
+            'can' => 'manage-mailings',
         ],
         ['header' => 'Configurations'],
         [
             'text' => 'Mail Configuration',
             'url'  => '#',
-            'icon'  => 'fas fa-fw fa-tools'
+            'icon'  => 'fas fa-fw fa-tools',
+            'can'   => 'root-permit',
         ],
     ],
 
@@ -333,12 +351,17 @@ return [
         ],
         [
             'name' => 'Sweetalert2',
-            'active' => false,
+            'active' => true,
             'files' => [
                 [
                     'type' => 'js',
                     'asset' => false,
-                    'location' => '//cdn.jsdelivr.net/npm/sweetalert2@8',
+                    'location' => 'https://cdn.jsdelivr.net/npm/sweetalert2@8.19.0/dist/sweetalert2.min.js',
+                ],
+                [
+                    'type' => 'css',
+                    'asset' => false,
+                    'location' => 'https://cdn.jsdelivr.net/npm/sweetalert2@8.19.0/dist/sweetalert2.min.css',
                 ],
             ],
         ],

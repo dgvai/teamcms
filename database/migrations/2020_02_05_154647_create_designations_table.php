@@ -17,8 +17,11 @@ class CreateDesignationsTable extends Migration
             $table->bigIncrements('id');
             $table->string('name')->nullable();
             $table->integer('value')->nullable();
+            $table->integer('active')->nullable();
             $table->timestamps();
         });
+
+        \DB::statement('ALTER TABLE user_designations AUTO_INCREMENT = 1000;');
     }
 
     /**

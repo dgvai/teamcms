@@ -6,6 +6,7 @@
 		case 'warning' : $icon = 'exclamation-triangle' ; break;
 		case 'success' : $icon = 'check' ; break;
 		case 'danger' : $icon = 'ban' ; break;
+		default : $icon = 'exclamation'; break;
 	}
 ?>
 <div class="alert alert-{{$type}} {{($dis) ? 'alert-dismissible' : ''}}">

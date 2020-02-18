@@ -16,6 +16,7 @@
 Auth::routes();
 
 Route::get('/', 'Site\HomeController@index')->name('home');
+Route::get('/about', 'Site\HomeController@about')->name('about');
 Route::get('/committee', 'Site\MemberController@showCommittee')->name('members.committee');
 Route::get('/members', 'Site\MemberController@showMembers')->name('members.current');
 Route::get('/alumnis', 'Site\MemberController@showAlumnis')->name('members.alumni');

@@ -221,6 +221,26 @@ input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focu
     opacity: 1;
 }
 
+.bullete .bullete-box {
+    position: absolute;
+    left: 0;
+    height: 30px;
+    width: 140px;
+    z-index: 989;
+    background-color: #e53935;
+    color: #FAFAFA;
+}
+
+.bullete .bullete-rail {
+    position: absolute;
+    left: 0;
+    height: 30px;
+    width: 100%;
+    z-index: 988;
+    background-color: #F4F4F4;
+    color: #1E1E1E;
+}
+
 /* --  Buttons  -- */
 
 .main-btn, .white-btn, .outline-btn {

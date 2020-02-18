@@ -20,8 +20,8 @@
                         @enderror
                     </div>
                     <div class="form-group">
-                        <input class="form-control @error('rid') is-invalid @enderror" placeholder="{{__('auth.placeholders.yrid')}}" name="rid" type="text" value="{{ old('rid') }}" required>
-                        @error('rid')
+                        <input class="form-control @error('roll_id') is-invalid @enderror" placeholder="{{__('auth.placeholders.yrid')}}" name="roll_id" type="text" value="{{ old('roll_id') }}" required>
+                        @error('roll_id')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>

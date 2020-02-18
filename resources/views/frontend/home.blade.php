@@ -11,6 +11,7 @@ $title = ($meta->home == null) ? $site->name.' - '.$site->tagline : $meta->home.
 @endsection
 
 @section('container')
+@include('frontend.components.bulletin')
 @include('frontend.includes.recent-blogs')
 @include('frontend.includes.recent-events')
 @include('frontend.includes.teams')
