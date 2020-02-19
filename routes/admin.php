@@ -36,4 +36,16 @@
     Route::post('/designation/deactive', 'Admin\DesignationController@deactivateRank')->name('deactive');
     Route::post('/designation/active', 'Admin\DesignationController@activateRank')->name('active');
 
+    Route::post('/events/create', 'Admin\EventsController@createEvent')->name('events.create');
+    Route::post('/event', 'Admin\EventsController@getEvent')->name('event.get');
+    Route::post('/event/delete', 'Admin\EventsController@deleteEvent')->name('event.delete');
+    Route::post('/events/edit/info', 'Admin\EventsController@editEventInfo')->name('events.edit.info');
+    Route::post('/events/edit/link/add', 'Admin\EventsController@addEventlink')->name('events.edit.link.add');
+    Route::post('/events/edit/link/remove', 'Admin\EventsController@removeEventlink')->name('events.edit.link.remove');
+    Route::post('/events/edit/details', 'Admin\EventsController@editEventdetails')->name('events.edit.details');
+    Route::post('/events/postevent/add', 'Admin\EventsController@addPostEvent')->name('events.add.postevent');
+    Route::post('/events/postevent/get', 'Admin\EventsController@getPostEvent')->name('events.edit.get');
+    Route::post('/events/postevent/edit', 'Admin\EventsController@editPostEvent')->name('events.edit.postevent');
+    Route::post('/events/postevent/del/img', 'Admin\EventsController@delImgPostEvent')->name('events.pe.img.remove');
+
 

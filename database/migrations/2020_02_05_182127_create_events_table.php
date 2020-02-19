@@ -15,11 +15,14 @@ class CreateEventsTable extends Migration
     {
         Schema::create('events', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('slug')->nullable();
             $table->string('title')->nullable();
             $table->string('poster')->nullable();
-            $table->text('post')->nullable();
-            $table->string('date')->nullable();
-            $table->string('time')->nullable();
+            $table->longText('post')->nullable();
+            $table->integer('multi')->default(0);
+            $table->string('single_time')->nullable();
+            $table->string('multi_start_time')->nullable();
+            $table->string('multi_end_time')->nullable();
             $table->string('place')->nullable();
             $table->text('links')->nullable();
             $table->timestamps();

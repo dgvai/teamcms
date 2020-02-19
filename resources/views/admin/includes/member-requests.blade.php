@@ -11,7 +11,7 @@
         @foreach($users as $i => $user)
         <tr>
             <td>{{$i + 1}}</td>
-            <td>{{$user->details->first_name}} {{$user->details->last_name}}</td>
+            <td>{{$user->full_name}}</td>
             <td>{{$user->roll_id}}</td>
             <td><button class="btn btn-danger btn-sm manage-user" data-userid="{{$user->id}}">Manage</button></td>
         </tr>

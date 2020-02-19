@@ -13,7 +13,7 @@
         @foreach($users as $user)
         <tr>
             <td>{{$user->roll_id}}</td>
-            <td>{{$user->details->first_name}} {{$user->details->last_name}}</td>
+            <td>{{$user->full_name}}</td>
             <td>{{$user->email}}</td>
             <td>{{\Carbon\Carbon::parse($user->created_at)->format('h:i a - d F, Y')}}</td>
             <td>

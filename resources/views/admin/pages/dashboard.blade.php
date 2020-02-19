@@ -23,7 +23,7 @@ $site = SiteBasics::first();
             @include('admin.widgets.small-box',['bg' => 'info', 'title' => 'New Blog Approval', 'data' => '2', 'url' => '#', 'icon' => 'fas fa-rss'])
         </div>
         <div class="col-md-3">
-            @include('admin.widgets.small-box',['bg' => 'warning', 'title' => 'Upcoming Events', 'data' => '0', 'url' => '#', 'icon' => 'fas fa-calendar-alt', 'urlText' => 'Create Event'])
+            @include('admin.widgets.small-box',['bg' => 'warning', 'title' => 'Upcoming Events', 'data' => $count->upcoming_events, 'url' => route('admin.events.create'), 'icon' => 'fas fa-calendar-alt', 'urlText' => 'Create Event'])
         </div>
         <div class="col-md-3">
             @include('admin.widgets.small-box',['bg' => 'success', 'title' => 'Site Health', 'data' => '100% OK', 'url' => '#', 'icon' => 'fas fa-heartbeat'])
@@ -56,7 +56,7 @@ $site = SiteBasics::first();
                         @include('admin.widgets.info-box',['bg' => 'info', 'icon' => 'fas fa-rss', 'title' => 'Total Blogs', 'data' => 0])
                     </div>
                     <div class="col-md-6">
-                        @include('admin.widgets.info-box',['bg' => 'success', 'icon' => 'fas fa-calendar-alt', 'title' => 'Total Events', 'data' => 0])
+                        @include('admin.widgets.info-box',['bg' => 'success', 'icon' => 'fas fa-calendar-alt', 'title' => 'Total Events', 'data' => $count->total_events])
                     </div>
                     <div class="col-md-6">
                         @include('admin.widgets.info-box',['bg' => 'warning', 'icon' => 'fas fa-rss-square', 'title' => 'Total Bulletins', 'data' => 0])

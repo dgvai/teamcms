@@ -1,13 +1,8 @@
-@section('additional-css')
-<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.15/dist/summernote-lite.min.css" rel="stylesheet">
-@endsection
-@section('additional-js')
-<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.15/dist/summernote-lite.min.js"></script>
-@endsection
 
     <textarea class="{{$class}}" name="{{$name}}" id="{{(isset($id)) ? $id : null}}"></textarea>
 
-@section('scripts')
+@section('js')
+@parent
 <script>
     $(function(){
         $('.summernote').summernote({
@@ -17,4 +12,4 @@
         });
     })
 </script>
-@append
+@endsection

@@ -18,7 +18,6 @@ class CreatePostEventPostsTable extends Migration
             $table->integer('event_id');
             $table->text('post')->nullable();
             $table->text('images')->nullable();
-            $table->text('links')->nullable();
             $table->timestamps();
         });
     }

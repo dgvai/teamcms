@@ -12,7 +12,7 @@
         @foreach($users as $user)
         <tr>
             <td>{{$user->roll_id}}</td>
-            <td>{{$user->details->first_name}} {{$user->details->last_name}}</td>
+            <td>{{$user->full_name}}</td>
             <td>{{$user->desig->name}}</td>
             <td>
                 <button class="btn btn-sm btn-warning move" data-id="{{$user->id}}">Move</button>

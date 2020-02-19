@@ -11,7 +11,7 @@
         @foreach($users as $user)
         <tr>
             <td>{{$user->roll_id}}</td>
-            <td>{{$user->details->first_name}} {{$user->details->last_name}}</td>
+            <td>{{$user->full_name}}</td>
             <td>
                 <button class="btn btn-sm btn-primary promote" data-id="{{$user->id}}">Promote</button>
             </td>
