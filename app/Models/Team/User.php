@@ -48,6 +48,11 @@ class User extends Authenticatable
         return $this->hasMany('App\Models\Entities\UserPortfolios','user_id','id');
     }
 
+    public function blogs()
+    {
+        return $this->hasMany('App\Models\Blogs\Blogs','user_id','id');
+    }
+
     public function getFullNameAttribute()
     {
         return "{$this->details->first_name} {$this->details->last_name}";

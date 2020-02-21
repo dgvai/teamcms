@@ -56,6 +56,7 @@ $site = SiteBasics::first();
 <script type="text/javascript" src="{{asset('frontends/js/jquery.magnific-popup.js')}}"></script>
 <script type="text/javascript" src="{{asset('frontends/js/popper.js')}}"></script>
 <script type="text/javascript" src="{{asset('frontends/js/main.js')}}"></script>
+@include('sweetalert::alert')
 @yield('additional-js')
 </html>
 @yield('scripts')

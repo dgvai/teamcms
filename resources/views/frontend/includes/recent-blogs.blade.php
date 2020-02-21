@@ -13,9 +13,9 @@
             </div>
             <!-- /Section header -->
 
-            @for($i = 0; $i< 3; $i++)
-            @include('frontend.components.blog-card',['i' => $i])
-            @endfor
+            @foreach($blogs as $blog)
+            @include('frontend.components.blog-card',['blog' => $blog])
+            @endforeach
 
         </div>
         <!-- /Row -->

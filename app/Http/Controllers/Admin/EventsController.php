@@ -18,7 +18,7 @@ class EventsController extends Controller
     public function createEvent(Request $request)
     {
         $event = new Events();
-        $slug = Str::slug($request->title,'-');
+        $slug = Str::slug($request->title,'-').'-'.date('hisdmy');
         $event->title = $request->title;
         $event->slug = $slug;
         if($request->hasFile('poster'))

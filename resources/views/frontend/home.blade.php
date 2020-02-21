@@ -12,7 +12,7 @@ $title = ($meta->home == null) ? $site->name.' - '.$site->tagline : $meta->home.
 
 @section('container')
 @include('frontend.components.bulletin')
-@include('frontend.includes.recent-blogs')
+@include('frontend.includes.recent-blogs',['blogs' => $blogs])
 @include('frontend.includes.recent-events')
 @include('frontend.includes.teams')
 @include('frontend.includes.image-gallery')

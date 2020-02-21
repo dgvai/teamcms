@@ -29,6 +29,8 @@ Route::get('/blog/{slug}','Site\BlogsController@showBlog')->name('blog.show');
 Route::get('/blog/{slug}/edit','Site\BlogsController@editBlog')->name('blog.edit');
 Route::get('/blog/{slug}/delete','Site\BlogsController@deleteBlog')->name('blog.delete');
 
+Route::post('/blogs/new','Site\BlogsController@newBlogPost')->name('blog.new.post');
+
 Route::get('/profile',function(){
     return view('frontend.profile');
 });

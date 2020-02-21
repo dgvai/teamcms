@@ -1222,9 +1222,11 @@ header {
     object-fit:cover;
 }
 
-/*------------------------------------*\
-	Blog
-\*------------------------------------*/
+.card-image {
+    height: 200px;
+    object-fit: cover;
+    width: 100%;
+}
 
 .blog {
     background-color: #FFF;
