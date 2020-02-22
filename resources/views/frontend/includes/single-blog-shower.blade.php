@@ -21,18 +21,22 @@
                     <div class="blog-author">
                         <div class="media">
                             <div class="media-left">
-                                <img class="media-object" src="{{asset('img')}}/author.jpg" alt="">
+                                <img class="media-object" src="{{asset('storage/users/avatars')}}/{{$blog->author->display_photo}}" alt="{{$blog->author->full_name}}">
                             </div>
                             <div class="media-body">
                                 <div class="media-heading">
-                                    <h3>Joe Doe</h3>
+                                    <h3>{{$blog->author->full_name}}</h3>
                                     <a href="#">Author's Profile <i class="fa fa-external-link"></i></a>
+                                    @if(count($blog->author->connections) > 0)
                                     <div class="author-social">
-                                        <a href="#"><i class="fa fa-facebook"></i></a>
-                                        <a href="#"><i class="fa fa-twitter"></i></a>
-                                        <a href="#"><i class="fa fa-google-plus"></i></a>
-                                        <a href="#"><i class="fa fa-instagram"></i></a>
+                                        @foreach($blog->author->connections as $link)
+                                            <a href="#"><i class="fa fa-facebook"></i></a>
+                                            <a href="#"><i class="fa fa-twitter"></i></a>
+                                            <a href="#"><i class="fa fa-google-plus"></i></a>
+                                            <a href="#"><i class="fa fa-instagram"></i></a>
+                                        @endforeach
                                     </div>
+                                    @endif
                                 </div>
                             </div>
                         </div>

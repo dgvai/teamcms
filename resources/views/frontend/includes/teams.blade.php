@@ -1,18 +1,12 @@
 <?php 
 
 ?>
-
-<!-- Team -->
 <div id="team" class="section md-padding">
-    <!-- Container -->
     <div class="container">
-        <!-- Row -->
         <div class="row">
-            <!-- Section header -->
             <div class="section-header text-center">
                 <h2 class="title">{{__('layout.commem')}}</h2>
             </div>
-            <!-- /Section header -->
             <div id="team-carousel" class="owl-carousel owl-theme">
                 <div class="team">
                     <div class="team-img">
@@ -81,11 +75,8 @@
 
 
         </div>
-        <!-- /Row -->
     </div>
-    <!-- /Container -->
 </div>
-<!-- /Team -->
 
 @section('scripts')
 <script>

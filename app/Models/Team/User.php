@@ -57,4 +57,14 @@ class User extends Authenticatable
     {
         return "{$this->details->first_name} {$this->details->last_name}";
     }
+
+    public function getDisplayPhotoAttribute()
+    {
+        return ($this->details->avatar == null) ? 'default-photo.jpg' : $this->details->avatar;
+    }
+
+    public function getConnectionsAttribute()
+    {
+        return json_decode(($this->details->socials == null) ? '[]' : $this->details->socials);
+    }
 }
