@@ -10,7 +10,7 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $blogs = Blogs::all()->take(3);
+        $blogs = Blogs::latest()->get()->take(3);
         return view('frontend.home',[
             'blogs' => $blogs
         ]);

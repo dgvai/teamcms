@@ -23,7 +23,8 @@ class BlogsController extends Controller
 
     public function showBlog($slug)
     {
-        return view('frontend.single-blog');
+        $blog = Blogs::where('slug',$slug)->first();
+        return view('frontend.single-blog',['blog'=> $blog]);
     }
 
     public function editBlog($slug)

@@ -8,6 +8,6 @@
             @include('frontend.components.blog-card',['blog' => $blog])
             @endforeach
         </div>
-        {{ $blogs->links('vendor.pagination.default') }}
+        <div class="text-center"> {{ $blogs->links('vendor.pagination.default') }}</div>
     </div>
 </div>

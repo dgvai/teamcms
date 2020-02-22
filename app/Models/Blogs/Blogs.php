@@ -14,7 +14,7 @@ class Blogs extends Model
         return $this->hasOne('App\Models\SEO\SeoBlog','blog_id','id');
     }
 
-    public function user()
+    public function author()
     {
         return $this->hasOne('App\Models\Team\User','id','user_id');
     }

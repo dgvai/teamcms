@@ -1,20 +1,21 @@
+<?php 
+    $randomBlogs = App\Models\Blogs\Blogs::inRandomOrder()->get()->take(5);
+?>
 <div id="blog" class="section sm-padding bg-grey-deep">
     <div class="container">
         <div class="row">
             <main id="main" class="col-md-9">
                 <div class="blog-single">
                     <div class="blog-img">
-                        <img class="img-responsive" src="{{asset('img')}}/blog-post.jpg" alt="">
+                        <img class="img-responsive" style="width:100%" src="{{asset('storage/blogs')}}/{{$blog->banner}}" alt="{{$blog->title}}">
                     </div>
                     <div class="blog-content">
                         <ul class="blog-meta">
-                            <li><i class="fa fa-user"></i>John doe</li>
-                            <li><i class="fa fa-clock-o"></i>18 Oct</li>
+                            <li><i class="fa fa-user"></i>{{$blog->author->full_name}}</li>
+                            <li><i class="fa fa-clock-o"></i>{{\Carbon\Carbon::parse($blog->created_at)->format('d F, Y')}}</li>
                         </ul>
-                        <h3>Demo Blog Title</h3>
-                        <p>Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi.</p>
-                        <p>Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi.</p>
-                        <p>Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi.</p>
+                        <h3>{{$blog->title}}</h3>
+                        {!!$blog->post!!}
                     </div>
 
                     <div class="blog-author">
@@ -45,34 +46,16 @@
                 <a href="#!" class="btn btn-danger mb-3"><i class="fa fa-trash"></i> @lang('Delete')</a>
                 <div class="widget">
                     <h3 class="title">Other Posts</h3>
-
+                    @foreach($randomBlogs as $rblog)
                     <div class="widget-post">
-                        <a href="#">
-                            <img src="{{asset('img')}}/post1.jpg" alt=""> Blog title goes here
+                        <a href="{{route('blog.show',['slug'=>$rblog->slug])}}" class="text-justift">
+                            <img class="img-responsive" width="120px" src="{{asset('storage/blogs')}}/{{$rblog->banner}}" alt="{{$rblog->title}}"> {{mb_substr($rblog->title,0,100).'...'}}
                         </a>
                         <ul class="blog-meta">
-                            <li>Oct 18, 2017</li>
+                            <li>{{\Carbon\Carbon::parse($rblog->created_at)->toFormattedDateString()}}</li>
                         </ul>
                     </div>
-
-                    <div class="widget-post">
-                        <a href="#">
-                            <img src="{{asset('img')}}/post2.jpg" alt=""> Blog title goes here
-                        </a>
-                        <ul class="blog-meta">
-                            <li>Oct 18, 2017</li>
-                        </ul>
-                    </div>
-
-                    <div class="widget-post">
-                        <a href="#">
-                            <img src="{{asset('img')}}/post3.jpg" alt=""> Blog title goes here
-                        </a>
-                        <ul class="blog-meta">
-                            <li>Oct 18, 2017</li>
-                        </ul>
-                    </div>
-
+                    @endforeach
                 </div>
             </aside>
 
