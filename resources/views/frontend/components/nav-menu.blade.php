@@ -33,9 +33,9 @@
     @else
     <li class="has-dropdown"><a href="#!"><i class="fa fa-user"></i></a>
         <ul class="dropdown">
-            {{-- @role('admin' || 'root' || 'mod' || 'writer') --}}
+            @hasanyrole('root|admin|mod')
             <li><a href="{{route('admin.dashboard')}}">@lang('Admin Panel')</a></li>
-            {{-- @endrole --}}
+            @endrole
             <li><a href="#">@lang('User Profile')</a></li>
             <li><a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit()">@lang('Logout')</a></li>
         </ul>

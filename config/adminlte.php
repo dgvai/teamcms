@@ -256,7 +256,7 @@ return [
             'icon' => 'fas fa-fw fa-envelope',
             'can' => 'manage-mailings',
         ],
-        ['header' => 'Configurations'],
+        ['header' => 'Configurations', 'can' => 'root-permit'],
         [
             'text' => 'Mail Configuration',
             'url'  => '#',
