@@ -14,6 +14,7 @@
             <td>{{$blog->title}}</td>
             <td>{{$blog->author->full_name}}</td>
             <td>
+                <a href="{{route('blog.show',['slug' => $blog->slug])}}" class="btn btn-sm btn-info" target="_blank"><i class="fas fa-external-link-alt"></i></a>
                 <button class="btn btn-sm btn-danger delete" data-id="{{$blog->id}}"><i class="fas fa-trash"></i></button>
             </td>
         </tr>
@@ -25,7 +26,8 @@
     @parent
     <script>
         $('#blogs').DataTable({
-            "pageLength": 5
+            pageLength: 5,
+            order : [[0, 'desc']]
         });
 
         $('#blogs tbody').on('click','.delete',function(){
