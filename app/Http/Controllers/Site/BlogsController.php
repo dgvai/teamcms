@@ -12,7 +12,7 @@ class BlogsController extends Controller
 {
     public function showBlogs()
     {
-        $blogs = Blogs::orderBy('created_at','desc')->paginate(9);
+        $blogs = Blogs::where('active',1)->orderBy('created_at','desc')->paginate(9);
         return view('frontend.blogs',['blogs'=>$blogs]);
     }
     
@@ -24,6 +24,12 @@ class BlogsController extends Controller
     public function showBlog($slug)
     {
         $blog = Blogs::where('slug',$slug)->first();
+        return view('frontend.single-blog',['blog'=> $blog]);
+    }
+
+    public function showUnapprovedBlog($id)
+    {
+        $blog = Blogs::find($id);
         return view('frontend.single-blog',['blog'=> $blog]);
     }
 

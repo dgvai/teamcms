@@ -26,6 +26,7 @@ Route::get('/event/{slug}','Site\EventsController@showEvent')->name('event.show'
 Route::get('/blogs','Site\BlogsController@showBlogs')->name('blogs');
 Route::get('/blogs/new','Site\BlogsController@newBlog')->name('blog.new');
 Route::get('/blog/{slug}','Site\BlogsController@showBlog')->name('blog.show');
+Route::get('/blog/unapproved/{id}','Site\BlogsController@showUnapprovedBlog')->name('blog.show.unapproved');
 Route::get('/blog/{slug}/edit','Site\BlogsController@editBlog')->name('blog.edit');
 Route::get('/blog/{slug}/delete','Site\BlogsController@deleteBlog')->name('blog.delete');
 

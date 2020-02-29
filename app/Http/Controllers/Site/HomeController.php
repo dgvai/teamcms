@@ -11,7 +11,7 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $blogs = Blogs::latest()->get()->take(3);
+        $blogs = Blogs::where('active',1)->latest()->get()->take(3);
         $events = Events::latest()->get()->take(3);
 
         return view('frontend.home',[

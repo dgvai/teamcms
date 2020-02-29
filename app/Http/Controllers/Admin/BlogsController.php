@@ -1,0 +1,38 @@
+<?php
+
+namespace App\Http\Controllers\Admin;
+
+use App\Http\Controllers\Controller;
+use App\Models\Blogs\Blogs;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\URL;
+
+class BlogsController extends Controller
+{
+    public function manage()
+    {
+        $blogs = Blogs::all();
+        $new = Blogs::where('active',0)->get();
+        return view('admin.pages.manage-blogs',['blogs' => $blogs, 'new' => $new]);
+    }
+
+    public function viewSigned(Request $request)
+    {
+        return URL::temporarySignedRoute('blog.show.unapproved', now()->addMinutes(10), ['id' => $request->id]);
+    }
+
+    public function approve(Request $request)
+    {
+        $blog = Blogs::find($request->id);
+        $blog->active = 1;
+        $blog->save();
+        return response()->json(['success' => true]);
+    }
+
+    public function reject(Request $request)
+    {
+        $blog = Blogs::find($request->id);
+        $blog->delete();
+        return response()->json(['success' => true]);
+    }
+}

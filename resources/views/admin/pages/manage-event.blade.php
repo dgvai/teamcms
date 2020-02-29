@@ -4,7 +4,7 @@ $site = SiteBasics::first();
 ?>
 
 @extends('adminlte::page')
-@section('title','Dashboard - '.$site->name)
+@section('title','Events - '.$site->name)
 
 @section('css')
     <link rel="shortcut icon" href="{{asset('storage/sitebasics')}}/{{$site->favicon}}">

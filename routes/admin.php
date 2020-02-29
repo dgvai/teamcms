@@ -16,6 +16,7 @@
     Route::get('/designations', 'Admin\DesignationController@showIndex')->name('admin.designations');
     Route::get('/events/create', 'Admin\EventsController@create')->name('admin.events.create');
     Route::get('/events/manage', 'Admin\EventsController@manage')->name('admin.events.manage');
+    Route::get('/blogs/manage', 'Admin\BlogsController@manage')->name('admin.blogs.manage');
 
     Route::post('/user/get', 'Admin\UserController@getUser')->name('user.get');
     Route::post('/user/approve', 'Admin\UserController@approveUser')->name('user.approve');
@@ -47,5 +48,9 @@
     Route::post('/events/postevent/get', 'Admin\EventsController@getPostEvent')->name('events.edit.get');
     Route::post('/events/postevent/edit', 'Admin\EventsController@editPostEvent')->name('events.edit.postevent');
     Route::post('/events/postevent/del/img', 'Admin\EventsController@delImgPostEvent')->name('events.pe.img.remove');
+
+    Route::post('/blogs/view/signed','Admin\BlogsController@viewSigned')->name('blogs.view.signed');
+    Route::post('/blogs/approve','Admin\BlogsController@approve')->name('blogs.approve');
+    Route::post('/blogs/reject','Admin\BlogsController@reject')->name('blogs.reject');
 
 

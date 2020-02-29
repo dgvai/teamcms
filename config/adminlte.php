@@ -213,7 +213,7 @@ return [
         ],
         [
             'text' => 'Blog Management',
-            'url'  => '#',
+            'url'  => '/team-admin/blogs/manage',
             'icon' => 'fab fa-fw fa-blogger',
             'can'  => 'manage-posts',
         ],
@@ -466,5 +466,16 @@ return [
                 ],
             ],
         ],
+        [
+            'name' => 'TeamCMS',
+            'active' => true,
+            'files' => [
+                [
+                    'type' => 'js',
+                    'asset' => true,
+                    'location' => 'teamcms/main.js',
+                ],
+            ],
+        ]
     ],
 ];
