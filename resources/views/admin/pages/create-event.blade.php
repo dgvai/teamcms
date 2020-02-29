@@ -127,23 +127,11 @@ $site = SiteBasics::first();
 
 @section('js')
 @include('sweetalert::alert')
+    <script> $.ajaxSetup({headers: {'X-CSRF-TOKEN': '{{csrf_token()}}'}});</script>
     <script>
-        let Toast;
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': '{{csrf_token()}}'
-            }
-        });
         $(function(){
             let linkObj = [];
-
-            Toast = Swal.mixin({
-                toast: true,
-                position: 'top-end',
-                showConfirmButton: false,
-                timer: 3000
-            });
-
+            
             $.fn.datetimepicker.Constructor.Default = $.extend({}, $.fn.datetimepicker.Constructor.Default, { icons: { time: 'fas fa-clock', date: 'fas fa-calendar', up: 'fas fa-arrow-up', down: 'fas fa-arrow-down', previous: 'fas fa-caret-left', next: 'fas fa-caret-right', today: 'far fa-calendar-check-o', clear: 'far fa-trash', close: 'far fa-times' } });
             $('#datetimepicker-single').datetimepicker({format : "YYYY-MM-DD HH:mm:ss"});
             $('#datetimepicker-start').datetimepicker({format : "YYYY-MM-DD HH:mm:ss"});

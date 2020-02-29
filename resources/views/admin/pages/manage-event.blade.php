@@ -31,22 +31,5 @@ $site = SiteBasics::first();
 
 @section('js')
 @include('sweetalert::alert')
-    <script>
-        let Toast;
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': '{{csrf_token()}}'
-            }
-        });
-        $(function(){
-            Toast = Swal.mixin({
-                toast: true,
-                position: 'top-end',
-                showConfirmButton: false,
-                timer: 3000
-            });
-        });
-
-        
-    </script>
+    <script> $.ajaxSetup({headers: {'X-CSRF-TOKEN': '{{csrf_token()}}'}});</script>
 @endsection

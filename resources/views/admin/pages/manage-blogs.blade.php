@@ -35,11 +35,5 @@ $site = SiteBasics::first();
 
 @section('js')
 @include('sweetalert::alert')
-    <script>
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': '{{csrf_token()}}'
-            }
-        });
-    </script>
+    <script> $.ajaxSetup({headers: {'X-CSRF-TOKEN': '{{csrf_token()}}'}});</script>
 @endsection
