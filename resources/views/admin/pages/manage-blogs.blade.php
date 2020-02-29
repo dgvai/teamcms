@@ -30,6 +30,11 @@ $site = SiteBasics::first();
                 @endif
             @endcomponent
         </div>
+        <div class="col-md-6">
+            @component('admin.widgets.card',['bg' => 'success', 'title' => 'Manage Blogs'])
+                @include('admin.includes.blog-manage',['blogs' => $blogs])
+            @endcomponent
+        </div>
     </div>
 @endsection
 

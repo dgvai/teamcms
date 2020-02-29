@@ -11,6 +11,11 @@ use Illuminate\Support\Str;
 
 class EventsController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(['auth','role:root|admin|mod']);
+    }
+    
     public function create()
     {
         return view('admin.pages.create-event');

@@ -52,5 +52,6 @@
     Route::post('/blogs/view/signed','Admin\BlogsController@viewSigned')->name('blogs.view.signed');
     Route::post('/blogs/approve','Admin\BlogsController@approve')->name('blogs.approve');
     Route::post('/blogs/reject','Admin\BlogsController@reject')->name('blogs.reject');
+    Route::post('/blogs/delete','Admin\BlogsController@delete')->name('blogs.delete');
 
 

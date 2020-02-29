@@ -9,6 +9,11 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(['auth','role:root|admin']);
+    }
+
     public function showUserManagement()
     {
         $newUsers = User::where('status',0)->get();

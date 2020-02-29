@@ -28,9 +28,11 @@ Route::get('/blogs/new','Site\BlogsController@newBlog')->name('blog.new');
 Route::get('/blog/{slug}','Site\BlogsController@showBlog')->name('blog.show');
 Route::get('/blog/unapproved/{id}','Site\BlogsController@showUnapprovedBlog')->name('blog.show.unapproved');
 Route::get('/blog/{slug}/edit','Site\BlogsController@editBlog')->name('blog.edit');
-Route::get('/blog/{slug}/delete','Site\BlogsController@deleteBlog')->name('blog.delete');
 
 Route::post('/blogs/new','Site\BlogsController@newBlogPost')->name('blog.new.post');
+Route::get('/blogs/get/body','Site\BlogsController@getBody')->name('blog.get.body');
+Route::post('/blogs/update','Site\BlogsController@updateBlogPost')->name('blog.update.post');
+Route::post('/blog/delete','Site\BlogsController@deleteBlog')->name('blog.delete');
 
 Route::get('/profile',function(){
     return view('frontend.profile');

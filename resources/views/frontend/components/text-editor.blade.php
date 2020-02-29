@@ -15,6 +15,11 @@
             height: {{$height}},
             fontNames: ['Montserrat', 'Arial', 'Arial Black', 'Comic Sans MS', 'Courier New', 'Impact', 'Open Sans', 'Ubuntu', 'Rajdhani']
         });
+        @if(isset($body))
+        $.get("{{route('blog.get.body')}}",{id:{{$body}}},function(blog){
+            $('.summernote').summernote('code',blog.post)
+        })
+        @endif
     })
 </script>
 @append

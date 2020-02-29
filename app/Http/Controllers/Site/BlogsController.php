@@ -35,12 +35,39 @@ class BlogsController extends Controller
 
     public function editBlog($slug)
     {
-        return view('frontend.edit-blog',['blogPost' => 'true']);
+        $blog = Blogs::where('slug',$slug)->first();
+        return view('frontend.edit-blog',['blog' => $blog]);
+    }
+
+    public function getBody(Request $request)
+    {
+        $blog = Blogs::find($request->id);
+        return response()->json($blog);
+    }
+
+    public function updateBlogPost(Request $request)
+    {
+        $blog = Blogs::find($request->bid);
+        $blog->title = $request->title;
+        $slug = Str::slug($request->title).'-'.date('hisdmy');
+        $blog->slug = $slug;
+        if($request->hasFile('image'))
+        {
+            $filename = 'TCMS-blog-'.$slug.'-'.rand(1000,9999).'-DG-'.rand(1000,9999).'.'.$request->image->extension();
+            $request->image->storeAs('blogs',$filename,'public');
+            unlink(storage_path('app/public/blogs').'/'.$blog->banner);
+            $blog->banner = $filename;
+        }
+        $blog->post = $request->blog_post;
+        $blog->save();
+        return redirect()->route('blog.show',['slug'=>$blog->slug])->with('success',__('lines.blog.updated'));
     }
 
     public function deleteBlog($slug)
     {
-        // return view('frontend.edit-blog');
+        $blog = Blogs::find($request->id);
+        $blog->delete();
+        return response()->json(['success' => true]);
     }
 
     public function newBlogPost(Request $request)
@@ -60,7 +87,7 @@ class BlogsController extends Controller
             }
             $blog->post = $request->blog_post;
             $blog->save();
-            return redirect()->back()->with('success',__('lines.blog.done'));
+            return redirect()->route('blog.show',['slug'=>$blog->slug])->with('success',__('lines.blog.done'));
         }
         else 
         {

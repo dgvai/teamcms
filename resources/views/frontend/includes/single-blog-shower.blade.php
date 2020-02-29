@@ -46,13 +46,15 @@
 
 
             <aside id="aside" class="col-md-3">
-                <a href="#!" class="btn btn-primary mb-3"><i class="fa fa-edit"></i> @lang('Edit Blog')</a>
-                <a href="#!" class="btn btn-danger mb-3"><i class="fa fa-trash"></i> @lang('Delete')</a>
+                @if(auth()->user()->id == $blog->author->id)
+                <a href="{{route('blog.edit',['slug' => $blog->slug])}}" class="btn btn-primary mb-3"><i class="fa fa-edit"></i> @lang('Edit Blog')</a>
+                {{-- <button class="btn btn-danger mb-3 delete" data-id="{{$blog->id}}"><i class="fa fa-trash"></i> @lang('Delete')</button> --}}
+                @endif
                 <div class="widget">
                     <h3 class="title">Other Posts</h3>
                     @foreach($randomBlogs as $rblog)
                     <div class="widget-post">
-                        <a href="{{route('blog.show',['slug'=>$rblog->slug])}}" class="text-justift">
+                        <a href="{{route('blog.show',['slug'=>$rblog->slug])}}" class="text-justify">
                             <img class="img-responsive" width="120px" src="{{asset('storage/blogs')}}/{{$rblog->banner}}" alt="{{$rblog->title}}"> {{mb_substr($rblog->title,0,100).'...'}}
                         </a>
                         <ul class="blog-meta">
@@ -71,7 +73,29 @@
 @section('scripts')
 <script>
     $(function(){
-        
+        // $('.delete').click(function(){
+        //     let id = $(this).data('id');
+        //     Swal.fire({
+        //         title: 'Are you sure?',
+        //         text: "This blog will be permanently deleted. Are you confirmed?",
+        //         icon: 'warning',
+        //         showCancelButton: true,
+        //         confirmButtonColor: '#3085d6',
+        //         cancelButtonColor: '#d33',
+        //         confirmButtonText: 'Yes, delete!'
+        //     }).then((result) => {
+        //         if (result.value) {
+        //             $.post("{{route('blog.delete')}}",{id : id}, function(response){
+        //                 if(response.success) {
+        //                     Swal.fire('Deleted!','The blog was deleted.','success');
+        //                     reload(500)
+        //                 } else {
+        //                     Toast.fire({type: 'error',title: 'Something Went Wrong'});
+        //                 }
+        //             })
+        //         }
+        //     })
+        // })
     })
 </script>
 @append

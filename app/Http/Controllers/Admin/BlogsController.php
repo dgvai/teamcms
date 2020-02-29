@@ -9,6 +9,11 @@ use Illuminate\Support\Facades\URL;
 
 class BlogsController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(['auth','role:root|admin|mod']);
+    }
+    
     public function manage()
     {
         $blogs = Blogs::all();
@@ -30,6 +35,13 @@ class BlogsController extends Controller
     }
 
     public function reject(Request $request)
+    {
+        $blog = Blogs::find($request->id);
+        $blog->delete();
+        return response()->json(['success' => true]);
+    }
+
+    public function delete(Request $request)
     {
         $blog = Blogs::find($request->id);
         $blog->delete();

@@ -9,6 +9,11 @@ use Illuminate\Http\Request;
 
 class DesignationController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(['auth','role:root|admin']);
+    }
+
     public function showIndex()
     {
         $total = UserDesignations::all();

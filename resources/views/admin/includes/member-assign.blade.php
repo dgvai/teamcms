@@ -1,4 +1,3 @@
-
 <table id="members" class="table table-bordered table-hover">
     <thead>
     <tr>
