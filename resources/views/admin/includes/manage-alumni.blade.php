@@ -47,9 +47,7 @@
                     $.post("{{route('user.moveback')}}",{uid : id}, function(response){
                         if(response.success) {
                             Swal.fire('Moved!','The Member was moved to the Members Section.','success');
-                            setTimeout(function () {
-                                window.location.reload();
-                            })
+                            reload(500);
                         } else {
                             Toast.fire({type: 'error',title: 'Something Went Wrong'});
                         }
@@ -73,9 +71,7 @@
                     $.post("{{route('user.delete')}}",{uid : id}, function(response){
                         if(response.success) {
                             Swal.fire('Deleted!','The Member was deleted.','success');
-                            setTimeout(function () {
-                                window.location.reload();
-                            })
+                            reload(500);
                         } else {
                             Toast.fire({type: 'error',title: 'Something Went Wrong'});
                         }

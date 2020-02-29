@@ -46,9 +46,7 @@
                     $.post("{{route('user.move')}}",{uid : id}, function(response){
                         if(response.success) {
                             Swal.fire('Moved!','The Member was moved to the Alumni Section.','success');
-                            setTimeout(function () {
-                                window.location.reload();
-                            })
+                            reload(500)
                         } else {
                             Toast.fire({type: 'error',title: 'Something Went Wrong'});
                         }

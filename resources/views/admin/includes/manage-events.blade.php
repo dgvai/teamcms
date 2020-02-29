@@ -348,7 +348,6 @@
                     $('#ep-post-editor-body').summernote('code',pe.post);
                     let images = JSON.parse(pe.images);
                     $.each(images,function(k,v){
-                        console.log(v);
                         let img = `<img class="img-responsive" width="100px" src="{{asset('storage/events/post')}}/${v}" >`;
                         let btn = `<i class="fas fa-times delpepic" data-index="${k}" data-evid="${id}"></i>`;
                         $('#ep-pe-exst-pics').append(`<tr><td style="width:20%">${img}</td><td style="width:80%; text-align:right">${btn}</td></tr>`)
@@ -373,9 +372,7 @@
                         $.post("{{route('event.delete')}}",{eid : id}, function(response){
                             if(response.success) {
                                 Swal.fire('Deleted!','The event was deleted.','success');
-                                setTimeout(function () {
-                                    window.location.reload();
-                                })
+                                reload(500)
                             } else {
                                 Toast.fire({type: 'error',title: 'Something Went Wrong'});
                             }

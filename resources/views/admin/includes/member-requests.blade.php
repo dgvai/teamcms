@@ -78,9 +78,7 @@
                     $.post("{{route('user.reject')}}",{uid : uid}, function(response){
                         if(response.success) {
                             Toast.fire({type: 'success',title: 'Member Was Rejected'});
-                            setTimeout(function(){
-                                window.location.reload();
-                            },500);
+                            reload(500)
                         } else {
                             Toast.fire({type: 'error',title: 'Something Went Wrong'});
                         }
@@ -90,9 +88,7 @@
                     $.post("{{route('user.delete')}}",{uid : uid}, function(response){
                         if(response.success) {
                             Toast.fire({type: 'info',title: 'That request was deleted permanently!'});
-                            setTimeout(function(){
-                                window.location.reload();
-                            },500);
+                            reload(500)
                         } else {
                             Toast.fire({type: 'error',title: 'Something Went Wrong'});
                         }
@@ -102,9 +98,7 @@
                     $.post("{{route('user.approve')}}",{uid : uid}, function(response){
                         if(response.success) {
                             Toast.fire({type: 'success',title: 'Member Was Approved'});
-                            setTimeout(function(){
-                                window.location.reload();
-                            },500);
+                            reload(500)
                         } else {
                             Toast.fire({type: 'error',title: 'Something Went Wrong'});
                         }

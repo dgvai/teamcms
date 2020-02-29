@@ -29,12 +29,9 @@
         $('.deact').click(function(){
             let did = $(this).data('id');
             $.post("{{route('deactive')}}",{did: did},function(response){
-                console.log(response)
                 if(response.success) {
                     Toast.fire({type: 'success',title: 'Deativated!'});
-                    setTimeout(function(){
-                        window.location.reload();
-                    },500);
+                    reload(500);
                 } else {
                     Toast.fire({type: 'error',title: 'Can not deactivate!'});
                 }
@@ -51,9 +48,7 @@
                 $.post("{{route('active')}}",{did: did, rank : rank},function(response){
                     if(response.success) {
                         Toast.fire({type: 'success',title: 'Activated!'});
-                        setTimeout(function(){
-                            window.location.reload();
-                        },500);
+                        reload(500);
                     } else {
                         Toast.fire({type: 'error',title: 'Can not activate!'});
                     }
