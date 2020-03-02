@@ -1,20 +1,25 @@
 <div class="row m-4 event">
     <div class="col-md-4 px-0 mx-0">
-        <img class="img-responsive" src="{{asset('img/blog1.jpg')}}">
-        <div class="ribbon">{{__('terms.upcoming')}}</div>
+        <img class="img-responsive card-image" src="{{asset('storage/events')}}/{{$event->poster}}">
+        @if($event->is_upcoming)
+        <div class="ribbon">{{__('Upcoming')}}</div>
+        @endif
         
     </div>
     <div class="col-md-8 p-4">
-        <h3>Event Title</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat...</p>
+        <h3>{{$event->title}}</h3>
+        <p>{!!mb_substr(strip_tags($event->post),0,150).'...'!!}</p>
         <ul class="event-meta">
-            <li><i class="fa fa-star"></i>{{__('terms.upcoming')}}</li>
-            <li><i class="fa fa-clock-o"></i>18 Oct</li>
+            @if($event->is_upcoming)
+            <li><i class="fa fa-star"></i>{{__('Upcoming')}}</li>
+            @endif
+            <li><i class="fa fa-clock-o"></i>{{($event->multi == 0) ? \Carbon\Carbon::parse($event->single_time)->toFormattedDateString() : \Carbon\Carbon::parse($event->multi_start_time)->toFormattedDateString() .' to '. \Carbon\Carbon::parse($event->multi_end_time)->toFormattedDateString()}}</li>
         </ul>
         <div class="event-links">
-            <a href="#">Browse Event <i class="fa fa-arrow-right"></i></a>
-            <a href="#">Facebook Link <i class="fa fa-external-link"></i></a>
-            <a href="#">Ticket Link <i class="fa fa-external-link"></i></a>
+            <a href="{{route('event.show',['slug' => $event->slug])}}">@lang('Browse Event') <i class="fa fa-arrow-right"></i></a>
+            @foreach(json_decode($event->links) as $link)
+            <a href="{{$link->url}}">{{$link->name}} <i class="fa fa-external-link"></i></a>
+            @endforeach
         </div>
     </div>
 </div>

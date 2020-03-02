@@ -1167,47 +1167,19 @@ header {
     margin-right: 5px;
 }
 
-#event .div {
+#event .event-accordion {
+    background: {{$site->theme_color_primary}};
+    padding: 10px;
+    color: #FAFAFA;
+}
+
+#event .event-accordion h2{
+    color: #FAFAFA;
     text-align: center;
 }
-
-#event .div .content {
-    margin: 15px 0px;
-    min-height: 135px;
-    background-color: {{$site->theme_color_primary}};
-}
-
-#event .div .date {
-    font-size: 60px;
-    color: #fff;
-    margin: 0;
-    padding-top: 5px;
-    font-weight: bold;
-}
-
-#event .div .time {
-    font-size: 40px;
-    color: #fff;
-    margin: 0;
-    padding-top: 5px;
-    font-weight: bold;
-}
-
-#event .div .am-pm {
-    margin-bottom: 10px;
-    text-transform: uppercase;
-}
-
-#event .div p {
-    font-size: 18px;
-    color: #fff;
-    margin: 0;
-    font-weight: bold;
-}
-
-#event .div p.month {
-    font-size: 20px;
-    text-transform: uppercase;
+#event .event-accordion p{
+    color: #FAFAFA;
+    text-align: center;
 }
 
 #event .bottom-link h3 {

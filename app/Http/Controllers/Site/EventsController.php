@@ -3,17 +3,20 @@
 namespace App\Http\Controllers\Site;
 
 use App\Http\Controllers\Controller;
+use App\Models\Events\Events;
 use Illuminate\Http\Request;
 
 class EventsController extends Controller
 {
     public function showEvents()
     {
-        return view('frontend.events');
+        $events = Events::orderBy('created_at','desc')->paginate(5);
+        return view('frontend.events',['events' => $events]);
     }
 
     public function showEvent($slug)
     {
-        return view('frontend.single-event');
+        $event = Events::where('slug',$slug)->first();
+        return view('frontend.single-event',['event' => $event]);
     }
 }

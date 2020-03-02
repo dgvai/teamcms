@@ -7,10 +7,10 @@ $title = ($meta->events == null) ? 'Events - '.$site->name : $meta->events.' - '
 @extends('frontend.layouts.frame')
 @section('title',$title)
 @section('nav')
-@section('header_title',__('layout.events'))
+@section('header_title',__('Events'))
 @include('frontend.includes.nav-other')
 @endsection
 
 @section('container')
-@include('frontend.includes.events-shower')
+@include('frontend.includes.events-shower',['events' => $events])
 @endsection

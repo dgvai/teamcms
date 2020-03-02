@@ -1,7 +1,7 @@
 <?php 
 use App\Models\Entities\SiteBasics;
 $site = SiteBasics::first();
-$event_title = 'Demo Event Name';
+$event_title = $event->title;
 $title = $event_title.' - '.$site->name;
 ?>
 @extends('frontend.layouts.frame')
@@ -12,5 +12,5 @@ $title = $event_title.' - '.$site->name;
 @endsection
 
 @section('container')
-@include('frontend.includes.single-event-shower')
+@include('frontend.includes.single-event-shower',['event' => $event])
 @endsection

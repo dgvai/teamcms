@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Events\Events;
 use App\Models\Events\PostEventPost;
+use App\Models\SEO\SeoEvent;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -49,6 +50,11 @@ class EventsController extends Controller
         $event->post = $request->text;
         if($event->save())
         {
+            $seo = new SeoEvent();
+            $seo->title = $event->title;
+            $seo->event_id = $event->id;
+            $seo->text = htmlentities(mb_substr(strip_tags($event->post),0,154)).'...';
+            $seo->save();
             return redirect()->route('admin.events.manage')->with('success','Event Successfully Created!');
         }
         else

@@ -6,12 +6,12 @@
     <div class="container">
         <div class="row">
             <div class="section-header text-center">
-                <h2 class="title">{{__('home.rcevs')}}</h2>
+                <h2 class="title">{{__('Recent Events')}}</h2>
             </div>
             <div id="event-carousel" class="owl-carousel owl-theme">
-                @for($i = 0; $i< 1; $i++)
-                @include('frontend.components.event-card',['i' => $i])
-                @endfor
+                @foreach($events as $event)
+                    @include('frontend.components.event-card',['event' => $event])
+                @endforeach
             </div>
 
         </div>

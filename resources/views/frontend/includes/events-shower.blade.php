@@ -1,9 +1,10 @@
 <div id="events" class="section sm-padding bg-grey-deep">
     <div class="container">
         <div class="row">
-            @for($i = 0; $i< 10; $i++)
-            @include('frontend.components.event-card',['i' => $i])
-            @endfor
+        @foreach($events as $event)
+            @include('frontend.components.event-card',['event' => $event])
+        @endforeach
         </div>
+        <div class="text-center"> {{ $events->links('vendor.pagination.default') }}</div>
     </div>
 </div>
