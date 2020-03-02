@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Blogs\Blogs;
+use App\Models\SEO\SeoBlog;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\URL;
 
@@ -46,5 +47,20 @@ class BlogsController extends Controller
         $blog = Blogs::find($request->id);
         $blog->delete();
         return response()->json(['success' => true]);
+    }
+
+    public function getSeo(Request $request)
+    {
+        $blog = Blogs::find($request->id)->seo;
+        return response()->json($blog);
+    }
+
+    public function updateSeo(Request $request)
+    {
+        $seo = SeoBlog::find($request->id);
+        $seo->title = $request->title;
+        $seo->text = $request->text;
+        $seo->save();
+        return redirect()->back()->with('success','SEO has been updated!');
     }
 }

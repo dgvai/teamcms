@@ -1,6 +1,18 @@
 <?php 
     $randomBlogs = App\Models\Blogs\Blogs::inRandomOrder()->get()->take(5);
 ?>
+@section('meta_seo')
+    <meta name="description" content="{{$blog->seo->text}}">
+    <meta name="keywords" content="{{str_replace(' ',',',$blog->seo->title)}}">
+    <meta name="author" content="{{$blog->author->full_name}}"> 
+    <meta property="og:title" content="{{$blog->seo->title}}" />
+    <meta property="og:type" content="article" />
+    <meta property="article:author" content="{{$blog->author->full_name}}" />
+    <meta property="article:publisher" content="{{route('home')}}" />
+    <meta property="article:published_time" content="{{\Carbon\Carbon::parse($blog->created_at)->format(DateTime::ISO8601)}}" />
+    <meta property="og:url" content="{{url()->current()}}" />
+    <meta property="og:image" content="{{asset('storage/blogs')}}/{{$blog->banner}}" />
+@endsection
 <div id="blog" class="section sm-padding bg-grey-deep">
     <div class="container">
         <div class="row">

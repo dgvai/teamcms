@@ -15,11 +15,11 @@ class CreateSeoPagesTable extends Migration
     {
         Schema::create('seo_pages', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->text('home');
-            $table->text('members');
-            $table->text('events');
-            $table->text('blogs');
-            $table->text('about');
+            $table->text('home')->nullable();
+            $table->text('members')->nullable();
+            $table->text('events')->nullable();
+            $table->text('blogs')->nullable();
+            $table->text('about')->nullable();
             $table->timestamps();
         });
     }

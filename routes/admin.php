@@ -53,5 +53,7 @@
     Route::post('/blogs/approve','Admin\BlogsController@approve')->name('blogs.approve');
     Route::post('/blogs/reject','Admin\BlogsController@reject')->name('blogs.reject');
     Route::post('/blogs/delete','Admin\BlogsController@delete')->name('blogs.delete');
+    Route::post('/blogs/seo/update','Admin\BlogsController@updateSeo')->name('blogs.update.seo');
+    Route::get('/blogs/seo/get','Admin\BlogsController@getSeo')->name('blogs.get.seo');
 
 

@@ -16,9 +16,9 @@ class CreateSeoEventsTable extends Migration
         Schema::create('seo_events', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('event_id');
-            $table->string('title');
-            $table->string('image');
-            $table->string('text');
+            $table->string('title')->nullable();
+            $table->string('image')->nullable();
+            $table->string('text')->nullable();
             $table->timestamps();
         });
     }

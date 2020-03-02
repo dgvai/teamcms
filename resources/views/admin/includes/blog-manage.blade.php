@@ -4,6 +4,7 @@
         <th>#</th>
         <th>Title</th>
         <th>Posted By</th>
+        <th>Posted At</th>
         <th>Action</th>
     </tr>
     </thead>
@@ -13,7 +14,9 @@
             <td>{{$blog->id}}</td>
             <td>{{$blog->title}}</td>
             <td>{{$blog->author->full_name}}</td>
+            <td>{{\Carbon\Carbon::parse($blog->updated_at)->toFormattedDateString()}}</td>
             <td>
+                <button class="btn btn-sm btn-success seo" data-id="{{$blog->id}}">Manage SEO</button>
                 <a href="{{route('blog.show',['slug' => $blog->slug])}}" class="btn btn-sm btn-info" target="_blank"><i class="fas fa-external-link-alt"></i></a>
                 <button class="btn btn-sm btn-danger delete" data-id="{{$blog->id}}"><i class="fas fa-trash"></i></button>
             </td>
@@ -21,6 +24,37 @@
         @endforeach
     </tbody>
 </table>
+
+<div class="modal fade" id="seo_modal">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Manage SEO</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="{{route('blogs.update.seo')}}" method="POST">
+                    @csrf 
+                    <input type="hidden" id="bsid" name="id">
+                    <div class="form-group">
+                        <label for="seo_title">SEO Title</label>
+                        <input type="text" class="form-control" id="seo_title" name="title">
+                    </div>
+                    <div class="form-group">
+                        <label for="seo_body">SEO Description</label>
+                        <textarea class="form-control" id="seo_body" name="text" placeholder="max: 156 letters" rows="5"></textarea>
+                    </div>
+                    <input type="submit" class="btn btn-primary" value="Update">
+                </form>
+            </div>
+            <div class="modal-footer justify-content-between">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 @section('js')
     @parent
@@ -51,6 +85,16 @@
                         }
                     })
                 }
+            })
+        });
+
+        $('#blogs tbody').on('click','.seo',function(){
+            let id = $(this).data('id');
+            $.get("{{route('blogs.get.seo')}}",{id: id},function(response){
+                $('#bsid').val(response.id);
+                $('#seo_title').val(response.title);
+                $('#seo_body').text(response.text);
+                $('#seo_modal').modal('show');
             })
         });
     </script>

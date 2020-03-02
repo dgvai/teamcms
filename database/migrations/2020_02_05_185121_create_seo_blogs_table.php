@@ -16,9 +16,9 @@ class CreateSeoBlogsTable extends Migration
         Schema::create('seo_blogs', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('blog_id');
-            $table->string('title');
-            $table->string('image');
-            $table->string('text');
+            $table->string('title')->nullable();
+            $table->string('image')->nullable();
+            $table->string('text')->nullable();
             $table->timestamps();
         });
     }

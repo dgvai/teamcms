@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Site;
 
 use App\Http\Controllers\Controller;
 use App\Models\Blogs\Blogs;
+use App\Models\SEO\SeoBlog;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
@@ -65,6 +66,7 @@ class BlogsController extends Controller
 
     public function deleteBlog($slug)
     {
+        //not used still
         $blog = Blogs::find($request->id);
         $blog->delete();
         return response()->json(['success' => true]);
@@ -86,7 +88,14 @@ class BlogsController extends Controller
                 $blog->banner = $filename;
             }
             $blog->post = $request->blog_post;
-            $blog->save();
+            if($blog->save())
+            {
+                $seo = new SeoBlog();
+                $seo->title = $blog->title;
+                $seo->blog_id = $blog->id;
+                $seo->text = htmlentities(mb_substr(strip_tags($blog->post),0,154)).'...';
+                $seo->save();
+            }
             return redirect()->route('blog.show',['slug'=>$blog->slug])->with('success',__('lines.blog.done'));
         }
         else 
