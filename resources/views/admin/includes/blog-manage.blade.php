@@ -2,10 +2,10 @@
     <thead>
     <tr>
         <th>#</th>
-        <th>Title</th>
-        <th>Posted By</th>
-        <th>Posted At</th>
-        <th>Action</th>
+        <th style="width: 40%">Title</th>
+        <th style="width: 20%">Posted By</th>
+        <th style="width: 20%">Posted At</th>
+        <th style="width: 15%">Action</th>
     </tr>
     </thead>
     <tbody>
