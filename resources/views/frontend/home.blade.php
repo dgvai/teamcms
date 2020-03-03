@@ -2,7 +2,7 @@
 use App\Models\Entities\SiteBasics;
 $site = SiteBasics::first();
 $meta = json_decode($site->meta_page_titles);
-$title = ($meta->home == null) ? $site->name.' - '.$site->tagline : $meta->home.' - '.$site->tagline;
+$title = (!isset($meta->home)) ? $site->name.' - '.$site->tagline : $meta->home.' - '.$site->tagline;
 ?>
 @extends('frontend.layouts.frame')
 @section('title',$title)

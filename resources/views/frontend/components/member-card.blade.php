@@ -1,10 +1,10 @@
 <div class="team col-md-3">
     <div class="team-img">
-        <img class="img-responsive" src="{{asset('img/team1.jpg')}}" alt="{{$i}}">
+        <img class="img-responsive" src="{{asset('storage/users/avatars')}}/{{$user->display_photo}}" alt="{{$user->full_name}}">
     </div>
     <div class="team-content">
-        <h3>John Doe</h3>
-        <span>Web Designer</span>
+        <h3>{{$user->full_name}}</h3>
+        <span>{{$user->desig->name}}</span>
     </div>
     <div class="team-social">
         <a href="#"><i class="fa fa-facebook-f"></i></a>

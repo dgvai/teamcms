@@ -2,7 +2,7 @@
 use App\Models\Entities\SiteBasics;
 $site = SiteBasics::first();
 $meta = json_decode($site->meta_page_titles);
-$title = ($meta->blogs == null) ? 'New Blog - '.$site->name : $meta->blogs.' - '.$site->name;
+$title = 'New Blog - '.$site->name;
 ?>
 @extends('frontend.layouts.frame')
 @section('title',$title)

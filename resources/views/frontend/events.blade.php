@@ -2,7 +2,7 @@
 use App\Models\Entities\SiteBasics;
 $site = SiteBasics::first();
 $meta = json_decode($site->meta_page_titles);
-$title = ($meta->events == null) ? 'Events - '.$site->name : $meta->events.' - '.$site->name;
+$title = (!isset($meta->events)) ? 'Events - '.$site->name : $meta->events.' - '.$site->name;
 ?>
 @extends('frontend.layouts.frame')
 @section('title',$title)

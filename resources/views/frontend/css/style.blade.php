@@ -1011,7 +1011,7 @@ header {
     background-color: #F4F4F4;
     padding: 40px 20px;
     margin: 15px 0px;
-    height : 384px;
+    height : 430px;
 }
 
 .team::after {
@@ -1039,7 +1039,9 @@ header {
 }
 
 .team-img>img {
-  width: 100%;
+    width: 253px;
+    height: 253px;
+    object-fit: cover;
 }
 
 .team .overlay {
@@ -1110,8 +1112,15 @@ header {
 
 @media only screen and (max-width: 768px) {
     .team {
-        height : 460px;
+        height : 490px;
     }
+
+    .team-img>img {
+        width: 320px;
+        height: 320px;
+        object-fit: cover;
+    }
+
 }
 
 /*------------------------------------*\
