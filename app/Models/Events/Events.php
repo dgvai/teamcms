@@ -9,6 +9,8 @@ class Events extends Model
 {
     protected $dates = ['single_time','multi_start_time','multi_end_time','created_at'];
 
+    /* **** relations **** */
+
     public function seo()
     {
         return $this->hasOne('App\Models\SEO\SeoEvent','event_id','id');
@@ -18,6 +20,8 @@ class Events extends Model
     {
         return $this->hasOne('App\Models\Events\PostEventPost','event_id','id');
     }
+
+    /* **** attributes **** */
 
     public function getIsUpcomingAttribute()
     {
@@ -48,5 +52,12 @@ class Events extends Model
     public function getHasPostAttribute()
     {
         return (isset($this->postevent));
+    }
+
+    /* **** scopes **** */
+
+    public function scopeUpcomings($query)
+    {
+        return $query->whereDate('single_time','>=',Carbon::today())->orWhereDate('multi_start_time','>=',Carbon::today());
     }
 }

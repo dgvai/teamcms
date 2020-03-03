@@ -16,13 +16,13 @@ class UserController extends Controller
 
     public function showUserManagement()
     {
-        $newUsers = User::where('status',0)->get();
-        $rejectedUsers = User::where('status',9)->get();
-        $unassignedUsers = User::where('designation',0)->where('status',1)->where('roll_id','>',0)->get();
-        $memberUsers = (SiteBasics::first()->member_rank != null) ? User::where('designation',SiteBasics::first()->member_rank)->where('status',1)->get() : null;
-        $committeeUsers = (SiteBasics::first()->member_rank != null) ? User::where('designation','!=',SiteBasics::first()->member_rank)->where('designation','!=','0')->where('status',1)->get() : null;
-        $currentMembers = User::where('status',1)->where('roll_id','!=',0)->where('designation','!=',0)->get();
-        $alumniUsers = User::where('status',5)->get();
+        $newUsers = User::new()->get();
+        $rejectedUsers = User::rejecteds()->get();
+        $unassignedUsers = User::unassigned()->get();
+        $memberUsers = (SiteBasics::first()->member_rank != null) ? User::members()->get() : null;
+        $committeeUsers = (SiteBasics::first()->member_rank != null) ? User::committee()->get() : null;
+        $currentMembers = User::current()->get();
+        $alumniUsers = User::alumnis()->get();
         return view('admin.pages.user-mgmt',
                     ['newUsers' => $newUsers,
                     'rejectedUsers' => $rejectedUsers,

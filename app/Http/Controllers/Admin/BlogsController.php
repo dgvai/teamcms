@@ -18,7 +18,7 @@ class BlogsController extends Controller
     public function manage()
     {
         $blogs = Blogs::all();
-        $new = Blogs::where('active',0)->get();
+        $new = Blogs::new()->get();
         return view('admin.pages.manage-blogs',['blogs' => $blogs, 'new' => $new]);
     }
 

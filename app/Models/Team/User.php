@@ -2,6 +2,7 @@
 
 namespace App\Models\Team;
 
+use App\Models\Entities\SiteBasics;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -12,26 +13,11 @@ class User extends Authenticatable
     use Notifiable;
     use HasRoles;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
     protected $fillable = ['email', 'password','roll_id'];
-
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
     protected $hidden = ['password', 'remember_token',];
-
-    /**
-     * The attributes that should be cast to native types.
-     *
-     * @var array
-     */
     protected $casts = ['email_verified_at' => 'datetime',];
+
+    /*  **** relations **** */
 
     public function desig()
     {
@@ -53,6 +39,8 @@ class User extends Authenticatable
         return $this->hasMany('App\Models\Blogs\Blogs','user_id','id');
     }
 
+    /*  **** attributes **** */
+
     public function getFullNameAttribute()
     {
         return "{$this->details->first_name} {$this->details->last_name}";
@@ -66,5 +54,47 @@ class User extends Authenticatable
     public function getConnectionsAttribute()
     {
         return json_decode(($this->details->socials == null) ? '[]' : $this->details->socials);
+    }
+
+    /*  **** scopes **** */
+
+    public function scopeNew($query)
+    {
+        return $query->where('status',0)->where('roll_id','!=',0);
+    }
+
+    public function scopeTotal($query)
+    {
+        return $query->where('status',1)->where('roll_id','!=',0);
+    }
+
+    public function scopeCommittee($query)
+    {
+        return $query->where('designation','!=',SiteBasics::first()->member_rank)->where('designation','!=','0')->where('status',1);
+    }
+
+    public function scopeCurrent($query)
+    {
+        return $query->where('status',1)->where('roll_id','!=',0)->where('designation','!=',0);
+    }
+
+    public function scopeMembers($query)
+    {
+        return $query->where('designation',SiteBasics::first()->member_rank)->where('status',1);
+    }
+
+    public function scopeAlumnis($query)
+    {
+        return $query->where('status',5);
+    }
+
+    public function scopeRejecteds($query)
+    {
+        return $query->where('status',9);
+    }
+
+    public function scopeUnassigned($query)
+    {
+        return $query->where('designation',0)->where('status',1)->where('roll_id','>',0);
     }
 }

@@ -20,7 +20,7 @@ $site = SiteBasics::first();
             @include('admin.widgets.small-box',['bg' => 'danger', 'title' => 'New Member Approval', 'data' => $count->new_members, 'url' => route('admin.users'), 'icon' => 'fas fa-user-plus'])
         </div>
         <div class="col-md-3">
-            @include('admin.widgets.small-box',['bg' => 'info', 'title' => 'New Blog Approval', 'data' => '2', 'url' => '#', 'icon' => 'fas fa-rss'])
+            @include('admin.widgets.small-box',['bg' => 'info', 'title' => 'New Blog Approval', 'data' => $count->new_blogs, 'url' => route('admin.blogs.manage'), 'icon' => 'fas fa-rss'])
         </div>
         <div class="col-md-3">
             @include('admin.widgets.small-box',['bg' => 'warning', 'title' => 'Upcoming Events', 'data' => $count->upcoming_events, 'url' => route('admin.events.create'), 'icon' => 'fas fa-calendar-alt', 'urlText' => 'Create Event'])

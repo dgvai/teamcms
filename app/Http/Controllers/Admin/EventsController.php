@@ -80,7 +80,7 @@ class EventsController extends Controller
     public function manage()
     {
         $events = Events::all();
-        $upcoming = Events::whereDate('single_time','>=',Carbon::today())->orWhereDate('multi_start_time','>=',Carbon::today())->get();
+        $upcoming = Events::upcomings()->get();
         return view('admin.pages.manage-event',['events' => $events, 'upcomings' => $upcoming]);
     }
 
