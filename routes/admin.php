@@ -17,6 +17,7 @@
     Route::get('/events/create', 'Admin\EventsController@create')->name('admin.events.create');
     Route::get('/events/manage', 'Admin\EventsController@manage')->name('admin.events.manage');
     Route::get('/blogs/manage', 'Admin\BlogsController@manage')->name('admin.blogs.manage');
+    Route::get('/profile/manage', 'Admin\ProfileController@manage')->name('admin.profile.manage');
 
     Route::post('/user/get', 'Admin\UserController@getUser')->name('user.get');
     Route::post('/user/approve', 'Admin\UserController@approveUser')->name('user.approve');
@@ -55,5 +56,10 @@
     Route::post('/blogs/delete','Admin\BlogsController@delete')->name('blogs.delete');
     Route::post('/blogs/seo/update','Admin\BlogsController@updateSeo')->name('blogs.update.seo');
     Route::get('/blogs/seo/get','Admin\BlogsController@getSeo')->name('blogs.get.seo');
+
+    Route::post('/profile/extra/add','Admin\ProfileController@addExtra')->name('profile.extra.add');
+    Route::post('/profile/extra/delete','Admin\ProfileController@deleteExtra')->name('profile.extra.delete');
+    Route::post('/profile/link/add','Admin\ProfileController@addlink')->name('profile.link.add');
+    Route::post('/profile/link/delete','Admin\ProfileController@deleteLink')->name('profile.link.delete');
 
 

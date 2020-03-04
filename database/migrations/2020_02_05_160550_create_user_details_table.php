@@ -21,7 +21,6 @@ class CreateUserDetailsTable extends Migration
             $table->string('avatar')->nullable();
             $table->string('birthdate')->nullable();
             $table->string('department')->nullable();
-            $table->string('university')->nullable();
             $table->text('about')->nullable();
             $table->string('phone')->nullable();
             $table->text('socials')->nullable();

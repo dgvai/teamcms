@@ -251,6 +251,12 @@ return [
             ]
         ],
         [
+            'text'  =>  'Profile Management',
+            'url'  => '/team-admin/profile/manage',
+            'icon' => 'fas fa-fw fa-brush',
+            'can' => 'manage-frontend',
+        ],
+        [
             'text'  =>  'Mail Notifier',
             'url'  => '#',
             'icon' => 'fas fa-fw fa-envelope',

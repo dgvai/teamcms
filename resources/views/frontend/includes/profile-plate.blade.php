@@ -6,57 +6,54 @@
                     <div class="col-md-6">
                         <div class="mainframe white-bar m-0 p-2 mb-2">
                             <div class="photo">
-                                <img class="img-responsive" src="{{asset('img')}}/team3.jpg" alt="">
+                                <img class="img-responsive" src="{{asset('storage/users/avatars/'.$user->display_photo)}}" alt="{{$user->full_name}}">
                             </div>
                             <div class="text-center my-4">
-                                <h3 class="text-uppercase">DG Shinoda</h3>
-                                <h6>Web Developer</h6>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                                <h3 class="text-uppercase">{{$user->full_name}}</h3>
+                                <h6>{{$user->desig->name}}</h6>
+                                <p>{{$user->about}}</p>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="sideframe white-bar m-0 p-2 mb-2">
-                            <h3 class="text-center text-uppercase mt-3">@lang('terms.infos')</h3>
+                            <h3 class="text-center text-uppercase mt-3">@lang('Informations')</h3>
                             <table class="table">
                                 <tr>
-                                    <th>@lang('auth.placeholders.yfname')</th><th>@lang('auth.placeholders.ylname')</th>
+                                    <th>@lang('First Name')</th><th>@lang('Last Name')</th>
                                 </tr>
                                 <tr>
-                                    <td>DG</td><td>Shinoda</td>
+                                    <td>{{$user->details->first_name}}</td><td>{{$user->details->last_name}}</td>
                                 </tr>
                                 <tr>
-                                    <th>@lang('terms.birthdate')</th><th>@lang('terms.dept')</th>
+                                    <th>@lang('Birthdate')</th><th>@lang('Department')</th>
                                 </tr>
                                 <tr>
-                                    <td>24/10/1996</td><td>Mechatronics</td>
+                                    <td>{{$user->details->birthdate}}</td><td>{{$user->details->department}}</td>
                                 </tr>
                                 <tr>
-                                    <th colspan="2">@lang('terms.email')</th>
+                                    <th colspan="2">@lang('Email')</th>
                                 </tr>
                                 <tr>
-                                    <td colspan="2">dgvai.hridoy@gmail.com</td>
+                                    <td colspan="2">{{$user->email}}</td>
                                 </tr>
                                 <tr>
-                                    <th colspan="2">@lang('terms.phone')</th>
+                                    <th colspan="2">@lang('Phone')</th>
                                 </tr>
                                 <tr>
-                                    <td colspan="2">+88 01684 197772</td>
+                                    <td colspan="2">{{$user->details->phone}}</td>
                                 </tr>
                             </table>
                             <div class="social-links">
-                                <a href="#" target="_blank"><i class="fa fa-facebook-f"></i></a>
-                                <a href="#" target="_blank"><i class="fa fa-twitter"></i></a>
-                                <a href="#" target="_blank"><i class="fa fa-linkedin"></i></a>
-                                <a href="#" target="_blank"><i class="fa fa-youtube"></i></a>
-                                <a href="#" target="_blank"><i class="fa fa-github"></i></a>
-                                <a href="#" target="_blank"><i class="fa fa-medium"></i></a>
+                                @foreach($user->connections as $link)
+                                <a href="{{$link->url}}" data-toggle="tooltip" data-placement="bottom" title="{{$link->name}}" target="_blank"><i class="{{$link->icon}}"></i></a>
+                                @endforeach
                             </div>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="white-bar mx-0 mb-2 p-2">
-                            <h3 class="text-center text-uppercase mt-3">@lang('terms.extr_info')</h3>
+                            <h3 class="text-center text-uppercase mt-3">@lang('Extra Informatons')</h3>
                             <table class="table">
                                 <tr>
                                     <th colspan="2">Extra Term 1</th>
@@ -88,17 +85,22 @@
                 </div>
             </div>
             <div class="col-md-6">
+                @if(auth()->user() == $user)
                 <div class="white-bar mx-0 mb-2 p-2 text-center">
                     <a href="#" class="btn main-btn"><i class="fa fa-edit"></i> @lang('Edit Profile')</a>
                     <a href="#!" class="btn main-btn"><i class="fa fa-plus"></i> @lang('Add Portfolio')</a>
                     <a href="#" class="btn main-btn"><i class="fa fa-cog"></i> @lang('Settings')</a>
                 </div>
+                @endif
+                @if($user->portfolios->count() == 0)
                 <div class="postfram white-bar m-0 p-2 mb-2">
-                    <div class="alert alert-warning mb-0">@lang('lines.nopost')</div>
+                    <div class="alert alert-warning mb-0">@lang('User have not posted any portfolio yet!')</div>
                 </div>
-                @for($i = 0; $i<4; $i++)
-                    @include('frontend.components.portfolio-card',['i' => $i])
-                @endfor
+                @else 
+                    @foreach($user->portfolios as $portfolio)
+                        @include('frontend.components.portfolio-card',['portfolio' => $portfolio])
+                    @endforeach
+                @endif
             </div>
         </div>
     </div>

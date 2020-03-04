@@ -1,6 +1,5 @@
 (function($) {
 	"use strict"
-
 	$(window).on('load', function() {
 		$("#preloader").delay(600).fadeOut();
 	});
@@ -50,3 +49,7 @@
 	});
 
 })(jQuery);
+
+$(()=> {
+	$("body").tooltip({ selector: '[data-toggle=tooltip]' });
+})

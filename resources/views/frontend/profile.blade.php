@@ -1,7 +1,7 @@
 <?php 
 use App\Models\Entities\SiteBasics;
 $site = SiteBasics::first();
-$username = 'DG Shinoda';
+$username = $user->full_name;
 $title = $username.' - '.$site->name;
 ?>
 @extends('frontend.layouts.frame')
@@ -11,5 +11,5 @@ $title = $username.' - '.$site->name;
 @endsection
 
 @section('container')
-@include('frontend.includes.profile-plate')
+@include('frontend.includes.profile-plate',['user' => $user])
 @endsection

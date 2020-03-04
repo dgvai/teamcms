@@ -7,9 +7,9 @@
         <span>{{$user->desig->name}}</span>
     </div>
     <div class="team-social">
-        <a href="#"><i class="fa fa-facebook-f"></i></a>
-        <a href="#"><i class="fa fa-linkedin"></i></a>
-        <a href="#"><i class="fa fa-facebook-f"></i></a>
-        <a href="#"><i class="fa fa-external-link"></i></a>
+        <a href="{{route('user.profile',['roll_id' => $user->roll_id])}}" data-toggle="tooltip" data-placement="bottom" title="@lang('View Profile')"><i class="fa fa-external-link"></i></a>
+        @foreach($user->connections as $link)
+        <a href="{{$link->url}}" data-toggle="tooltip" data-placement="bottom" title="{{$link->name}}" target="_blank"><i class="{{$link->icon}}"></i></a>
+        @endforeach
     </div>
 </div>

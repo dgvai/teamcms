@@ -1,0 +1,106 @@
+[
+    {
+        "name" : "behance",
+        "icon" : "fa-behance"
+    },
+    {
+        "name" : "facebook",
+        "icon" : "fa-facebook-f"
+    },
+    {
+        "name" : "git",
+        "icon" : "fa-git"
+    },
+    {
+        "name" : "github",
+        "icon" : "fa-github"
+    },
+    {
+        "name" : "google",
+        "icon" : "fa-google"
+    },
+    {
+        "name" : "google plus",
+        "icon" : "fa-google-plus"
+    },
+    {
+        "name" : "instagram",
+        "icon" : "fa-instagram"
+    },
+    {
+        "name" : "linkedin",
+        "icon" : "fa-linkedin"
+    },
+    {
+        "name" : "medium",
+        "icon" : "fa-medium"
+    },
+    {
+        "name" : "pinterest",
+        "icon" : "fa-pinterest-p"
+    },
+    {
+        "name" : "qq",
+        "icon" : "fa-qq"
+    },
+    {
+        "name" : "quora",
+        "icon" : "fa-quora"
+    },
+    {
+        "name" : "reddit",
+        "icon" : "fa-reddit"
+    },
+    {
+        "name" : "skype",
+        "icon" : "fa-skype"
+    },
+    {
+        "name" : "slack",
+        "icon" : "fa-slack"
+    },
+    {
+        "name" : "snapchat",
+        "icon" : "fa-snapchat"
+    },
+    {
+        "name" : "soundcloud",
+        "icon" : "fa-soundcloud"
+    },
+    {
+        "name" : "spotify",
+        "icon" : "fa-spotify"
+    },
+    {
+        "name" : "stack exchange",
+        "icon" : "fa-stack-exchange"
+    },
+    {
+        "name" : "stack overflow",
+        "icon" : "fa-stack-overflow"
+    },
+    {
+        "name" : "twitch",
+        "icon" : "fa-twitch"
+    },
+    {
+        "name" : "twitter",
+        "icon" : "fa-twitter"
+    },
+    {
+        "name" : "vimeo",
+        "icon" : "fa-vimeo"
+    },
+    {
+        "name" : "vine",
+        "icon" : "fa-vine"
+    },
+    {
+        "name" : "vk",
+        "icon" : "fa-vk"
+    },
+    {
+        "name" : "youtube",
+        "icon" : "fa-youtube-play"
+    }
+]

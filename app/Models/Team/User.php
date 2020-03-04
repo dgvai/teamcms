@@ -56,6 +56,11 @@ class User extends Authenticatable
         return json_decode(($this->details->socials == null) ? '[]' : $this->details->socials);
     }
 
+    public function getAboutAttribute()
+    {
+        return ($this->details->about == null) ? 'I am very busy to change my about...' : $this->details->about;
+    }
+
     /*  **** scopes **** */
 
     public function scopeNew($query)
@@ -96,5 +101,10 @@ class User extends Authenticatable
     public function scopeUnassigned($query)
     {
         return $query->where('designation',0)->where('status',1)->where('roll_id','>',0);
+    }
+
+    public function scopeRoll($query,$roll)
+    {
+        return $query->where('roll_id',$roll);
     }
 }

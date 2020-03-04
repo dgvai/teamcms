@@ -1110,6 +1110,7 @@ header {
     opacity: 1;
 }
 
+
 @media only screen and (max-width: 768px) {
     .team {
         height : 490px;
