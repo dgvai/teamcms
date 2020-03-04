@@ -1,4 +1,4 @@
-<div class="team col-md-3">
+<div class="team {{isset($home) ? '' : 'col-md-3'}}">
     <div class="team-img">
         <img class="img-responsive" src="{{asset('storage/users/avatars')}}/{{$user->display_photo}}" alt="{{$user->full_name}}">
     </div>

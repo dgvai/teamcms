@@ -14,7 +14,7 @@ $title = (!isset($meta->home)) ? $site->name.' - '.$site->tagline : $meta->home.
 @include('frontend.components.bulletin')
 @include('frontend.includes.recent-blogs',['blogs' => $blogs])
 @include('frontend.includes.recent-events',['events' => $events])
-@include('frontend.includes.teams')
+@include('frontend.includes.teams',['members' => $members])
 @include('frontend.includes.image-gallery')
 @include('frontend.includes.contact')
 @include('frontend.includes.counters')
