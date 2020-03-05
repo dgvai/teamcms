@@ -7,7 +7,6 @@ use App\Models\Blogs\Blogs;
 use App\Models\SEO\SeoBlog;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Str;
 
 class BlogsController extends Controller
 {
@@ -50,7 +49,7 @@ class BlogsController extends Controller
     {
         $blog = Blogs::find($request->bid);
         $blog->title = $request->title;
-        $slug = Str::slug($request->title).'-'.date('hisdmy');
+        $slug = slugify($request->title).'-'.date('hisdmy');
         $blog->slug = $slug;
         if($request->hasFile('image'))
         {
@@ -78,7 +77,7 @@ class BlogsController extends Controller
         {
             $blog = new Blogs();
             $blog->title = $request->title;
-            $slug = Str::slug($request->title).'-'.date('hisdmy');
+            $slug = slugify($request->title).'-'.date('hisdmy');
             $blog->slug = $slug;
             $blog->user_id = Auth::id();
             if($request->hasFile('image'))

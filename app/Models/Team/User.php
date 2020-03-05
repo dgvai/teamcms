@@ -61,6 +61,11 @@ class User extends Authenticatable
         return ($this->details->about == null) ? 'I am very busy to change my about...' : $this->details->about;
     }
 
+    public function getIsRootUserAttribute()
+    {
+        return ($this->roll_id == 0) ? true : false;
+    }
+
     /*  **** scopes **** */
 
     public function scopeNew($query)

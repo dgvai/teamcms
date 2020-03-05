@@ -36,7 +36,9 @@
             @hasanyrole('root|admin|mod')
             <li><a href="{{route('admin.dashboard')}}">@lang('Admin Panel')</a></li>
             @endrole
-            <li><a href="#">@lang('User Profile')</a></li>
+            @if(!Auth::user()->is_root_user)
+            <li><a href="{{route('user.profile',['roll_id' => Auth::user()->roll_id])}}">@lang('User Profile')</a></li>
+            @endif
             <li><a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit()">@lang('Logout')</a></li>
         </ul>
     </li>

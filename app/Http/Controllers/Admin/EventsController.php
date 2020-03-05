@@ -8,7 +8,6 @@ use App\Models\Events\PostEventPost;
 use App\Models\SEO\SeoEvent;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
-use Illuminate\Support\Str;
 
 class EventsController extends Controller
 {
@@ -24,7 +23,7 @@ class EventsController extends Controller
     public function createEvent(Request $request)
     {
         $event = new Events();
-        $slug = Str::slug($request->title,'-').'-'.date('hisdmy');
+        $slug = slugify($request->title).'-'.date('hisdmy');
         $event->title = $request->title;
         $event->slug = $slug;
         if($request->hasFile('poster'))
@@ -87,7 +86,7 @@ class EventsController extends Controller
     public function editEventInfo(Request $request)
     {
         $event = Events::find($request->evid);
-        $slug = Str::slug($request->title,'-');
+        $slug = slugify($request->title).'-'.date('hisdmy');
         $event->title = $request->title;
         $event->slug = $slug;
         $event->place = $request->place;
