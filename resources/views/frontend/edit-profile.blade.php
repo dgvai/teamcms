@@ -1,7 +1,7 @@
 <?php 
 use App\Models\Entities\SiteBasics;
 $site = SiteBasics::first();
-$username = 'DG Shinoda';
+$username = $user->full_name;
 $title = 'Edit Profile - '.$username.' - '.$site->name;
 ?>
 @extends('frontend.layouts.frame')

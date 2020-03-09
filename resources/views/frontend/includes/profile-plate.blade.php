@@ -52,42 +52,28 @@
                         </div>
                     </div>
                     <div class="col-md-6">
+                        @if(count(($user->extras)) > 0)
                         <div class="white-bar mx-0 mb-2 p-2">
                             <h3 class="text-center text-uppercase mt-3">@lang('Extra Informatons')</h3>
                             <table class="table">
+                                @foreach($user->extras as $ext)
                                 <tr>
-                                    <th colspan="2">Extra Term 1</th>
+                                    <th colspan="2">{{deslugify($ext->key,'_')}}</th>
                                 </tr>
                                 <tr>
-                                    <td colspan="2">Lorem ipsum dolor sit amet</td>
+                                    <td colspan="2">{{$ext->value}}</td>
                                 </tr>
-                                <tr>
-                                    <th colspan="2">Extra Term 2</th>
-                                </tr>
-                                <tr>
-                                    <td colspan="2">consectetur adipiscing elit</td>
-                                </tr>
-                                <tr>
-                                    <th colspan="2">Extra Term 3</th>
-                                </tr>
-                                <tr>
-                                    <td colspan="2">Ut enim ad minim veniam</td>
-                                </tr>
-                                <tr>
-                                    <th colspan="2">Extra Term 4</th>
-                                </tr>
-                                <tr>
-                                    <td colspan="2">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum</td>
-                                </tr>
+                                @endforeach
                             </table>
                         </div>
+                        @endif
                     </div>
                 </div>
             </div>
             <div class="col-md-6">
-                @if(auth()->user() == $user)
+                @if(auth()->user()->id == $user->id)
                 <div class="white-bar mx-0 mb-2 p-2 text-center">
-                    <a href="#" class="btn main-btn"><i class="fa fa-edit"></i> @lang('Edit Profile')</a>
+                    <a href="{{route('user.profile.edit',['roll_id' => $user->roll_id])}}" class="btn main-btn"><i class="fa fa-edit"></i> @lang('Edit Profile')</a>
                     <a href="#!" class="btn main-btn"><i class="fa fa-plus"></i> @lang('Add Portfolio')</a>
                     <a href="#" class="btn main-btn"><i class="fa fa-cog"></i> @lang('Settings')</a>
                 </div>

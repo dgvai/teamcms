@@ -66,6 +66,11 @@ class User extends Authenticatable
         return ($this->roll_id == 0) ? true : false;
     }
 
+    public function getExtrasAttribute()
+    {
+        return json_decode(($this->details->extras == null) ? '[]' : $this->details->extras);
+    }
+
     /*  **** scopes **** */
 
     public function scopeNew($query)

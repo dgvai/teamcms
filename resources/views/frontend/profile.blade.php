@@ -11,5 +11,5 @@ $title = $username.' - '.$site->name;
 @endsection
 
 @section('container')
-@include('frontend.includes.profile-plate',['user' => $user])
+@include('frontend.includes.profile-plate')
 @endsection
