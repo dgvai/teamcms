@@ -66,6 +66,19 @@
                             </form>
                         </div>
                     </div>
+                    <div class="col-md-12">
+                        <div class="white-bar my-2 mx-0 p-2">
+                            <h3 class="text-center text-uppercase mt-3">@lang('Social Links')</h3>
+                            <form class="base-form" style="text-align:left" action="{{route('user.profile.edit.socials')}}" method="POST">
+                                @csrf
+                                @foreach($social as $i=>$ex)
+                                <label for="{{$ex->name}}" class="mx-3 mt-2">{{deslugify($ex->name,'_')}}</label>
+                                <input type="text" id="{{$ex->name}}" class="form" name="{{$ex->name}}%{{$ex->icon}}" placeholder="Enter {{$ex->name}} url" value="{{ isset($user->connections[$i]->value) ? $user->connections[$i]->value : '' }}">
+                                @endforeach
+                                <input type="submit" class="btn main-btn my-3" value="@lang('Update Profile')">
+                            </form>
+                        </div>
+                    </div>
                 </div>
                 
             </div>

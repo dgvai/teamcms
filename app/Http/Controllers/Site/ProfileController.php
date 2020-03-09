@@ -22,7 +22,8 @@ class ProfileController extends Controller
         if(auth()->user()->id == $user->id)
         {
             $extra = SiteBasics::first()->extra_infos;
-            return view('frontend.edit-profile',['user' => $user, 'extra' => $extra]);
+            $socia = SiteBasics::first()->social_links;
+            return view('frontend.edit-profile',['user' => $user, 'extra' => $extra, 'social' => $socia]);
         }
         else 
         {
@@ -54,8 +55,12 @@ class ProfileController extends Controller
     public function editExtra(Request $request)
     {
         $user = User::roll(auth()->user()->roll_id)->first();
-        $keys = array_keys($request->except('_token'));
-        $values = array_values($request->except('_token'));
+        $keys = array_keys(collect(request()->except('_token'))->filter(function($value) {
+            return null !== $value;
+        })->toArray());
+        $values = array_values(collect(request()->except('_token'))->filter(function($value) {
+            return null !== $value;
+        })->toArray());
         $data = [];
         foreach($keys as $i => $key)
         {
@@ -67,6 +72,32 @@ class ProfileController extends Controller
         }
         $extra = json_encode($data);
         $user->details->extras = $extra;
+        $user->details->save();
+        return redirect()->route('user.profile',['roll_id' => $user->roll_id])->with('success',__('Profile has been updated successfully!'));
+    }
+
+    public function editSocials(Request $request)
+    {
+        $user = User::roll(auth()->user()->roll_id)->first();
+        $keys = array_keys(collect(request()->except('_token'))->filter(function($value) {
+            return null !== $value;
+        })->toArray());
+        $values = array_values(collect(request()->except('_token'))->filter(function($value) {
+            return null !== $value;
+        })->toArray());
+        $data = [];
+        foreach($keys as $i => $key)
+        {
+            $parts = explode('%',$key);
+            $array = [
+                'name' => $parts[0],
+                'icon'  => $parts[1],
+                'url' => $values[$i]
+            ];
+            array_push($data,$array);
+        }
+        $socials = json_encode($data);
+        $user->details->socials = $socials;
         $user->details->save();
         return redirect()->route('user.profile',['roll_id' => $user->roll_id])->with('success',__('Profile has been updated successfully!'));
     }

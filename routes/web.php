@@ -37,6 +37,7 @@ Route::post('/blog/delete','Site\BlogsController@deleteBlog')->name('blog.delete
 Route::post('/member/edit/basic','Site\ProfileController@editBasic')->name('user.profile.edit.basic');
 Route::post('/member/edit/extra','Site\ProfileController@editExtra')->name('user.profile.edit.extra');
 Route::post('/member/edit/dp','Site\ProfileController@editDP')->name('user.profile.edit.dp');
+Route::post('/member/edit/socials','Site\ProfileController@editSocials')->name('user.profile.edit.socials');
 
 Route::get('/profile',function(){
     return view('frontend.profile');

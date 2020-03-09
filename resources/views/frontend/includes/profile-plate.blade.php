@@ -46,7 +46,7 @@
                             </table>
                             <div class="social-links">
                                 @foreach($user->connections as $link)
-                                <a href="{{$link->url}}" data-toggle="tooltip" data-placement="bottom" title="{{$link->name}}" target="_blank"><i class="{{$link->icon}}"></i></a>
+                                <a href="{{$link->url}}" data-toggle="tooltip" data-placement="bottom" title="{{$link->name}}" target="_blank"><i class="fa {{$link->icon}}"></i></a>
                                 @endforeach
                             </div>
                         </div>
@@ -91,4 +91,6 @@
         </div>
     </div>
 </div>
+
+
 
