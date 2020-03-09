@@ -78,6 +78,10 @@ class ProfileController extends Controller
             $user = User::roll(auth()->user()->roll_id)->first();
             $file = 'TCMS-avatar-user-'.auth()->user()->roll_id.'-'.date('Y-m-d-His').'-'.rand(1000,9999).'.'.$request->avatar->extension();
             $request->avatar->storeAs('users/avatars',$file,'public');
+            if($user->details->avatar != null)
+            {
+                unlink(storage_path('app/public/users/avatars/'.$user->details->avatar));
+            }
             $user->details->avatar = $file;
             $user->details->save();
             return redirect()->route('user.profile',['roll_id' => $user->roll_id])->with('success',__('Profile has been updated successfully!'));
