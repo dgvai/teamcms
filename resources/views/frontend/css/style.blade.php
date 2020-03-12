@@ -1241,6 +1241,22 @@ header {
     margin-right: 5px;
 }
 
+.ul-meta {
+    text-align: right;
+}
+
+.ul-meta li {
+    display: inline-block;
+    font-size: 10px;
+    color: {{$site->theme_color_secondary}};
+    margin-right: 10px;
+}
+
+.ul-meta li i {
+    color: {{$site->theme_color_primary}};
+    margin-right: 5px;
+}
+
 
 /*------------------------------------*\
 	Blog post

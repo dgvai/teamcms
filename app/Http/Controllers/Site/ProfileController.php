@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Site;
 
 use App\Http\Controllers\Controller;
 use App\Models\Entities\SiteBasics;
+use App\Models\Entities\UserPortfolios;
 use App\Models\Team\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -121,5 +122,75 @@ class ProfileController extends Controller
         {
             return redirect()->back();
         }
+    }
+
+    public function showAddPortfolio()
+    {
+        return view('frontend.add-portfolio',['user' => auth()->user()]);
+    }
+
+    public function addPortfolio(Request $request)
+    {
+        $portfolio = UserPortfolios::create(['user_id' => auth()->user()->id]);
+        $portfolio->caption = $request->caption;
+        $portfolio->post = $request->text;
+        if($request->hasFile('image'))
+        {
+            $filename = 'TCMS-user-'.auth()->user()->roll_id.'-'.rand(1000,9999).'-DG-'.rand(1000,9999).'.'.$request->image->extension();
+            $request->image->storeAs('users/portfolios',$filename,'public');
+            $portfolio->images = $filename;
+        }
+        if($portfolio->save())
+        {
+            return redirect()->route('user.profile',['roll_id' => auth()->user()->roll_id])->with('success',__('Portfolio has been added successfully!'));
+        }
+    }
+
+    public function showEditPortfolio($id)
+    {
+        $portfolio = UserPortfolios::find($id);
+        if($portfolio->user->roll_id == auth()->user()->roll_id)
+        {
+            return view('frontend.edit-portfolio',['portfolio' => $portfolio]);
+        }
+        else
+        {
+            abort(403, 'Unauthorized action.');
+        }
+        
+    }
+
+    public function editPortfolio(Request $request)
+    {
+        $portfolio = UserPortfolios::find($request->pid);
+        if($portfolio->user->roll_id == auth()->user()->roll_id)
+        {
+            $portfolio->caption = $request->caption;
+            $portfolio->post = $request->text;
+            if($request->hasFile('image'))
+            {
+                unlink(storage_path('app/public/users/portfolios/'.$portfolio->images));
+                $filename = 'TCMS-user-'.auth()->user()->roll_id.'-'.rand(1000,9999).'-DG-'.rand(1000,9999).'.'.$request->image->extension();
+                $request->image->storeAs('users/portfolios',$filename,'public');
+                $portfolio->images = $filename;
+            }
+            if($portfolio->save())
+            {
+                return redirect()->route('user.profile',['roll_id' => auth()->user()->roll_id])->with('success',__('Portfolio has been updated successfully!'));
+            }
+        }
+        else
+        {
+            return redirect()->route('user.profile',['roll_id' => auth()->user()->roll_id])->with('warning',__('Dont be tricky, your boss is here!'));
+        }
+        
+    }
+
+    public function deletePortfolio(Request $request)
+    {
+        $portfolio = UserPortfolios::find($request->pid);
+        unlink(storage_path('app/public/users/portfolios/'.$portfolio->images));
+        $portfolio->delete();
+        return response()->json(['success' => true]);
     }
 }

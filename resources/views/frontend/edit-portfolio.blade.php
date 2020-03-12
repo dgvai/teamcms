@@ -1,8 +1,8 @@
 <?php 
 use App\Models\Entities\SiteBasics;
 $site = SiteBasics::first();
-$username = $user->full_name;
-$title = 'Add Portfolio - '.$username.' - '.$site->name;
+$username = auth()->user()->full_name;
+$title = 'Edit Portfolio - '.$username.' - '.$site->name;
 ?>
 @extends('frontend.layouts.frame')
 @section('title',$title)
@@ -11,5 +11,5 @@ $title = 'Add Portfolio - '.$username.' - '.$site->name;
 @endsection
 
 @section('container')
-@include('frontend.includes.add-portfolio-plate')
+@include('frontend.includes.edit-portfolio-plate')
 @endsection

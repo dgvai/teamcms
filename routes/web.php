@@ -29,6 +29,8 @@ Route::get('/blog/unapproved/{id}','Site\BlogsController@showUnapprovedBlog')->n
 Route::get('/blog/{slug}/edit','Site\BlogsController@editBlog')->name('blog.edit');
 Route::get('/member/{roll_id}','Site\ProfileController@profile')->name('user.profile');
 Route::get('/member/{roll_id}/edit','Site\ProfileController@edit_profile')->name('user.profile.edit');
+Route::get('/member/add/portfolio','Site\ProfileController@showAddPortfolio')->name('user.profile.add.portfolio');
+Route::get('/member/edit/portfolio/{id}','Site\ProfileController@showEditPortfolio')->name('user.profile.edit.portfolio');
 
 Route::post('/blogs/new','Site\BlogsController@newBlogPost')->name('blog.new.post');
 Route::get('/blogs/get/body','Site\BlogsController@getBody')->name('blog.get.body');
@@ -38,6 +40,9 @@ Route::post('/member/edit/basic','Site\ProfileController@editBasic')->name('user
 Route::post('/member/edit/extra','Site\ProfileController@editExtra')->name('user.profile.edit.extra');
 Route::post('/member/edit/dp','Site\ProfileController@editDP')->name('user.profile.edit.dp');
 Route::post('/member/edit/socials','Site\ProfileController@editSocials')->name('user.profile.edit.socials');
+Route::post('/member/add/portfolio','Site\ProfileController@addPortfolio')->name('user.profile.add.portfolio.add');
+Route::post('/member/edit/portfolio','Site\ProfileController@editPortfolio')->name('user.profile.edit.portfolio.edit');
+Route::post('/member/delete/portfolio','Site\ProfileController@deletePortfolio')->name('user.profile.delete.portfolio');
 
 Route::get('/profile',function(){
     return view('frontend.profile');

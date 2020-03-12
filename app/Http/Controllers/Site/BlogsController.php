@@ -36,7 +36,15 @@ class BlogsController extends Controller
     public function editBlog($slug)
     {
         $blog = Blogs::where('slug',$slug)->first();
-        return view('frontend.edit-blog',['blog' => $blog]);
+        if($blog->author->roll_id == auth()->user()->roll_id)
+        {
+            return view('frontend.edit-blog',['blog' => $blog]);
+        } 
+        else
+        {
+            abort(403, 'Unauthorized action.');
+        }
+        
     }
 
     public function getBody(Request $request)
@@ -48,19 +56,27 @@ class BlogsController extends Controller
     public function updateBlogPost(Request $request)
     {
         $blog = Blogs::find($request->bid);
-        $blog->title = $request->title;
-        $slug = slugify($request->title).'-'.date('hisdmy');
-        $blog->slug = $slug;
-        if($request->hasFile('image'))
+        if($blog->author->roll_id == auth()->user()->roll_id)
         {
-            $filename = 'TCMS-blog-'.$slug.'-'.rand(1000,9999).'-DG-'.rand(1000,9999).'.'.$request->image->extension();
-            $request->image->storeAs('blogs',$filename,'public');
-            unlink(storage_path('app/public/blogs').'/'.$blog->banner);
-            $blog->banner = $filename;
+            $blog->title = $request->title;
+            $slug = slugify($request->title).'-'.date('hisdmy');
+            $blog->slug = $slug;
+            if($request->hasFile('image'))
+            {
+                $filename = 'TCMS-blog-'.$slug.'-'.rand(1000,9999).'-DG-'.rand(1000,9999).'.'.$request->image->extension();
+                $request->image->storeAs('blogs',$filename,'public');
+                unlink(storage_path('app/public/blogs').'/'.$blog->banner);
+                $blog->banner = $filename;
+            }
+            $blog->post = $request->blog_post;
+            $blog->save();
+            return redirect()->route('blog.show',['slug'=>$blog->slug])->with('success',__('You have successfully edited the Blog!'));
         }
-        $blog->post = $request->blog_post;
-        $blog->save();
-        return redirect()->route('blog.show',['slug'=>$blog->slug])->with('success',__('lines.blog.updated'));
+        else
+        {
+            return redirect()->back()->with('success',__('Dont be tricky, your boss is here!'));
+        }
+        
     }
 
     public function deleteBlog($slug)
@@ -95,11 +111,11 @@ class BlogsController extends Controller
                 $seo->text = htmlentities(mb_substr(strip_tags($blog->post),0,154)).'...';
                 $seo->save();
             }
-            return redirect()->route('blog.show',['slug'=>$blog->slug])->with('success',__('lines.blog.done'));
+            return redirect()->route('blog.show',['slug'=>$blog->slug])->with('success',__('You have successfully posted the Blog! Please be patient untill this is approved!'));
         }
         else 
         {
-            return redirect()->back()->with('toast_error',__('lines.blog.nopost'));
+            return redirect()->back()->with('toast_error',__('Please write a blog post before you submit!'));
         }
     }
 }

@@ -74,7 +74,7 @@
                 @if(auth()->user()->id == $user->id)
                 <div class="white-bar mx-0 mb-2 p-2 text-center">
                     <a href="{{route('user.profile.edit',['roll_id' => $user->roll_id])}}" class="btn main-btn"><i class="fa fa-edit"></i> @lang('Edit Profile')</a>
-                    <a href="#!" class="btn main-btn"><i class="fa fa-plus"></i> @lang('Add Portfolio')</a>
+                    <a href="{{route('user.profile.add.portfolio')}}" class="btn main-btn"><i class="fa fa-plus"></i> @lang('Add Portfolio')</a>
                     <a href="#" class="btn main-btn"><i class="fa fa-cog"></i> @lang('Settings')</a>
                 </div>
                 @endif
@@ -83,7 +83,7 @@
                     <div class="alert alert-warning mb-0">@lang('User have not posted any portfolio yet!')</div>
                 </div>
                 @else 
-                    @foreach($user->portfolios as $portfolio)
+                    @foreach($user->portfolios->sortByDesc('id') as $portfolio)
                         @include('frontend.components.portfolio-card',['portfolio' => $portfolio])
                     @endforeach
                 @endif
@@ -91,6 +91,38 @@
         </div>
     </div>
 </div>
+
+@section('additional-js')
+    @parent
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8.19.0/dist/sweetalert2.all.min.js"></script>
+@endsection
+
+@section('scripts')
+    @parent
+    <script>
+        $('.delete-port').click(function(){
+            let pid = $(this).data('pid');
+                Swal.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+            }).then((result) => {
+                $.post("{{route('user.profile.delete.portfolio')}}",{pid:pid,_token:'{{csrf_token()}}'},function(r){
+                    if(r.success) {
+                        Swal.fire({
+                            title: 'Success!',
+                            text: 'Deleted'
+                        });
+                        setTimeout(function(){
+                            window.location.reload();
+                        },500);
+                    }
+                })
+            })
+        })
+    </script>
+@endsection
 
 
 
