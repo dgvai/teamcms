@@ -1,7 +1,7 @@
 <?php 
 use App\Models\Entities\SiteBasics;
 $site = SiteBasics::first();
-$username = 'DG Shinoda';
+$username = auth()->user()->full_name;
 $title = 'Settings - '.$username.' - '.$site->name;
 ?>
 @extends('frontend.layouts.frame')

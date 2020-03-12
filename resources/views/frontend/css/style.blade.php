@@ -1257,6 +1257,14 @@ header {
     margin-right: 5px;
 }
 
+.invalid-feedback {
+    display: block;
+    width: 100%;
+    margin-top: .25rem;
+    font-size: 80%;
+    color: #dc3545;
+}
+
 
 /*------------------------------------*\
 	Blog post

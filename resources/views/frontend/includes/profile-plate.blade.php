@@ -18,7 +18,7 @@
                     <div class="col-md-6">
                         <div class="sideframe white-bar m-0 p-2 mb-2">
                             <h3 class="text-center text-uppercase mt-3">@lang('Informations')</h3>
-                            <table class="table">
+                            <table class="table" style="margin-bottom: 10px">
                                 <tr>
                                     <th>@lang('First Name')</th><th>@lang('Last Name')</th>
                                 </tr>
@@ -55,7 +55,7 @@
                         @if(count(($user->extras)) > 0)
                         <div class="white-bar mx-0 mb-2 p-2">
                             <h3 class="text-center text-uppercase mt-3">@lang('Extra Informatons')</h3>
-                            <table class="table">
+                            <table class="table"  style="margin-bottom: 10px">
                                 @foreach($user->extras as $ext)
                                 <tr>
                                     <th colspan="2">{{deslugify($ext->key,'_')}}</th>
@@ -75,7 +75,7 @@
                 <div class="white-bar mx-0 mb-2 p-2 text-center">
                     <a href="{{route('user.profile.edit',['roll_id' => $user->roll_id])}}" class="btn main-btn"><i class="fa fa-edit"></i> @lang('Edit Profile')</a>
                     <a href="{{route('user.profile.add.portfolio')}}" class="btn main-btn"><i class="fa fa-plus"></i> @lang('Add Portfolio')</a>
-                    <a href="#" class="btn main-btn"><i class="fa fa-cog"></i> @lang('Settings')</a>
+                    <a href="{{route('user.profile.settings',['id' => auth()->user()->roll_id])}}" class="btn main-btn"><i class="fa fa-cog"></i> @lang('Settings')</a>
                 </div>
                 @endif
                 @if($user->portfolios->count() == 0)

@@ -8,6 +8,7 @@ use App\Models\Entities\UserPortfolios;
 use App\Models\Team\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class ProfileController extends Controller
 {
@@ -192,5 +193,26 @@ class ProfileController extends Controller
         unlink(storage_path('app/public/users/portfolios/'.$portfolio->images));
         $portfolio->delete();
         return response()->json(['success' => true]);
+    }
+
+    public function showSettings()
+    {
+        return view('frontend.user-settings');
+    }
+
+    public function updatePassword(Request $request)
+    {
+        $request->validate(['new_password' => 'min:6|required','new_password2' => 'same:new_password']);
+        if(Hash::check($request->old_password,auth()->user()->password))
+        {
+            $user = auth()->user();
+            $user->password = Hash::make($request->new_password);
+            $user->save();
+            return redirect()->back()->with('success',__('Password successfully changed!'));
+        }
+        else 
+        {
+            return redirect()->back()->withErrors(['old_password'=>__('The old password does not match!')]);
+        }
     }
 }
