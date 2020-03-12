@@ -60,7 +60,7 @@
                                 @csrf
                                 @foreach($extra as $i=>$ex)
                                 <label for="{{$ex->key}}" class="mx-3 mt-2">{{$ex->name}}</label>
-                                <input type="text" id="{{$ex->key}}" class="form" name="{{$ex->key}}" placeholder="Enter {{$ex->name}}" value="{{ isset($user->extras[$i]->value) ? $user->extras[$i]->value : '' }}">
+                                <input type="text" id="{{$ex->key}}" class="form" name="{{$ex->key}}" placeholder="Enter {{$ex->name}}" value="{{ $user->getExtraByKey($ex->key) }}">
                                 @endforeach
                                 <input type="submit" class="btn main-btn my-3" value="@lang('Update Profile')">
                             </form>
@@ -73,7 +73,7 @@
                                 @csrf
                                 @foreach($social as $i=>$ex)
                                 <label for="{{$ex->name}}" class="mx-3 mt-2">{{deslugify($ex->name,'_')}}</label>
-                                <input type="text" id="{{$ex->name}}" class="form" name="{{$ex->name}}%{{$ex->icon}}" placeholder="Enter {{$ex->name}} url" value="{{ isset($user->connections[$i]->value) ? $user->connections[$i]->value : '' }}">
+                                <input type="text" id="{{$ex->name}}" class="form" name="{{$ex->name}}%{{$ex->icon}}" placeholder="Enter {{$ex->name}} url" value="{{ $user->getSocialByKey($ex->name) }}">
                                 @endforeach
                                 <input type="submit" class="btn main-btn my-3" value="@lang('Update Profile')">
                             </form>

@@ -71,6 +71,21 @@ class User extends Authenticatable
         return json_decode(($this->details->extras == null) ? '[]' : $this->details->extras);
     }
 
+    public function getExtraByKey($key)
+    {
+        $extras_array = json_decode(($this->details->extras == null) ? '[]' : $this->details->extras);
+        $key = array_search($key,array_column($extras_array,'key'));
+        return ($key !== false) ? $extras_array[$key]->value : false;
+    }
+
+    public function getSocialByKey($key)
+    {
+        $socials_array = json_decode(($this->details->socials == null) ? '[]' : $this->details->socials);
+        $key = array_search($key,array_column($socials_array,'name'));
+        return ($key !== false) ? $socials_array[$key]->url : false;
+    }
+
+
     /*  **** scopes **** */
 
     public function scopeNew($query)
