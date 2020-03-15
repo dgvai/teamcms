@@ -71,7 +71,7 @@
                 </div>
             </div>
             <div class="col-md-6">
-                @if(auth()->user()->id == $user->id)
+                @if(auth()->user() &&(auth()->user()->id == $user->id))
                 <div class="white-bar mx-0 mb-2 p-2 text-center">
                     <a href="{{route('user.profile.edit',['roll_id' => $user->roll_id])}}" class="btn main-btn"><i class="fa fa-edit"></i> @lang('Edit Profile')</a>
                     <a href="{{route('user.profile.add.portfolio')}}" class="btn main-btn"><i class="fa fa-plus"></i> @lang('Add Portfolio')</a>
