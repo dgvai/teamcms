@@ -106,4 +106,22 @@ class SiteController extends Controller
 
         return redirect()->back()->with('toast_success','Changed images!');
     }
+
+    public function changeBasicmeta(Request $request)
+    {
+        $site = SiteBasics::first();
+        $metas = json_decode($site->meta_page_titles,true);
+        $meta['home'] = $request->home;
+        $meta['committee'] = $request->committee;
+        $meta['members'] = $request->members;
+        $meta['alumnis'] = $request->alumnis;
+        $meta['events'] = $request->events;
+        $meta['blogs'] = $request->blogs;
+        $meta['about'] = $request->about;
+        $site->meta_page_titles = json_encode($metas);
+        if($site->save())
+        {
+            return redirect()->back()->with('toast_success','Site meta updated!');
+        }
+    }
 }
