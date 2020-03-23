@@ -47,6 +47,14 @@ class SiteController extends Controller
             $site->save();
         }
 
+        if($request->hasFile('home_counter_bg'))
+        {
+            $filename = 'TCMS-counter-bg-'.$site->name.'-'.rand(1000,9999).'-'.rand(1000,9999).'.'.$request->home_counter_bg->extension();
+            $site->home_counter_bg = $filename;
+            $request->home_counter_bg->storeAs('sitebasics',$filename,'public');
+            $site->save();
+        }
+
         return redirect()->back()->with('toast_success','Changed banners!');
     }
 }

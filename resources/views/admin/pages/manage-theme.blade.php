@@ -12,12 +12,12 @@ $site = SiteBasics::first();
 
 @section('content')
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-3">
             @component('admin.widgets.card',['bg' => 'info', 'title' => 'Theme Colors'])
                 @include('admin.includes.manage-theme-colors',['site' => $site])
             @endcomponent
         </div>
-        <div class="col-md-6">
+        <div class="col-md-9">
             @component('admin.widgets.card',['bg' => 'info', 'title' => 'Site Images'])
                 @include('admin.includes.manage-theme-images',['site' => $site])
             @endcomponent

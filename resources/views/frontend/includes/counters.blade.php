@@ -1,18 +1,9 @@
-<?php 
-
-?>
-<!-- Counters -->
 <div id="numbers" class="section sm-padding">
-    <!-- Background Image -->
-    <div class="bg-img" style="background-image: url('{{asset('storage/sitebasics')}}/default-home-counter-bg.jpg');">
+    <div class="bg-img" style="background-image: url('{{asset('storage/sitebasics/'.$site->home_counter_bg)}}');">
         <div class="overlay"></div>
     </div>
-    <!-- /Background Image -->
-    <!-- Container -->
     <div class="container">
-        <!-- Row -->
         <div class="row">
-            <!-- number -->
             <div class="col-sm-3 col-xs-6">
                 <div class="number">
                     <i class="fa fa-users"></i>
@@ -20,8 +11,7 @@
                     <span class="white-text">{{__('home.cnt.mem')}}</span>
                 </div>
             </div>
-            <!-- /number -->
-            <!-- number -->
+
             <div class="col-sm-3 col-xs-6">
                 <div class="number">
                     <i class="fa fa-graduation-cap"></i>
@@ -29,8 +19,7 @@
                     <span class="white-text">{{__('home.cnt.alm')}}</span>
                 </div>
             </div>
-            <!-- /number -->
-            <!-- number -->
+
             <div class="col-sm-3 col-xs-6">
                 <div class="number">
                     <i class="fa fa-rss"></i>
@@ -38,8 +27,7 @@
                     <span class="white-text">{{__('home.cnt.blg')}}</span>
                 </div>
             </div>
-            <!-- /number -->
-            <!-- number -->
+
             <div class="col-sm-3 col-xs-6">
                 <div class="number">
                     <i class="fa fa-file"></i>
@@ -47,16 +35,11 @@
                     <span class="white-text">{{__('home.cnt.evn')}}</span>
                 </div>
             </div>
-            <!-- /number -->
+
 
         </div>
-        <!-- /Row -->
-
     </div>
-    <!-- /Container -->
-
 </div>
-<!-- /Counters -->
 
 @section('scripts')
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
