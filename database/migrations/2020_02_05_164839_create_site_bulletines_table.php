@@ -15,7 +15,7 @@ class CreateSiteBulletinesTable extends Migration
     {
         Schema::create('site_bulletines', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('news')->nullable();
+            $table->string('news',16000)->nullable();
             $table->integer('state')->default(1);
             $table->timestamps();
         });

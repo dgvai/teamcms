@@ -20,6 +20,7 @@
     Route::get('/profile/manage', 'Admin\ProfileController@manage')->name('admin.profile.manage');
     Route::get('/site/theme', 'Admin\SiteController@theme')->name('admin.site.theme');
     Route::get('/site/basic', 'Admin\SiteController@basic')->name('admin.site.basic');
+    Route::get('/site/bulletin', 'Admin\SiteController@bulletin')->name('admin.site.bulletin');
 
     Route::post('/user/get', 'Admin\UserController@getUser')->name('user.get');
     Route::post('/user/approve', 'Admin\UserController@approveUser')->name('user.approve');
@@ -72,6 +73,10 @@
     Route::post('basic/update/meta','Admin\SiteController@changeBasicmeta')->name('change.basic.meta');
     Route::post('basic/update/contact','Admin\SiteController@changeBasiccontact')->name('change.basic.contact');
     Route::post('basic/add/link','Admin\SiteController@addSiteLinks')->name('add.site.link');
+    Route::post('basic/add/bulletin','Admin\SiteController@addSitebulletin')->name('add.site.bulletin');
     Route::post('basic/delete/link','Admin\SiteController@deleteSiteLinks')->name('delete.site.link');
+    Route::post('active/bulletin','Admin\SiteController@activeBulletin')->name('active.bulletin');
+    Route::post('deactive/bulletin','Admin\SiteController@deactiveBulletin')->name('deactive.bulletin');
+    Route::post('delete/bulletin','Admin\SiteController@deleteBulletin')->name('delete.bulletin');
 
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Entities\SiteBasics;
+use App\Models\Entities\SiteBulletines;
 use App\Models\Entities\SiteSocials;
 use Illuminate\Http\Request;
 
@@ -24,6 +25,12 @@ class SiteController extends Controller
         $icons = json_decode(file_get_contents(public_path('datasets/socials.json')));
         $links = SiteSocials::all();
         return view('admin.pages.manage-basic',['icons' => $icons,'links' => $links]);
+    }
+
+    public function bulletin()
+    {
+        $bullets = SiteBulletines::all();
+        return view('admin.pages.manage-bulletins',['bullets' => $bullets]);
     }
 
     public function changeTheme(Request $request)
@@ -159,6 +166,39 @@ class SiteController extends Controller
     {
         $link = SiteSocials::find($request->id);
         $link->delete();
+        return response()->json(['success' => true]);
+    }
+
+    public function addSitebulletin(Request $request)
+    {
+        $bullet = new SiteBulletines();
+        $bullet->news = $request->news;
+        if($bullet->save())
+        {
+            return redirect()->back()->with('toast_success','News has been added!');
+        }
+    }
+
+    public function activeBulletin(Request $request)
+    {
+        $bullet = SiteBulletines::find($request->id);
+        $bullet->state = true;
+        $bullet->save();
+        return response()->json(['success' => true]);
+    }
+
+    public function deactiveBulletin(Request $request)
+    {
+        $bullet = SiteBulletines::find($request->id);
+        $bullet->state = false;
+        $bullet->save();
+        return response()->json(['success' => true]);
+    }
+
+    public function deleteBulletin(Request $request)
+    {
+        $bullet = SiteBulletines::find($request->id);
+        $bullet->delete();
         return response()->json(['success' => true]);
     }
 }

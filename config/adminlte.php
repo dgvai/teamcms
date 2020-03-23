@@ -226,7 +226,7 @@ return [
                 ],
                 [
                     'text' => 'News Bulletins',
-                    'url' => '#',
+                    'route' => 'admin.site.bulletin',
                     'icon' => 'fas fa-fw fa-rss-square',
                     'can'  => 'manage-frontend',
                 ],
