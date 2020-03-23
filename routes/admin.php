@@ -19,6 +19,7 @@
     Route::get('/blogs/manage', 'Admin\BlogsController@manage')->name('admin.blogs.manage');
     Route::get('/profile/manage', 'Admin\ProfileController@manage')->name('admin.profile.manage');
     Route::get('/site/theme', 'Admin\SiteController@theme')->name('admin.site.theme');
+    Route::get('/site/basic', 'Admin\SiteController@basic')->name('admin.site.basic');
 
     Route::post('/user/get', 'Admin\UserController@getUser')->name('user.get');
     Route::post('/user/approve', 'Admin\UserController@approveUser')->name('user.approve');
@@ -65,5 +66,8 @@
 
     Route::post('theme/change','Admin\SiteController@changeTheme')->name('change.theme');
     Route::post('banner/change','Admin\SiteController@changeBanner')->name('change.banner');
+
+    Route::post('basic/update/text','Admin\SiteController@changeBasicText')->name('change.basic.text');
+    Route::post('basic/update/image','Admin\SiteController@changeBasicimage')->name('change.basic.image');
 
 

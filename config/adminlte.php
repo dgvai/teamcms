@@ -160,18 +160,6 @@ return [
 
     'enabled_laravel_mix' => false,
 
-    /*
-    |--------------------------------------------------------------------------
-    | Menu Items
-    |--------------------------------------------------------------------------
-    |
-    | Here we can modify the sidebar/top navigation of the admin panel.
-    |
-    | For more detailed instructions you can look here:
-    | https://github.com/jeroennoten/Laravel-AdminLTE/#69-menu
-    |
-    */
-
     'menu' => [
         [
             'text' => 'search',
@@ -232,7 +220,7 @@ return [
                 ],
                 [
                     'text' => 'Site Basics',
-                    'url' => '#',
+                    'route' => 'admin.site.basic',
                     'icon' => 'fas fa-fw fa-paint-brush',
                     'can'  => 'manage-frontend',
                 ],
@@ -271,18 +259,6 @@ return [
         ],
     ],
 
-    /*
-    |--------------------------------------------------------------------------
-    | Menu Filters
-    |--------------------------------------------------------------------------
-    |
-    | Here we can modify the menu filters of the admin panel.
-    |
-    | For more detailed instructions you can look here:
-    | https://github.com/jeroennoten/Laravel-AdminLTE/#610-menu-filters
-    |
-    */
-
     'filters' => [
         JeroenNoten\LaravelAdminLte\Menu\Filters\HrefFilter::class,
         JeroenNoten\LaravelAdminLte\Menu\Filters\SearchFilter::class,
@@ -292,18 +268,6 @@ return [
         JeroenNoten\LaravelAdminLte\Menu\Filters\GateFilter::class,
         JeroenNoten\LaravelAdminLte\Menu\Filters\LangFilter::class,
     ],
-
-    /*
-    |--------------------------------------------------------------------------
-    | Plugins Initialization
-    |--------------------------------------------------------------------------
-    |
-    | Here we can modify the plugins used inside the admin panel.
-    |
-    | For more detailed instructions you can look here:
-    | https://github.com/jeroennoten/Laravel-AdminLTE/#611-plugins
-    |
-    */
 
     'plugins' => [
         [

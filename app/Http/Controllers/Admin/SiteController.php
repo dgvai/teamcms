@@ -18,6 +18,11 @@ class SiteController extends Controller
         return view('admin.pages.manage-theme');
     }
 
+    public function basic()
+    {
+        return view('admin.pages.manage-basic');
+    }
+
     public function changeTheme(Request $request)
     {
         $site = SiteBasics::first();
@@ -56,5 +61,23 @@ class SiteController extends Controller
         }
 
         return redirect()->back()->with('toast_success','Changed banners!');
+    }
+
+    public function changeBasicText(Request $request)
+    {
+        $site = SiteBasics::first();
+        $site->name = $request->name;
+        $site->fullname = $request->fullname;
+        $site->tagline = $request->tagline;
+        $site->short_description = $request->short_description;
+        if($site->save())
+        {
+            return redirect()->back()->with('toast_success','Site updated!');
+        }
+    }
+
+    public function changeBasicimage(Request $request)
+    {
+        
     }
 }
