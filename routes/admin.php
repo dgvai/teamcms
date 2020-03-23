@@ -64,5 +64,6 @@
     Route::post('/profile/link/delete','Admin\ProfileController@deleteLink')->name('profile.link.delete');
 
     Route::post('theme/change','Admin\SiteController@changeTheme')->name('change.theme');
+    Route::post('banner/change','Admin\SiteController@changeBanner')->name('change.banner');
 
 
