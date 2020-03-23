@@ -1,15 +1,13 @@
 <?php 
-
     use App\Models\Entities\SiteBasics;
+    use App\Models\Entities\SiteSocials;
     $site = SiteBasics::first();
+    $links = SiteSocials::all();
 
 ?>
 
-<!-- Footer -->
 <footer id="footer" class="sm-padding bg-dark">
-    <!-- Container -->
     <div class="container">
-        <!-- Row -->
         <div class="row">
             <div class="col-md-12">
                 <div class="col-md-3">
@@ -19,43 +17,37 @@
                     </div>
                 </div>
                 <div class="col-md-3 footer-heading">
-                    <p>{{__('layout.linkgroup1')}}</p>
+                    <p>{{__('Quick Links')}}</p>
                     <ul>
-                        <li><a href="#">{{__('layout.home')}}</a></li>
-                        <li><a href="#">{{__('layout.upevs')}}</a></li>
-                        <li><a href="#">{{__('layout.allevs')}}</a></li>
-                        <li><a href="#">{{__('layout.blogs')}}</a></li>
-                        <li><a href="#">{{__('layout.about')}}</a></li>
+                        <li><a href="{{route('home')}}">{{__('Home')}}</a></li>
+                        <li><a href="#">{{__('Upcoming Events')}}</a></li>
+                        <li><a href="{{route('events')}}">{{__('All Events')}}</a></li>
+                        <li><a href="{{route('blogs')}}">{{__('Blogs')}}</a></li>
+                        <li><a href="#">{{__('About')}}</a></li>
                     </ul>
                 </div>
                 <div class="col-md-3 footer-heading">
-                    <p>{{__('layout.linkgroup2')}}</p>
+                    <p>{{__('Teams')}}</p>
                     <ul>
-                        <li><a href="#">{{__('layout.curmem')}}</a></li>
-                        <li><a href="#">{{__('layout.commem')}}</a></li>
-                        <li><a href="#">{{__('layout.oldmem')}}</a></li>
-                        <li><a href="#">{{__('auth.login')}}</a></li>
-                        <li><a href="#">{{__('auth.signup')}}</a></li>
+                        <li><a href="{{route('members.current')}}">{{__('Current Members')}}</a></li>
+                        <li><a href="{{route('members.committee')}}">{{__('Committee Members')}}</a></li>
+                        <li><a href="{{route('members.alumni')}}">{{__('Alumnis')}}</a></li>
+                        <li><a href="{{route('login')}}">{{__('Login')}}</a></li>
+                        <li><a href="{{route('register')}}">{{__('Registration')}}</a></li>
                     </ul>
                 </div>
                 <div class="col-md-3">
                     <ul class="footer-follow">
-                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                        <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                        <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-                        <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                        <li><a href="#"><i class="fa fa-youtube"></i></a></li>
+                        @foreach($links as $link)
+                        <li><a href="{{$link->url}}"><i class="fa {{$link->icon}}"></i></a></li>
+                        @endforeach
                     </ul>
                     <div class="footer-copyright">
-                        <p>Copyright © 2017. All Rights Reserved. Designed by <a href="https://colorlib.com" target="_blank">Colorlib</a></p>
+                        <p>Copyright © {{date('Y')}} {{$site->name}}. All Rights Reserved. Designed by <a href="https://colorlib.com" target="_blank">Colorlib</a></p>
                     </div>
                 </div>
                
             </div>
         </div>
-        <!-- /Row -->
     </div>
-    <!-- /Container -->
 </footer>
-<!-- /Footer -->
