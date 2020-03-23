@@ -70,5 +70,6 @@
     Route::post('basic/update/text','Admin\SiteController@changeBasicText')->name('change.basic.text');
     Route::post('basic/update/image','Admin\SiteController@changeBasicimage')->name('change.basic.image');
     Route::post('basic/update/meta','Admin\SiteController@changeBasicmeta')->name('change.basic.meta');
+    Route::post('basic/update/contact','Admin\SiteController@changeBasiccontact')->name('change.basic.contact');
 
 

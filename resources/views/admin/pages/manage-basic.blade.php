@@ -130,6 +130,26 @@ $site = SiteBasics::first();
                 </form>
             @endcomponent
         </div>
+        <div class="col-md-6">
+            @component('admin.widgets.card',['bg' => 'info', 'title' => 'Contact Info'])
+                <form role="form" action="{{route('change.basic.contact')}}" method="POST">
+                    @csrf
+                    <div class="form-group">
+                        <label for="phone">Phone</label>
+                        <input type="text" id="phone" name="phone" class="form-control" value="{{$site->contact_data->phone}}" />
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="text" id="email" name="email" class="form-control" value="{{$site->contact_data->email}}" />
+                    </div>
+                    <div class="form-group">
+                        <label for="address">Address</label>
+                        <input type="text" id="address" name="address" class="form-control" value="{{$site->contact_data->address}}" />
+                    </div>
+                    <input type="submit" class="btn btn-info" value="Update">
+                </form>
+            @endcomponent
+        </div>
     </div>
 @endsection
 

@@ -107,17 +107,32 @@ class SiteController extends Controller
         return redirect()->back()->with('toast_success','Changed images!');
     }
 
+    public function changeBasiccontact(Request $request)
+    {
+        $site = SiteBasics::first();
+        $metas = json_decode($site->contacts,true);
+        $metas['phone'] = $request->phone;
+        $metas['email'] = $request->email;
+        $metas['address'] = $request->address;
+
+        $site->contacts = json_encode($metas);
+        if($site->save())
+        {
+            return redirect()->back()->with('toast_success','Site contacts updated!');
+        }
+    }
+
     public function changeBasicmeta(Request $request)
     {
         $site = SiteBasics::first();
         $metas = json_decode($site->meta_page_titles,true);
-        $meta['home'] = $request->home;
-        $meta['committee'] = $request->committee;
-        $meta['members'] = $request->members;
-        $meta['alumnis'] = $request->alumnis;
-        $meta['events'] = $request->events;
-        $meta['blogs'] = $request->blogs;
-        $meta['about'] = $request->about;
+        $metas['home'] = $request->home;
+        $metas['committee'] = $request->committee;
+        $metas['members'] = $request->members;
+        $metas['alumnis'] = $request->alumnis;
+        $metas['events'] = $request->events;
+        $metas['blogs'] = $request->blogs;
+        $metas['about'] = $request->about;
         $site->meta_page_titles = json_encode($metas);
         if($site->save())
         {
