@@ -1,3 +1,8 @@
+<?php 
+    use App\Models\Team\User;
+    use App\Models\Blogs\Blogs;
+    use App\Models\Events\Events;
+?>
 <div id="numbers" class="section sm-padding">
     <div class="bg-img" style="background-image: url('{{asset('storage/sitebasics/'.$site->home_counter_bg)}}');">
         <div class="overlay"></div>
@@ -7,32 +12,32 @@
             <div class="col-sm-3 col-xs-6">
                 <div class="number">
                     <i class="fa fa-users"></i>
-                    <h3 class="white-text"><span class="counter">451</span></h3>
-                    <span class="white-text">{{__('home.cnt.mem')}}</span>
+                    <h3 class="white-text"><span class="counter">{{User::current()->count()}}</span></h3>
+                    <span class="white-text">{{__('Current Members')}}</span>
                 </div>
             </div>
 
             <div class="col-sm-3 col-xs-6">
                 <div class="number">
                     <i class="fa fa-graduation-cap"></i>
-                    <h3 class="white-text"><span class="counter">12</span></h3>
-                    <span class="white-text">{{__('home.cnt.alm')}}</span>
+                    <h3 class="white-text"><span class="counter">{{User::alumnis()->count()}}</span></h3>
+                    <span class="white-text">{{__('Alumni Members')}}</span>
                 </div>
             </div>
 
             <div class="col-sm-3 col-xs-6">
                 <div class="number">
                     <i class="fa fa-rss"></i>
-                    <h3 class="white-text"><span class="counter">154</span></h3>
-                    <span class="white-text">{{__('home.cnt.blg')}}</span>
+                    <h3 class="white-text"><span class="counter">{{Blogs::active()->count()}}</span></h3>
+                    <span class="white-text">{{__('Blog Posts')}}</span>
                 </div>
             </div>
 
             <div class="col-sm-3 col-xs-6">
                 <div class="number">
                     <i class="fa fa-file"></i>
-                    <h3 class="white-text"><span class="counter">45</span></h3>
-                    <span class="white-text">{{__('home.cnt.evn')}}</span>
+                    <h3 class="white-text"><span class="counter">{{Events::all()->count()}}</span></h3>
+                    <span class="white-text">{{__('Events Arranged')}}</span>
                 </div>
             </div>
 

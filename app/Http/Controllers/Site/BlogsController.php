@@ -12,7 +12,7 @@ class BlogsController extends Controller
 {
     public function showBlogs()
     {
-        $blogs = Blogs::where('active',1)->orderBy('created_at','desc')->paginate(9);
+        $blogs = Blogs::active()->paginate(9);
         return view('frontend.blogs',['blogs'=>$blogs]);
     }
     

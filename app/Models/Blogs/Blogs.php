@@ -34,4 +34,9 @@ class Blogs extends Model
     {
         return $query->where('active',0);
     }
+
+    public function scopeActive($query)
+    {
+        return $query->where('active',1)->orderBy('created_at','desc');
+    }
 }
