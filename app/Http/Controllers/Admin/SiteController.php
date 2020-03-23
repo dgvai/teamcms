@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Entities\SiteBasics;
+use App\Models\Entities\SiteSocials;
 use Illuminate\Http\Request;
 
 class SiteController extends Controller
@@ -20,7 +21,9 @@ class SiteController extends Controller
 
     public function basic()
     {
-        return view('admin.pages.manage-basic');
+        $icons = json_decode(file_get_contents(public_path('datasets/socials.json')));
+        $links = SiteSocials::all();
+        return view('admin.pages.manage-basic',['icons' => $icons,'links' => $links]);
     }
 
     public function changeTheme(Request $request)
@@ -138,5 +141,24 @@ class SiteController extends Controller
         {
             return redirect()->back()->with('toast_success','Site meta updated!');
         }
+    }
+
+    public function addSiteLinks(Request $request)
+    {
+        $link = new SiteSocials();
+        $link->name = $request->name;
+        $link->url = $request->url;
+        $link->icon = $request->icon;
+        if($link->save())
+        {
+            return redirect()->back()->with('toast_success','New link added!');
+        }
+    }
+
+    public function deleteSiteLinks(Request $request)
+    {
+        $link = SiteSocials::find($request->id);
+        $link->delete();
+        return response()->json(['success' => true]);
     }
 }

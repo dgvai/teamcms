@@ -152,6 +152,57 @@ $site = SiteBasics::first();
                 </form>
             @endcomponent
         </div>
+        <div class="col-md-6">
+            @component('admin.widgets.card',['bg' => 'info', 'title' => 'Site Social Links'])
+                <div class="row">
+                    <div class="col-md-12">
+                        <form role="form" action="{{route('add.site.link')}}" method="POST">
+                            @csrf
+                            <div class="form-group">
+                                <label for="name">Social Link Name</label>
+                                <input type="text" id="name" name="name" class="form-control" />
+                            </div>
+                            <div class="form-group">
+                                <label for="url">Social Link Url (with protocol)</label>
+                                <input type="text" id="url" name="url" class="form-control"  placeholder="https://"/>
+                            </div>
+                            <div class="form-group">
+                                <label>Select Icon</label>
+                                <select class="form-control select2" style="width: 100%;" name="icon">
+                                    <option selected disabled>Choose icon</option>
+                                    @foreach($icons as $icon)
+                                    <option value="{{$icon->icon}}" data-icon="{{$icon->icon}}">{{ucfirst($icon->name)}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <input type="submit" class="btn btn-info" value="Add" />
+                        </form>
+                    </div>
+                    <div class="col-md-12">
+                        <h3 class="mt-3">Links List</h3>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Url</td>
+                                    <td>Action</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach($links as $link)
+                                <tr>
+                                    <td><i class="fab {{$link->icon}}"></i> {{$link->name}}</td>
+                                    <td>{{$link->url}}</td>
+                                    <td><i class="fas fa-times text-danger remove" data-id="{{$link->id}}"></i></td>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            @endcomponent
+        </div>
     </div>
 @endsection
 
@@ -161,6 +212,26 @@ $site = SiteBasics::first();
     <script>
         $(()=>{
             bsCustomFileInput.init();
+
+            function iformat(icon) {
+                var originalOption = icon.element;
+                return $('<span><i class="fab ' + $(originalOption).data('icon') + '"></i> ' + icon.text + '</span>');
+            }
+            $('.select2').select2({
+                templateSelection: iformat,
+                templateResult: iformat,
+                allowHtml: true
+            });
+
+            $('.remove').click(function(){
+                let id = $(this).data('id');
+                $.post("{{route('delete.site.link')}}",{id:id},function(r){
+                    if(r.success) {
+                        Toast.fire({type: 'success',title: 'Removed!'});
+                        reload(500);
+                    }
+                })
+            })
         })
     </script>
 @endsection

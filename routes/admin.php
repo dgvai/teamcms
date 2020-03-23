@@ -71,5 +71,7 @@
     Route::post('basic/update/image','Admin\SiteController@changeBasicimage')->name('change.basic.image');
     Route::post('basic/update/meta','Admin\SiteController@changeBasicmeta')->name('change.basic.meta');
     Route::post('basic/update/contact','Admin\SiteController@changeBasiccontact')->name('change.basic.contact');
+    Route::post('basic/add/link','Admin\SiteController@addSiteLinks')->name('add.site.link');
+    Route::post('basic/delete/link','Admin\SiteController@deleteSiteLinks')->name('delete.site.link');
 
 
