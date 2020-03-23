@@ -78,6 +78,32 @@ class SiteController extends Controller
 
     public function changeBasicimage(Request $request)
     {
-        
+        $site = SiteBasics::first();
+
+        if($request->hasFile('logo'))
+        {
+            $filename = 'TCMS-logo-'.$site->name.'-'.rand(1000,9999).'.'.$request->logo->extension();
+            $site->logo = $filename;
+            $request->logo->storeAs('sitebasics',$filename,'public');
+            $site->save();
+        }
+
+        if($request->hasFile('logo_alt'))
+        {
+            $filename = 'TCMS-logo-alt-'.$site->name.'-'.rand(1000,9999).'.'.$request->logo_alt->extension();
+            $site->logo_alt = $filename;
+            $request->logo_alt->storeAs('sitebasics',$filename,'public');
+            $site->save();
+        }
+
+        if($request->hasFile('favicon'))
+        {
+            $filename = 'TCMS-favicon-'.$site->name.'-'.rand(1000,9999).'.'.$request->favicon->extension();
+            $site->favicon = $filename;
+            $request->favicon->storeAs('sitebasics',$filename,'public');
+            $site->save();
+        }
+
+        return redirect()->back()->with('toast_success','Changed images!');
     }
 }

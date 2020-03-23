@@ -52,7 +52,7 @@ $site = SiteBasics::first();
                         <p class="text-center">Favicon</p>
                     </div>
                 </div>
-                <form role="form" action="{{route('change.basic.text')}}" method="POST">
+                <form role="form" action="{{route('change.basic.image')}}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">
                         <label for="logo">Logo</label>
