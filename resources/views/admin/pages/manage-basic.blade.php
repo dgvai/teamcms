@@ -96,37 +96,39 @@ $site = SiteBasics::first();
         </div>
         <div class="col-md-6">
             @component('admin.widgets.card',['bg' => 'info', 'title' => 'Meta Page Titles'])
-                <form role="form" action="{{route('change.basic.meta')}}" method="POST">
+                <form role="form" class="row" action="{{route('change.basic.meta')}}" method="POST">
                     @csrf
-                    <div class="form-group">
+                    <div class="form-group col-md-6">
                         <label for="home">Home Page</label>
                         <input type="text" id="home" name="home" class="form-control" value="{{$site->meta_titles->home}}" />
                     </div>
-                    <div class="form-group">
+                    <div class="form-group col-md-6">
                         <label for="committee">Committee page</label>
                         <input type="text" id="committee" name="committee" class="form-control" value="{{$site->meta_titles->committee}}" />
                     </div>
-                    <div class="form-group">
+                    <div class="form-group col-md-6">
                         <label for="members">Members page</label>
                         <input type="text" id="members" name="members" class="form-control" value="{{$site->meta_titles->members}}" />
                     </div>
-                    <div class="form-group">
+                    <div class="form-group col-md-6">
                         <label for="alumnis">Alumnis page</label>
                         <input type="text" id="alumnis" name="alumnis" class="form-control" value="{{$site->meta_titles->alumnis}}" />
                     </div>
-                    <div class="form-group">
+                    <div class="form-group col-md-6">
                         <label for="events">Events page</label>
                         <input type="text" id="events" name="events" class="form-control" value="{{$site->meta_titles->events}}" />
                     </div>
-                    <div class="form-group">
+                    <div class="form-group col-md-6">
                         <label for="blogs">Blogs page</label>
                         <input type="text" id="blogs" name="blogs" class="form-control" value="{{$site->meta_titles->blogs}}" />
                     </div>
-                    <div class="form-group">
+                    <div class="form-group col-md-6">
                         <label for="about">About page</label>
                         <input type="text" id="about" name="about" class="form-control" value="{{$site->meta_titles->about}}" />
                     </div>
+                    <div class="col-md-12">
                     <input type="submit" class="btn btn-info" value="Update">
+                    </div>
                 </form>
             @endcomponent
         </div>
