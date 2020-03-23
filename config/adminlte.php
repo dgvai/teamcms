@@ -181,13 +181,13 @@ return [
         ['header' => 'TEAM MANAGEMENT'],
         [
             'text' => 'User Management',
-            'url'  => '/team-admin/users',
+            'route'  => 'admin.users',
             'icon' => 'fas fa-fw fa-user',
             'can'  => 'manage-user',
         ],
         [
             'text' => 'Team Designations',
-            'url'  => '/team-admin/designations',
+            'route'  => 'admin.designations',
             'icon' => 'fas fa-fw fa-user-tag',
             'can'  => 'manage-user',
         ],
@@ -199,13 +199,13 @@ return [
             'submenu' => [
                 [
                     'text' => 'Create Event',
-                    'url' => '/team-admin/events/create',
+                    'route' => 'admin.events.create',
                     'icon' => 'fas fa-fw fa-plus',
                     'can'  => 'manage-posts',
                 ],
                 [
                     'text' => 'All Events',
-                    'url' => '/team-admin/events/manage',
+                    'route' => 'admin.events.manage',
                     'icon' => 'fas fa-fw fa-list',
                     'can'  => 'manage-posts',
                 ],
@@ -213,7 +213,7 @@ return [
         ],
         [
             'text' => 'Blog Management',
-            'url'  => '/team-admin/blogs/manage',
+            'route'  => 'admin.blogs.manage',
             'icon' => 'fab fa-fw fa-blogger',
             'can'  => 'manage-posts',
         ],
@@ -226,7 +226,7 @@ return [
             'submenu' => [
                 [
                     'text' => 'Site Theme',
-                    'url' => '#',
+                    'route' => 'admin.site.theme',
                     'icon' => 'fas fa-fw fa-paint-roller',
                     'can'  => 'manage-frontend',
                 ],
@@ -252,7 +252,7 @@ return [
         ],
         [
             'text'  =>  'Profile Management',
-            'url'  => '/team-admin/profile/manage',
+            'route'  => 'admin.profile.manage',
             'icon' => 'fas fa-fw fa-brush',
             'can' => 'manage-frontend',
         ],
@@ -469,6 +469,22 @@ return [
                     'type' => 'js',
                     'asset' => false,
                     'location' => 'https://cdn.jsdelivr.net/npm/summernote@0.8.15/dist/summernote-lite.min.js',
+                ],
+            ],
+        ],
+        [
+            'name' => 'BSColorPicker',
+            'active' => true,
+            'files' => [
+                [
+                    'type' => 'css',
+                    'asset' => true,
+                    'location' => '/plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css',
+                ],
+                [
+                    'type' => 'js',
+                    'asset' => true,
+                    'location' => '/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js',
                 ],
             ],
         ],

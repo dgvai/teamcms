@@ -227,7 +227,7 @@ input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focu
     height: 30px;
     width: 140px;
     z-index: 989;
-    background-color: #e53935;
+    background-color: {{$site->theme_color_primary}};
     color: #FAFAFA;
 }
 

@@ -18,6 +18,7 @@
     Route::get('/events/manage', 'Admin\EventsController@manage')->name('admin.events.manage');
     Route::get('/blogs/manage', 'Admin\BlogsController@manage')->name('admin.blogs.manage');
     Route::get('/profile/manage', 'Admin\ProfileController@manage')->name('admin.profile.manage');
+    Route::get('/site/theme', 'Admin\SiteController@theme')->name('admin.site.theme');
 
     Route::post('/user/get', 'Admin\UserController@getUser')->name('user.get');
     Route::post('/user/approve', 'Admin\UserController@approveUser')->name('user.approve');
@@ -61,5 +62,7 @@
     Route::post('/profile/extra/delete','Admin\ProfileController@deleteExtra')->name('profile.extra.delete');
     Route::post('/profile/link/add','Admin\ProfileController@addlink')->name('profile.link.add');
     Route::post('/profile/link/delete','Admin\ProfileController@deleteLink')->name('profile.link.delete');
+
+    Route::post('theme/change','Admin\SiteController@changeTheme')->name('change.theme');
 
 
