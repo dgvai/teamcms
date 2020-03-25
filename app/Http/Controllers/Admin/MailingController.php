@@ -3,8 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Mail\GeneralQueryReply;
+use App\Models\Entities\SiteBasics;
 use App\Models\Mailings\Contact;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class MailingController extends Controller
 {
@@ -33,6 +36,12 @@ class MailingController extends Controller
     public function replyContact(Request $request)
     {
         $email = Contact::find($request->id)->email;
-        // config
+        $data = [
+            'subject' => $request->subject,
+            'body'    => $request->message,
+            'app_name' => SiteBasics::first()->name,
+        ];
+        Mail::to($email)->send(new GeneralQueryReply($data));
+        return redirect()->back()->with('toast_success','Message has been sent!');
     }
 }
