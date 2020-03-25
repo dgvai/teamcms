@@ -245,6 +245,12 @@ return [
             'can' => 'manage-frontend',
         ],
         [
+            'text'  =>  'Contacts',
+            'route'  => 'admin.contacts',
+            'icon' => 'fas fa-fw fa-mail-bulk',
+            'can' => 'manage-mailings',
+        ],
+        [
             'text'  =>  'Mail Notifier',
             'url'  => '#',
             'icon' => 'fas fa-fw fa-envelope',
@@ -252,8 +258,8 @@ return [
         ],
         ['header' => 'Configurations', 'can' => 'root-permit'],
         [
-            'text' => 'Mail Configuration',
-            'url'  => '#',
+            'text' => 'App Configuration',
+            'route'  => 'admin.config',
             'icon'  => 'fas fa-fw fa-tools',
             'can'   => 'root-permit',
         ],

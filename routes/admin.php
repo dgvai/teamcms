@@ -18,9 +18,11 @@
     Route::get('/events/manage', 'Admin\EventsController@manage')->name('admin.events.manage');
     Route::get('/blogs/manage', 'Admin\BlogsController@manage')->name('admin.blogs.manage');
     Route::get('/profile/manage', 'Admin\ProfileController@manage')->name('admin.profile.manage');
+    Route::get('/site/contacts', 'Admin\MailingController@contact')->name('admin.contacts');
     Route::get('/site/theme', 'Admin\SiteController@theme')->name('admin.site.theme');
     Route::get('/site/basic', 'Admin\SiteController@basic')->name('admin.site.basic');
     Route::get('/site/bulletin', 'Admin\SiteController@bulletin')->name('admin.site.bulletin');
+    Route::get('/app/config', 'Admin\ConfigController@index')->name('admin.config');
 
     Route::post('/user/get', 'Admin\UserController@getUser')->name('user.get');
     Route::post('/user/approve', 'Admin\UserController@approveUser')->name('user.approve');
@@ -67,6 +69,9 @@
 
     Route::post('theme/change','Admin\SiteController@changeTheme')->name('change.theme');
     Route::post('banner/change','Admin\SiteController@changeBanner')->name('change.banner');
+
+    Route::post('contact/read','Admin\MailingController@readContact')->name('contact.read');
+    Route::post('contact/reply','Admin\MailingController@replyContact')->name('contact.reply');
 
     Route::post('basic/update/text','Admin\SiteController@changeBasicText')->name('change.basic.text');
     Route::post('basic/update/image','Admin\SiteController@changeBasicimage')->name('change.basic.image');

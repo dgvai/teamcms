@@ -45,3 +45,5 @@ Route::post('/member/add/portfolio','Site\ProfileController@addPortfolio')->name
 Route::post('/member/edit/portfolio','Site\ProfileController@editPortfolio')->name('user.profile.edit.portfolio.edit');
 Route::post('/member/delete/portfolio','Site\ProfileController@deletePortfolio')->name('user.profile.delete.portfolio');
 Route::post('/member/set/password','Site\ProfileController@updatePassword')->name('user.set.password');
+
+Route::post('/contact','Site\ContactController@contact')->name('contact');

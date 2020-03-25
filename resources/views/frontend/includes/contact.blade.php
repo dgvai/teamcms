@@ -1,12 +1,8 @@
-<?php 
-
-?>
-
 <div id="contact" class="section md-padding">
     <div class="container">
         <div class="row">
             <div class="section-header text-center">
-                <h2 class="title">{{__('home.cntus')}}</h2>
+                <h2 class="title">{{__('Contact Us')}}</h2>
             </div>
 
             <div class="row">
@@ -34,12 +30,13 @@
                 </div>
 
                 <div class="col-md-8">
-                    <form class="base-form">
-                        <input type="text" class="input" placeholder="Name">
-                        <input type="email" class="input" placeholder="Email">
-                        <input type="text" class="input" placeholder="Subject">
-                        <textarea class="input" placeholder="Message"></textarea>
-                        <button class="main-btn">Send message</button>
+                    <form class="base-form" action="{{route('contact')}}" method="POST">
+                        <input type="text" class="input" name="name" placeholder="@lang('Name')">
+                        <input type="email" class="input" name="email" placeholder="@lang('Email')">
+                        <input type="text" class="input" name="subject" placeholder="@lang('Subject')">
+                        <textarea class="input" name="message" placeholder="@lang('Message')"></textarea>
+                        @csrf
+                        <button class="main-btn">@lang('Send message')</button>
                     </form>
                 </div>
 
