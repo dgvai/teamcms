@@ -44,4 +44,9 @@ class MailingController extends Controller
         Mail::to($email)->send(new GeneralQueryReply($data));
         return redirect()->back()->with('toast_success','Message has been sent!');
     }
+
+    public function notify(Request $request)
+    {
+        return view('admin.pages.notify');
+    }
 }

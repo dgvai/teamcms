@@ -22,6 +22,7 @@
     Route::get('/site/theme', 'Admin\SiteController@theme')->name('admin.site.theme');
     Route::get('/site/basic', 'Admin\SiteController@basic')->name('admin.site.basic');
     Route::get('/site/bulletin', 'Admin\SiteController@bulletin')->name('admin.site.bulletin');
+    Route::get('/mail/notify', 'Admin\MailingController@notify')->name('mail.notify');
     Route::get('/app/config', 'Admin\ConfigController@index')->name('admin.config');
 
     Route::post('/user/get', 'Admin\UserController@getUser')->name('user.get');

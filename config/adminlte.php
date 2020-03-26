@@ -252,7 +252,7 @@ return [
         ],
         [
             'text'  =>  'Mail Notifier',
-            'url'  => '#',
+            'route'  => 'mail.notify',
             'icon' => 'fas fa-fw fa-envelope',
             'can' => 'manage-mailings',
         ],

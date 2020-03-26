@@ -29,7 +29,9 @@ $site = SiteBasics::first();
                             <td>#</td>
                             <td>Name</td>
                             <td>Email</td>
-                            <td></td>
+                            <td>Subject</td>
+                            <td>Read</td>
+                            <td>Sent</td>
                             <td>Action</td>
                         </tr>
                     </thead>
@@ -39,8 +41,10 @@ $site = SiteBasics::first();
                             <td>{{$contact->id}}</td>
                             <td>{{$contact->name}}</td>
                             <td>{{$contact->email}}</td>
+                            <td>{{$contact->subject}}</td>
                             <td><button class="btn btn-sm btn-success view" data-sub="{{$contact->subject}}" data-msg="{{$contact->message}}" data-id="{{$contact->id}}"><i class="fas fa-eye"></i>  view message</button></td>
-                            <td><button class="btn btn-sm btn-success reply" data-id="{{$contact->id}}" data-sub="{{$contact->subject}}"><i class="fas fa-reply"></i>  reply</button></td>
+                            <td>{{\Carbon\Carbon::parse($contact->created_at)->toDayDateTimeString()}}</td>
+                            <td><button class="btn btn-sm btn-primary reply" data-id="{{$contact->id}}" data-sub="{{$contact->subject}}"><i class="fas fa-reply"></i>  reply</button></td>
                         </tr>
                         @endforeach
                     </tbody>
