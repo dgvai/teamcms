@@ -85,5 +85,6 @@
     Route::post('delete/bulletin','Admin\SiteController@deleteBulletin')->name('delete.bulletin');
 
     Route::post('/config/mail', 'Admin\ConfigController@mail')->name('mail.config');
+    Route::post('/config/app', 'Admin\ConfigController@app')->name('app.config');
 
 

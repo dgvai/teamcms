@@ -13,6 +13,25 @@ $site = SiteBasics::first();
 @section('content')
     <div class="row">
         <div class="col-md-6">
+            @component('admin.widgets.card',['bg' => 'primary', 'title' => 'App Configurations'])
+            <form action="{{route('app.config')}}" method="POST">
+                @csrf
+                <div class="form-group">
+                    <label for="APP_NAME">APP_NAME</label>
+                    <input type="text" id="APP_NAME" name="APP_NAME" class="form-control" value="{{config('app.name')}}"/>
+                </div>
+                <div class="form-group">
+                    <label for="APP_DEBUG">APP_DEBUG</label>
+                    <select id="APP_DEBUG" class="form-control select2" style="width: 100%;" name="APP_DEBUG">
+                        <option value="true" {{config('app.debug') ? 'selected' : ''}}>True</option>
+                        <option value="false" {{!config('app.debug') ? 'selected' : ''}}>False</option>
+                    </select>
+                </div>
+                <input type="submit" class="btn btn-primary" value="Update Configuration" />
+            </form>
+            @endcomponent
+        </div>
+        <div class="col-md-6">
             @component('admin.widgets.card',['bg' => 'primary', 'title' => 'Change Mail Configurations'])
             <form action="{{route('mail.config')}}" method="POST">
                 @csrf
