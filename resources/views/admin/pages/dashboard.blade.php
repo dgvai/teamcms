@@ -53,16 +53,16 @@ $site = SiteBasics::first();
             @component('admin.widgets.card',['bg' => 'success', 'title' => 'Content Informations'])
                 <div class="row">
                     <div class="col-md-6">
-                        @include('admin.widgets.info-box',['bg' => 'info', 'icon' => 'fas fa-rss', 'title' => 'Total Blogs', 'data' => 0])
+                        @include('admin.widgets.info-box',['bg' => 'info', 'icon' => 'fas fa-rss', 'title' => 'Total Blogs', 'data' => $count->total_blogs])
                     </div>
                     <div class="col-md-6">
                         @include('admin.widgets.info-box',['bg' => 'success', 'icon' => 'fas fa-calendar-alt', 'title' => 'Total Events', 'data' => $count->total_events])
                     </div>
                     <div class="col-md-6">
-                        @include('admin.widgets.info-box',['bg' => 'warning', 'icon' => 'fas fa-rss-square', 'title' => 'Total Bulletins', 'data' => 0])
+                        @include('admin.widgets.info-box',['bg' => 'warning', 'icon' => 'fas fa-rss-square', 'title' => 'Total Bulletins', 'data' => $count->total_bulletins])
                     </div>
                     <div class="col-md-6">
-                        @include('admin.widgets.info-box',['bg' => 'secondary', 'icon' => 'fas fa-images', 'title' => 'Total Gallery', 'data' => 0])
+                        @include('admin.widgets.info-box',['bg' => 'secondary', 'icon' => 'fas fa-images', 'title' => 'Total Gallery', 'data' => $count->total_gallery])
                     </div>
                 </div>
             @endcomponent

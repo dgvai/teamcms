@@ -4,7 +4,7 @@
     </div>
     <div class="team-content">
         <h3>{{$user->full_name}}</h3>
-        <span>{{$user->desig->name}}</span>
+        <span>{{$user->current_designation}}</span>
     </div>
     <div class="team-social">
         <a href="{{route('user.profile',['roll_id' => $user->roll_id])}}" data-toggle="tooltip" data-placement="bottom" title="@lang('View Profile')"><i class="fa fa-external-link"></i></a>

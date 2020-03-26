@@ -206,6 +206,16 @@ class SiteController extends Controller
         }
     }
 
+    public function updateSiteLinks(Request $request)
+    {
+        $link = SiteSocials::find($request->id);
+        $link->url = $request->url;
+        if($link->save())
+        {
+            return redirect()->back()->with('toast_success','Link updated!');
+        }
+    }
+
     public function deleteSiteLinks(Request $request)
     {
         $link = SiteSocials::find($request->id);

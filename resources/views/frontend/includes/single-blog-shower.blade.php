@@ -38,14 +38,11 @@
                             <div class="media-body">
                                 <div class="media-heading">
                                     <h3>{{$blog->author->full_name}}</h3>
-                                    <a href="#">Author's Profile <i class="fa fa-external-link"></i></a>
+                                    <a href="{{route('user.profile',['roll_id' => $blog->author->roll_id])}}">Author's Profile <i class="fa fa-external-link"></i></a>
                                     @if(count($blog->author->connections) > 0)
                                     <div class="author-social">
                                         @foreach($blog->author->connections as $link)
-                                            <a href="#"><i class="fa fa-facebook"></i></a>
-                                            <a href="#"><i class="fa fa-twitter"></i></a>
-                                            <a href="#"><i class="fa fa-google-plus"></i></a>
-                                            <a href="#"><i class="fa fa-instagram"></i></a>
+                                            <a href="{{$link->url}}" target="_blank"><i class="fa {{$link->icon}}"></i></a>
                                         @endforeach
                                     </div>
                                     @endif
@@ -81,33 +78,3 @@
         </div>
     </div>
 </div>
-
-@section('scripts')
-<script>
-    $(function(){
-        // $('.delete').click(function(){
-        //     let id = $(this).data('id');
-        //     Swal.fire({
-        //         title: 'Are you sure?',
-        //         text: "This blog will be permanently deleted. Are you confirmed?",
-        //         icon: 'warning',
-        //         showCancelButton: true,
-        //         confirmButtonColor: '#3085d6',
-        //         cancelButtonColor: '#d33',
-        //         confirmButtonText: 'Yes, delete!'
-        //     }).then((result) => {
-        //         if (result.value) {
-        //             $.post("{{route('blog.delete')}}",{id : id}, function(response){
-        //                 if(response.success) {
-        //                     Swal.fire('Deleted!','The blog was deleted.','success');
-        //                     reload(500)
-        //                 } else {
-        //                     Toast.fire({type: 'error',title: 'Something Went Wrong'});
-        //                 }
-        //             })
-        //         }
-        //     })
-        // })
-    })
-</script>
-@append

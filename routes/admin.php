@@ -84,6 +84,7 @@
     Route::post('basic/update/contact','Admin\SiteController@changeBasiccontact')->name('change.basic.contact');
     Route::post('basic/add/link','Admin\SiteController@addSiteLinks')->name('add.site.link');
     Route::post('basic/add/bulletin','Admin\SiteController@addSitebulletin')->name('add.site.bulletin');
+    Route::post('basic/update/link','Admin\SiteController@updateSiteLinks')->name('update.site.link');
     Route::post('basic/delete/link','Admin\SiteController@deleteSiteLinks')->name('delete.site.link');
     Route::post('active/bulletin','Admin\SiteController@activeBulletin')->name('active.bulletin');
     Route::post('deactive/bulletin','Admin\SiteController@deactiveBulletin')->name('deactive.bulletin');

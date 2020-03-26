@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Blogs\Blogs;
 use App\Models\Entities\SiteBasics;
+use App\Models\Entities\SiteBulletines;
+use App\Models\Entities\SiteGallery;
 use App\Models\Events\Events;
 use App\Models\Team\User;
 use Illuminate\Http\Request;
@@ -27,6 +29,9 @@ class AdminController extends Controller
             'new_blogs' => Blogs::new()->count(),
             'upcoming_events' => Events::upcomings()->count(),
             'total_events' => Events::all()->count(),
+            'total_blogs'  => Blogs::active()->count(),
+            'total_bulletins'  => SiteBulletines::active()->count(),
+            'total_gallery'  => SiteGallery::all()->count(),
         ];
         return view('admin.pages.dashboard',['count' => (object)$data]);
     }

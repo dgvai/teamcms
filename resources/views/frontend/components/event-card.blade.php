@@ -18,7 +18,7 @@
         <div class="event-links">
             <a href="{{route('event.show',['slug' => $event->slug])}}">@lang('Browse Event') <i class="fa fa-arrow-right"></i></a>
             @foreach(json_decode($event->links) as $link)
-            <a href="{{$link->url}}">{{$link->name}} <i class="fa fa-external-link"></i></a>
+            <a href="{{$link->url}}" target="_blank">{{$link->name}} <i class="fa fa-external-link"></i></a>
             @endforeach
         </div>
     </div>

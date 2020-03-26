@@ -21,7 +21,7 @@
                         <li><a href="{{route('home')}}">{{__('Home')}}</a></li>
                         <li><a href="{{route('events')}}">{{__('Upcoming Events')}}</a></li>
                         <li><a href="{{route('blogs')}}">{{__('Blogs')}}</a></li>
-                        <li><a href="#">{{__('About Us')}}</a></li>
+                        <li><a href="{{route('about')}}">{{__('About Us')}}</a></li>
                         <li><a href="#contact">{{__('Contact Us')}}</a></li>
                     </ul>
                 </div>
@@ -38,7 +38,7 @@
                 <div class="col-md-3">
                     <ul class="footer-follow">
                         @foreach($links as $link)
-                        <li><a href="{{$link->url}}"><i class="fa {{$link->icon}}"></i></a></li>
+                        <li><a href="{{$link->url}}" target="_blank"><i class="fa {{$link->icon}}"></i></a></li>
                         @endforeach
                     </ul>
                     <div class="footer-copyright">

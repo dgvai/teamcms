@@ -1,6 +1,6 @@
 <?php 
 use App\Models\Entities\SiteBulletines;
-$bullets = SiteBulletines::orderBy('created_at','desc')->get();
+$bullets = SiteBulletines::active()->get();
 ?>
 <div class="container-fluid bullete">
     <div class="bullete-box text-center p-1">

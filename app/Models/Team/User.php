@@ -61,6 +61,16 @@ class User extends Authenticatable
         return ($this->details->about == null) ? 'I am very busy to change my about...' : $this->details->about;
     }
 
+    public function getIsAlumniAttribute()
+    {
+        return $this->status == 5 ? true : false;
+    }
+
+    public function getCurrentDesignationAttribute()
+    {
+        return $this->is_alumni ? 'Former '.$this->desig->name : $this->desig->name;
+    }
+
     public function getIsRootUserAttribute()
     {
         return ($this->roll_id == 0) ? true : false;

@@ -11,19 +11,29 @@ class MemberController extends Controller
 {
     public function showCommittee()
     {
-        $committee_members = (SiteBasics::first()->member_rank != null) ? User::committee()->get() : null;
+        $committee_members = (SiteBasics::first()->member_rank != null) ? User::committee()
+                            ->get()->sortBy(function($p){
+                                return $p->desig->value;
+                            })
+                            : null;
         return view('frontend.committee',['members' => $committee_members]);
     }
 
     public function showMembers()
     {
-        $current_members = User::current()->get();
+        $current_members = User::current()->get()
+        ->sortBy(function($p){
+            return $p->desig->value;
+        });
         return view('frontend.members',['members' => $current_members]);
     }
 
     public function showAlumnis()
     {
-        $alumni_members = User::alumnis()->get();
+        $alumni_members = User::alumnis()->get()
+        ->sortBy(function($p){
+            return $p->desig->value;
+        });
         return view('frontend.alumnis',['members' => $alumni_members]);
     }
 }

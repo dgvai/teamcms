@@ -168,15 +168,15 @@ return [
         ],
         ['header' => 'TEAM MANAGEMENT'],
         [
-            'text' => 'User Management',
-            'route'  => 'admin.users',
-            'icon' => 'fas fa-fw fa-user',
-            'can'  => 'manage-user',
-        ],
-        [
             'text' => 'Team Designations',
             'route'  => 'admin.designations',
             'icon' => 'fas fa-fw fa-user-tag',
+            'can'  => 'manage-user',
+        ],
+        [
+            'text' => 'User Management',
+            'route'  => 'admin.users',
+            'icon' => 'fas fa-fw fa-user',
             'can'  => 'manage-user',
         ],
         [

@@ -186,7 +186,6 @@ $about = SiteAbout::first()->about;
                             <thead>
                                 <tr>
                                     <td>Name</td>
-                                    <td>Url</td>
                                     <td>Action</td>
                                 </tr>
                             </thead>
@@ -194,8 +193,7 @@ $about = SiteAbout::first()->about;
                                 @foreach($links as $link)
                                 <tr>
                                     <td><i class="fab {{$link->icon}}"></i> {{$link->name}}</td>
-                                    <td>{{$link->url}}</td>
-                                    <td><i class="fas fa-times text-danger remove" data-id="{{$link->id}}"></i></td>
+                                    <td><i class="fas fa-edit text-primary mx-1 edit" data-id="{{$link->id}}" data-url="{{$link->url}}"></i> <i class="fas fa-times text-danger mx-1 remove" data-id="{{$link->id}}"></i></td>
                                 </tr>
                                 @endforeach
                             </tbody>
@@ -220,6 +218,32 @@ $about = SiteAbout::first()->about;
             @endcomponent
         </div>
     </div>
+    <div class="modal fade" id="edit_link">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Update Link</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="{{route('update.site.link')}}" method="POST">
+                        @csrf
+                        <input type="hidden" name="id" class="dg-id">
+                        <div class="form-group">
+                            <label for="url-2">URL</label>
+                            <input type="text" id="url-2" name="url" class="form-control" />
+                        </div>
+                        <input type="submit" class="btn btn-primary" value="Update Link" />
+                    </form>
+                </div>
+                <div class="modal-footer justify-content-between">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection
 
 @section('js')
@@ -238,6 +262,12 @@ $about = SiteAbout::first()->about;
                 templateResult: iformat,
                 allowHtml: true
             });
+
+            $('.edit').click(function(){
+                $('.dg-id').val($(this).data('id'));
+                $('#url-2').val($(this).data('url'));
+                $('#edit_link').modal('show');
+            })
 
             $('.remove').click(function(){
                 let id = $(this).data('id');
