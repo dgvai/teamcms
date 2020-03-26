@@ -29,6 +29,14 @@ $site = SiteBasics::first();
                                 <option value="false" {{!config('app.debug') ? 'selected' : ''}}>False</option>
                             </select>
                         </div>
+                        <div class="form-group">
+                            <label for="APP_TIMEZONE">APP_TIMEZONE</label>
+                            <select id="APP_TIMEZONE" class="form-control select2" style="width: 100%;" name="APP_TIMEZONE">
+                                @foreach($timezones as $zone)
+                                <option value="{{$zone->key}}" {{(config('app.timezone') == $zone->key) ? 'selected' : ''}}>{{$zone->value}}</option>
+                                @endforeach
+                            </select>
+                        </div>
                         <input type="submit" class="btn btn-primary" value="Update Configuration" />
                     </form>
                     @endcomponent
@@ -109,5 +117,9 @@ $site = SiteBasics::first();
 @section('js')
 @include('sweetalert::alert')
     <script> $.ajaxSetup({headers: {'X-CSRF-TOKEN': '{{csrf_token()}}'}});</script>
-
+    <script>
+        $(()=>{
+            $('#APP_TIMEZONE').select2();
+        })
+    </script>
 @endsection

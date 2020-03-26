@@ -15,7 +15,8 @@ class ConfigController extends Controller
 
     public function index()
     {
-        return view('admin.pages.config');
+        $timezones = json_decode(file_get_contents(public_path('datasets/timezone.json')));
+        return view('admin.pages.config',['timezones' => $timezones]);
     }
 
     public function mail(Request $request)
