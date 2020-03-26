@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Entities\SiteBasics;
 use App\Models\Entities\SiteBulletines;
+use App\Models\Entities\SiteGallery;
 use App\Models\Entities\SiteSocials;
 use Illuminate\Http\Request;
 
@@ -31,6 +32,48 @@ class SiteController extends Controller
     {
         $bullets = SiteBulletines::all();
         return view('admin.pages.manage-bulletins',['bullets' => $bullets]);
+    }
+
+    public function gallery()
+    {
+        $galleries = SiteGallery::all();
+        return view('admin.pages.manage-gallery',['galleries' => $galleries]);
+    }
+
+    public function addGallery(Request $request)
+    {
+        if($request->hasFile('images'))
+        {
+            foreach($request->images as $image)
+            {
+                $filename = 'TCMS-gallery-'.rand(1000,9999).'-DG-'.rand(1000,9999).'.'.$image->extension();
+                $image->storeAs('gallery',$filename,'public');
+                $gallery = new SiteGallery;
+                $gallery->caption = $request->caption;
+                $gallery->image = $filename;
+                $gallery->save();
+            }
+            
+            if($gallery->save())
+            {
+                return redirect()->back()->with('toast_success','Successfully added!');
+            }
+        }
+    }
+
+    public function updateGallery(Request $request)
+    {
+        $gal = SiteGallery::find($request->id);
+        $gal->caption = $request->caption;
+        $gal->save();
+        return redirect()->back()->with('toast_success','Updated!');
+    }
+
+    public function deleteGallery(Request $request)
+    {
+        $gal = SiteGallery::find($request->id);
+        $gal->delete();
+        return response()->json(['success'=> true]);
     }
 
     public function changeTheme(Request $request)

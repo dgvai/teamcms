@@ -232,7 +232,7 @@ return [
                 ],
                 [
                     'text' => 'Image Gallery',
-                    'url' => '#',
+                    'route' => 'admin.site.gallery',
                     'icon' => 'fas fa-fw fa-images',
                     'can'  => 'manage-frontend',
                 ],

@@ -22,6 +22,7 @@
     Route::get('/site/theme', 'Admin\SiteController@theme')->name('admin.site.theme');
     Route::get('/site/basic', 'Admin\SiteController@basic')->name('admin.site.basic');
     Route::get('/site/bulletin', 'Admin\SiteController@bulletin')->name('admin.site.bulletin');
+    Route::get('/site/gallery', 'Admin\SiteController@gallery')->name('admin.site.gallery');
     Route::get('/mail/notify', 'Admin\MailingController@notify')->name('mail.notify');
     Route::get('/app/config', 'Admin\ConfigController@index')->name('admin.config');
 
@@ -87,6 +88,9 @@
     Route::post('active/bulletin','Admin\SiteController@activeBulletin')->name('active.bulletin');
     Route::post('deactive/bulletin','Admin\SiteController@deactiveBulletin')->name('deactive.bulletin');
     Route::post('delete/bulletin','Admin\SiteController@deleteBulletin')->name('delete.bulletin');
+    Route::post('add/gallery','Admin\SiteController@addGallery')->name('add.gallery');
+    Route::post('update/gallery','Admin\SiteController@updateGallery')->name('update.gallery');
+    Route::post('delete/gallery','Admin\SiteController@deleteGallery')->name('delete.gallery');
 
     Route::post('/config/mail', 'Admin\ConfigController@mail')->name('mail.config');
     Route::post('/config/app', 'Admin\ConfigController@app')->name('app.config');
