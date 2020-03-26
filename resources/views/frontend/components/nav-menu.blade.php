@@ -22,7 +22,7 @@
     </li>
     <li><a href="{{route('events')}}">{{__('Events')}}</a></li>
     <li><a href="{{route('blogs')}}">{{__('Blogs')}}</a></li>
-    <li><a href="{{route('about')}}">{{__('About')}}</a></li>
+    <li><a href="{{route('about')}}">{{__('About Us')}}</a></li>
     @if(!Auth::user())
     <li class="has-dropdown"><a href="#!"><i class="fa fa-sign-in"></i></a>
         <ul class="dropdown">

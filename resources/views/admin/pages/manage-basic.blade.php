@@ -1,6 +1,8 @@
 <?php 
 use App\Models\Entities\SiteBasics;
+use App\Models\Entities\SiteAbout;
 $site = SiteBasics::first();
+$about = SiteAbout::first()->about;
 ?>
 
 @extends('adminlte::page')
@@ -152,7 +154,7 @@ $site = SiteBasics::first();
                 </form>
             @endcomponent
         </div>
-        <div class="col-md-6">
+        <div class="col-md-4">
             @component('admin.widgets.card',['bg' => 'info', 'title' => 'Site Social Links'])
                 <div class="row">
                     <div class="col-md-12">
@@ -203,6 +205,20 @@ $site = SiteBasics::first();
 
             @endcomponent
         </div>
+        <div class="col-md-8">
+            @component('admin.widgets.card',['bg' => 'info', 'title' => 'About Us (Our Story)'])
+                <form role="form" action="{{route('save.about')}}" method="POST">
+                    @csrf
+                    <div class="form-group">
+                        <label for="about_us">Our Story</label>
+                        <textarea class="summernote" name="about" id="about_us">{!!$about!!}</textarea>
+                    </div>
+                    <div class="form-group text-center">
+                        <input type="submit" class="btn btn-primary" value="Save" />
+                    </div>
+                </form>
+            @endcomponent
+        </div>
     </div>
 @endsection
 
@@ -232,6 +248,12 @@ $site = SiteBasics::first();
                     }
                 })
             })
+
+            $('#about_us').summernote({
+                placeholder: 'Write a beautiful story for the section...',
+                height: 600,
+                fontNames: ['Montserrat', 'Arial', 'Arial Black', 'Comic Sans MS', 'Courier New', 'Impact', 'Open Sans', 'Ubuntu', 'Rajdhani']
+            });
         })
     </script>
 @endsection

@@ -91,6 +91,7 @@
     Route::post('add/gallery','Admin\SiteController@addGallery')->name('add.gallery');
     Route::post('update/gallery','Admin\SiteController@updateGallery')->name('update.gallery');
     Route::post('delete/gallery','Admin\SiteController@deleteGallery')->name('delete.gallery');
+    Route::post('save/about','Admin\SiteController@saveAbout')->name('save.about');
 
     Route::post('/config/mail', 'Admin\ConfigController@mail')->name('mail.config');
     Route::post('/config/app', 'Admin\ConfigController@app')->name('app.config');

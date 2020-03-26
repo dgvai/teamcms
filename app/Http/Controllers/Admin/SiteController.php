@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Entities\SiteAbout;
 use App\Models\Entities\SiteBasics;
 use App\Models\Entities\SiteBulletines;
 use App\Models\Entities\SiteGallery;
@@ -243,5 +244,15 @@ class SiteController extends Controller
         $bullet = SiteBulletines::find($request->id);
         $bullet->delete();
         return response()->json(['success' => true]);
+    }
+
+    public function saveAbout(Request  $request)
+    {
+        $about = SiteAbout::first();
+        $about->about = $request->about;
+        if($about->save())
+        {
+            return redirect()->back()->with('toast_success','About section has been updated!');
+        }
     }
 }

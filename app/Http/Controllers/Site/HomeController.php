@@ -22,4 +22,9 @@ class HomeController extends Controller
             'members' => $members
         ]);
     }
+
+    public function about()
+    {
+        return view('frontend.about');
+    }
 }

@@ -3,7 +3,6 @@
     use App\Models\Entities\SiteSocials;
     $site = SiteBasics::first();
     $links = SiteSocials::all();
-
 ?>
 
 <footer id="footer" class="sm-padding bg-dark">
@@ -12,7 +11,7 @@
             <div class="col-md-12">
                 <div class="col-md-3">
                     <div class="footer-logo">
-                        <a href="index.html"><img src="{{asset('storage/sitebasics')}}/{{$site->logo_alt}}" alt="logo"></a>
+                        <a href="{{route('home')}}"><img src="{{asset('storage/sitebasics')}}/{{$site->logo_alt}}" alt="logo"></a>
                         <p>{{$site->short_description}}</p>
                     </div>
                 </div>
@@ -20,10 +19,10 @@
                     <p>{{__('Quick Links')}}</p>
                     <ul>
                         <li><a href="{{route('home')}}">{{__('Home')}}</a></li>
-                        <li><a href="#">{{__('Upcoming Events')}}</a></li>
-                        <li><a href="{{route('events')}}">{{__('All Events')}}</a></li>
+                        <li><a href="{{route('events')}}">{{__('Upcoming Events')}}</a></li>
                         <li><a href="{{route('blogs')}}">{{__('Blogs')}}</a></li>
-                        <li><a href="#">{{__('About')}}</a></li>
+                        <li><a href="#">{{__('About Us')}}</a></li>
+                        <li><a href="#contact">{{__('Contact Us')}}</a></li>
                     </ul>
                 </div>
                 <div class="col-md-3 footer-heading">
