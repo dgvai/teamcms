@@ -45,4 +45,18 @@ class ConfigController extends Controller
             return redirect()->back()->with('toast_success','The environment configuration has been updated!');
         }
     }
+
+    public function db(Request $request)
+    {
+        $config = $request->except('_token');
+        $update = updateEnv($config);
+
+        if(boolval($update) == true)
+        {
+            Artisan::call('config:clear');
+            Artisan::call('cache:clear');
+            
+            return redirect()->back()->with('toast_success','The environment configuration has been updated!');
+        }
+    }
 }

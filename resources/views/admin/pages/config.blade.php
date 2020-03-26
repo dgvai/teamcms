@@ -13,23 +13,55 @@ $site = SiteBasics::first();
 @section('content')
     <div class="row">
         <div class="col-md-6">
-            @component('admin.widgets.card',['bg' => 'primary', 'title' => 'App Configurations'])
-            <form action="{{route('app.config')}}" method="POST">
-                @csrf
-                <div class="form-group">
-                    <label for="APP_NAME">APP_NAME</label>
-                    <input type="text" id="APP_NAME" name="APP_NAME" class="form-control" value="{{config('app.name')}}"/>
+            <div class="row">
+                <div class="col-md-12">
+                    @component('admin.widgets.card',['bg' => 'primary', 'title' => 'App Configurations'])
+                    <form action="{{route('app.config')}}" method="POST">
+                        @csrf
+                        <div class="form-group">
+                            <label for="APP_NAME">APP_NAME</label>
+                            <input type="text" id="APP_NAME" name="APP_NAME" class="form-control" value="{{config('app.name')}}"/>
+                        </div>
+                        <div class="form-group">
+                            <label for="APP_DEBUG">APP_DEBUG</label>
+                            <select id="APP_DEBUG" class="form-control select2" style="width: 100%;" name="APP_DEBUG">
+                                <option value="true" {{config('app.debug') ? 'selected' : ''}}>True</option>
+                                <option value="false" {{!config('app.debug') ? 'selected' : ''}}>False</option>
+                            </select>
+                        </div>
+                        <input type="submit" class="btn btn-primary" value="Update Configuration" />
+                    </form>
+                    @endcomponent
                 </div>
-                <div class="form-group">
-                    <label for="APP_DEBUG">APP_DEBUG</label>
-                    <select id="APP_DEBUG" class="form-control select2" style="width: 100%;" name="APP_DEBUG">
-                        <option value="true" {{config('app.debug') ? 'selected' : ''}}>True</option>
-                        <option value="false" {{!config('app.debug') ? 'selected' : ''}}>False</option>
-                    </select>
+                <div class="col-md-12">
+                    @component('admin.widgets.card',['bg' => 'primary', 'title' => 'Database Configurations'])
+                    <form action="{{route('db.config')}}" method="POST">
+                        @csrf
+                        <div class="form-group">
+                            <label for="DB_HOST">DB_HOST</label>
+                            <input type="text" id="DB_HOST" name="DB_HOST" class="form-control" value="{{config('database.connections.mysql.host')}}"/>
+                        </div>
+                        <div class="form-group">
+                            <label for="DB_PORT">DB_PORT</label>
+                            <input type="text" id="DB_PORT" name="DB_PORT" class="form-control" value="{{config('database.connections.mysql.port')}}"/>
+                        </div>
+                        <div class="form-group">
+                            <label for="DB_DATABASE">DB_DATABASE</label>
+                            <input type="text" id="DB_DATABASE" name="DB_DATABASE" class="form-control" value="{{config('database.connections.mysql.database')}}"/>
+                        </div>
+                        <div class="form-group">
+                            <label for="DB_USERNAME">DB_USERNAME</label>
+                            <input type="text" id="DB_USERNAME" name="DB_USERNAME" class="form-control" value="{{config('database.connections.mysql.username')}}"/>
+                        </div>
+                        <div class="form-group">
+                            <label for="DB_PASSWORD">DB_PASSWORD</label>
+                            <input type="text" id="DB_PASSWORD" name="DB_PASSWORD" class="form-control" value="{{config('database.connections.mysql.password')}}"/>
+                        </div>
+                        <input type="submit" class="btn btn-primary" value="Update Configuration" />
+                    </form>
+                    @endcomponent
                 </div>
-                <input type="submit" class="btn btn-primary" value="Update Configuration" />
-            </form>
-            @endcomponent
+            </div>
         </div>
         <div class="col-md-6">
             @component('admin.widgets.card',['bg' => 'primary', 'title' => 'Change Mail Configurations'])

@@ -86,5 +86,6 @@
 
     Route::post('/config/mail', 'Admin\ConfigController@mail')->name('mail.config');
     Route::post('/config/app', 'Admin\ConfigController@app')->name('app.config');
+    Route::post('/config/db', 'Admin\ConfigController@db')->name('db.config');
 
 
