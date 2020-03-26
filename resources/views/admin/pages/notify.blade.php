@@ -50,6 +50,20 @@ $site = SiteBasics::first();
         </div>
         <div class="col-md-6">
             @component('admin.widgets.card',['bg' => 'info', 'title' => 'Send Email to All Members'])
+            <form role="form" action="{{route('mail.all')}}" method="POST">
+                @csrf
+                <div class="form-group">
+                    <label for="subject">Subject</label>
+                    <input type="text" id="subject" name="subject" class="form-control"/>
+                </div>
+                <div class="form-group">
+                    <label for="body">Mail Body</label>
+                    <textarea id="body" name="body" class="form-control" rows="12" placeholder="Markdown formatting is enabled"></textarea>
+                </div>
+                <div class="form-group text-center">
+                    <input class="btn btn-primary" type="submit" value="Send" />
+                </div>
+            </form>
             @endcomponent
         </div>
         <div class="col-md-6"></div>

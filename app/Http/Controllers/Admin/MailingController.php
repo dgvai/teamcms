@@ -80,4 +80,18 @@ class MailingController extends Controller
         
         return redirect()->back()->with('success','Mail has been queued for sending...');
     }
+
+    public function mailAll(Request $request)
+    {
+        $recepients = User::global()->get()->pluck('email');
+
+        $data = [
+            'subject'   => $request->subject,
+            'body'      => $request->body,
+        ];
+
+        EmailQueuer::dispatch($recepients,$data);
+        
+        return redirect()->back()->with('success','Mail has been queued for sending...');
+    }
 }

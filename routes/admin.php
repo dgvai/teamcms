@@ -75,6 +75,7 @@
     Route::post('contact/reply','Admin\MailingController@replyContact')->name('contact.reply');
     Route::post('run/jobs','Admin\MailingController@run')->name('run.job');
     Route::post('mail/specific','Admin\MailingController@mailSpecific')->name('mail.specific');
+    Route::post('mail/all','Admin\MailingController@mailAll')->name('mail.all');
 
     Route::post('basic/update/text','Admin\SiteController@changeBasicText')->name('change.basic.text');
     Route::post('basic/update/image','Admin\SiteController@changeBasicimage')->name('change.basic.image');
