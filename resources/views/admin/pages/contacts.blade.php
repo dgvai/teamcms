@@ -92,7 +92,7 @@ $site = SiteBasics::first();
                         </div>
                         <div class="form-group">
                             <label for="message">Message</label>
-                            <textarea id="message" name="message" class="form-control" rows="5"></textarea>
+                            <textarea id="message" name="message" class="form-control" rows="5" placeholder="Markdown formatting is enabled"></textarea>
                         </div>
                         <input type="submit" class="btn btn-primary" value="Send Reply" />
                     </form>
@@ -111,7 +111,7 @@ $site = SiteBasics::first();
     <script>
         $(()=>{
             $('#contact_table').DataTable({
-                autoWidth : false
+                autoWidth : false,
                 order : []
             });
 

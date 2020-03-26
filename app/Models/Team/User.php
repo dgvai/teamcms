@@ -132,4 +132,9 @@ class User extends Authenticatable
     {
         return $query->where('roll_id',$roll);
     }
+
+    public function scopeGlobal($query)
+    {
+        return $query->where('status','!=',9)->where('roll_id','!=',0);
+    }
 }
