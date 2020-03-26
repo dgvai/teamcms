@@ -22,7 +22,7 @@ $site = SiteBasics::first();
 
     <div class="row">
         <div class="col-md-12">
-            @component('admin.widgets.card',['bg' => 'info', 'title' => 'contacts'])
+            @component('admin.widgets.card',['bg' => 'info', 'title' => 'Contacts'])
                 <table class="table table-bordered table-hover" id="contact_table">
                     <thead>
                         <tr>
@@ -112,6 +112,7 @@ $site = SiteBasics::first();
         $(()=>{
             $('#contact_table').DataTable({
                 autoWidth : false
+                order : []
             });
 
             $('#contact_table tbody').on('click','.view',function(){
