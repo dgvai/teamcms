@@ -7,9 +7,9 @@ $title = $username.' - '.$site->name;
 @extends('frontend.layouts.frame')
 @section('title',$title)
 @section('nav')
-@include('frontend.includes.nav-profile')
+@include('frontend.includes.nav-new-profile')
 @endsection
 
 @section('container')
-@include('frontend.includes.profile-plate')
+@include('frontend.includes.new-profile-plate')
 @endsection

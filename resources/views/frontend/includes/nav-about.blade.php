@@ -1,8 +1,3 @@
-<?php 
-    use App\Models\Entities\SiteBasics;
-    $site = SiteBasics::first();
-?>
-
 <header id="home">
     <div class="bg-img" style="background-image: url('{{asset('storage/sitebasics')}}/{{$site->about_banner}}');">
         <div class="overlay"></div>
@@ -27,5 +22,4 @@
             </div>
         </div>
     </div>
-
 </header>

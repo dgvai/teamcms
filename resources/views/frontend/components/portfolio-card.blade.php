@@ -1,4 +1,4 @@
-<div class="postfram white-bar m-0 p-2 mb-2">
+<div class="masonry-grid white-bar m-1 p-2">
     <img src="{{asset('storage/users/portfolios/'.$portfolio->images)}}" class="img-responsive" alt="{{$portfolio->caption}}">
     <h3 class="m-2">{{$portfolio->caption}}</h3>
     <p class="m-2">{!!$portfolio->post!!}</p>

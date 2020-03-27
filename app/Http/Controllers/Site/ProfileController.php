@@ -104,6 +104,27 @@ class ProfileController extends Controller
         return redirect()->route('user.profile',['roll_id' => $user->roll_id])->with('success',__('Profile has been updated successfully!'));
     }
 
+    public function editCover(Request $request)
+    {
+        if($request->hasFile('cover'))
+        {
+            $user = User::roll(auth()->user()->roll_id)->first();
+            $file = 'TCMS-cover-user-'.auth()->user()->roll_id.'-'.date('Y-m-d-His').'-'.rand(1000,9999).'.'.$request->cover->extension();
+            $request->cover->storeAs('users/covers',$file,'public');
+            if($user->details->cover != null)
+            {
+                unlink(storage_path('app/public/users/covers/'.$user->details->cover));
+            }
+            $user->details->cover = $file;
+            $user->details->save();
+            return redirect()->route('user.profile',['roll_id' => $user->roll_id])->with('success',__('Profile has been updated successfully!'));
+        }
+        else 
+        {
+            return redirect()->back();
+        }
+    }
+
     public function editDP(Request $request)
     {
         if($request->hasFile('avatar'))

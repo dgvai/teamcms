@@ -55,6 +55,7 @@ $site = SiteBasics::first();
 <script type="text/javascript" src="{{asset('frontends/js/bootstrap4.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('frontends/js/owl.carousel.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('frontends/js/jquery.magnific-popup.js')}}"></script>
+<script type="text/javascript" src="https://unpkg.com/masonry-layout@4.2.2/dist/masonry.pkgd.min.js"></script>
 <script type="text/javascript" src="{{asset('frontends/js/main.js')}}"></script>
 @include('sweetalert::alert')
 @yield('additional-js')
