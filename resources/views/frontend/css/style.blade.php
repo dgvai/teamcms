@@ -3,7 +3,6 @@
 use App\Models\Entities\SiteBasics;
 $site = SiteBasics::first();
 /*
-
 Theme Name: Colorlib Bootstrap Theme
 Author: yaminncco
 License: MIT
@@ -18,8 +17,6 @@ Colors:
 Fonts: Montserrat Varela Round
 
 ------------------------------------*/
-
-
 ?>
 
 <style>

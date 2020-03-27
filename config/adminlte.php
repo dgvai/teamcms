@@ -263,6 +263,12 @@ return [
             'icon'  => 'fas fa-fw fa-tools',
             'can'   => 'root-permit',
         ],
+        [
+            'text' => 'Managerial Roles',
+            'route'  => 'admin.roles',
+            'icon'  => 'fas fa-fw fa-user-tie',
+            'can'   => 'root-permit',
+        ],
     ],
 
     'filters' => [

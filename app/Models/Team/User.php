@@ -152,4 +152,16 @@ class User extends Authenticatable
     {
         return $query->where('status','!=',9)->where('roll_id','!=',0);
     }
+
+    /* custom scopes */
+
+    public static function withRoles()
+    {
+        return self::whereHas('roles')->where('roll_id','!=',0)->with('roles')->get();
+    }
+
+    public static function withRole($role)
+    {
+        return self::whereHas("roles", function($q) use($role) { $q->where("name", $role); })->get();
+    }
 }

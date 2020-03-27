@@ -25,6 +25,7 @@
     Route::get('/site/gallery', 'Admin\SiteController@gallery')->name('admin.site.gallery');
     Route::get('/mail/notify', 'Admin\MailingController@notify')->name('mail.notify');
     Route::get('/app/config', 'Admin\ConfigController@index')->name('admin.config');
+    Route::get('/app/roles', 'Admin\RolesController@index')->name('admin.roles');
 
     Route::post('/user/get', 'Admin\UserController@getUser')->name('user.get');
     Route::post('/user/approve', 'Admin\UserController@approveUser')->name('user.approve');
@@ -97,5 +98,8 @@
     Route::post('/config/mail', 'Admin\ConfigController@mail')->name('mail.config');
     Route::post('/config/app', 'Admin\ConfigController@app')->name('app.config');
     Route::post('/config/db', 'Admin\ConfigController@db')->name('db.config');
+
+    Route::post('/assign/role', 'Admin\RolesController@assign')->name('assign.role');
+    Route::post('/remove/role', 'Admin\RolesController@remove')->name('remove.role');
 
 
