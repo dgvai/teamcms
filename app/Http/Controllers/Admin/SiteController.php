@@ -73,6 +73,7 @@ class SiteController extends Controller
     public function deleteGallery(Request $request)
     {
         $gal = SiteGallery::find($request->id);
+        unlink(storage_path('app/public/gallery/'.$gal->image));
         $gal->delete();
         return response()->json(['success'=> true]);
     }

@@ -7,7 +7,7 @@
         
     </div>
     <div class="col-md-8 p-4">
-        <h3>{{$event->title}}</h3>
+        <a href="{{route('event.show',['slug' => $event->slug])}}"><h3>{{$event->title}}</h3></a>
         <p>{!!mb_substr(strip_tags($event->post),0,150).'...'!!}</p>
         <ul class="event-meta">
             @if($event->is_upcoming)

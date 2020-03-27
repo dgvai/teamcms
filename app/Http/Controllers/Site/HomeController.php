@@ -14,7 +14,10 @@ class HomeController extends Controller
     {
         $blogs = Blogs::where('active',1)->latest()->get()->take(3);
         $events = Events::latest()->get()->take(3);
-        $members = User::committee()->get();
+        $members = User::committee()->get()
+                    ->sortBy(function($p){
+                        return $p->desig->value;
+                    });
 
         return view('frontend.home',[
             'blogs' => $blogs,

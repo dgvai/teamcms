@@ -1,6 +1,6 @@
 <div id="team" class="section sm-padding bg-grey-deep">
     <div class="container">
-        @if(Auth::user())
+        @if(auth()->user() && !auth()->user()->is_root_user)
         <a href="{{route('blog.new')}}" class="btn main-btn mb-3"><i class="fa fa-plus"></i> @lang('New Blog Post')</a>
         @endif
         <div class="row">
