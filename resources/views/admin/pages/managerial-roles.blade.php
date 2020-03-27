@@ -12,6 +12,23 @@ $site = SiteBasics::first();
 
 @section('content')
     <div class="row">
+        <div class="col-md-12">
+            <div class="alert alert-secondary">
+                <h3>Know about Roles</h3>
+                <p><b>Administrator</b>
+                    <ul>
+                        <li>Can: manage-users, manage-[posts,events,blogs], manage-[site,frontend, design], manage-mailings </li>
+                        <li>Can not: Root permissions, Application configuration, Assign Roles to users </li>
+                    </ul>
+                </p>
+                <p><b>Moderator</b>
+                    <ul>
+                        <li>Can: manage-[posts,events,blogs], manage-[site,frontend, design], manage-mailings </li>
+                        <li>Can not: Member Management, Root permissions, Application configuration, Assign Roles to users </li>
+                    </ul>
+                </p>
+            </div>
+        </div>
         <div class="col-md-6">
             @component('admin.widgets.card',['bg' => 'primary', 'title' => 'Assign Role'])
             <form role="form" action="{{route('assign.role')}}" method="POST">
@@ -28,7 +45,7 @@ $site = SiteBasics::first();
                 <div class="form-group">
                     <label for="role">Choose role</label>
                     <select id="role" class="form-control select2" style="width: 100%;" name="role">
-                        <option value="admin" >Admin</option>
+                        <option value="admin" >Administrator</option>
                         <option value="mod" >Moderator</option>
                     </select>
                 </div>
