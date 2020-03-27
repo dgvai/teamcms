@@ -51,6 +51,11 @@ class User extends Authenticatable
         return ($this->details->avatar == null) ? 'default-photo.jpg' : $this->details->avatar;
     }
 
+    public function getCoverPhotoAttribute()
+    {
+        return ($this->details->cover == null) ? 'default-user-cover.jpg' : $this->details->cover;
+    }
+
     public function getConnectionsAttribute()
     {
         return json_decode(($this->details->socials == null) ? '[]' : $this->details->socials);

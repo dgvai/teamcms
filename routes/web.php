@@ -40,6 +40,7 @@ Route::post('/blog/delete','Site\BlogsController@deleteBlog')->name('blog.delete
 Route::post('/member/edit/basic','Site\ProfileController@editBasic')->name('user.profile.edit.basic');
 Route::post('/member/edit/extra','Site\ProfileController@editExtra')->name('user.profile.edit.extra');
 Route::post('/member/edit/dp','Site\ProfileController@editDP')->name('user.profile.edit.dp');
+Route::post('/member/edit/cover','Site\ProfileController@editCover')->name('user.profile.edit.cover');
 Route::post('/member/edit/socials','Site\ProfileController@editSocials')->name('user.profile.edit.socials');
 Route::post('/member/add/portfolio','Site\ProfileController@addPortfolio')->name('user.profile.add.portfolio.add');
 Route::post('/member/edit/portfolio','Site\ProfileController@editPortfolio')->name('user.profile.edit.portfolio.edit');

@@ -1164,6 +1164,41 @@ header {
     filter: drop-shadow(0px 0px 1px #CCCCCC);
 }
 
+.masonry-grid {
+    width: 32%;
+}
+
+.overlay-message {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 24px;
+    text-transform: uppercase;
+    opacity: 0.8;
+}
+
+@media (min-width: 320px) and (max-width: 480px) {
+    .masonry-grid {
+        width: 99%;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  
+    .masonry-grid {
+        width: 49%;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: ) {
+  
+    .masonry-grid {
+        width: 32%;
+    }
+}
+  
+}
 #event .poster {
     height: 300px;
     width: 100%;

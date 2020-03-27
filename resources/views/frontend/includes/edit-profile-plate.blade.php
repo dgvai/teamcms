@@ -27,7 +27,7 @@
                         <input type="text" id="phone" name="phone" class="form" placeholder="@lang('Phone')" value="{{$user->details->phone}}">
 
                         <label for="summary" class="mx-3 mt-2">@lang('About Yourself')</label>
-                        <textarea class="form" id="summary" name="about" placeholder="@lang('Write about yourself, upto 500 chars...')"></textarea>
+                        <textarea class="form" id="summary" name="about" placeholder="@lang('Write about yourself, upto 500 chars...')">{{$user->details->about}}</textarea>
 
                         <input type="submit" class="btn main-btn my-3" value="@lang('Update Profile')">
                     </form>
@@ -47,6 +47,24 @@
                                         @csrf
                                         <label class="" for="fileup">@lang('Upload new avatar')</label>
                                         <input type="file" id="fileup" name="avatar" class="input">
+                                        <input type="submit" class="main-btn btn" value="@lang('Upload')">
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="white-bar my-2 mx-0 p-2">
+                            <h3 class="text-center text-uppercase mt-3">@lang('Cover Photo')</h3>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <img class="img-responsive" src="{{asset('storage/users/covers/'.$user->cover_photo)}}">
+                                </div>
+                                <div class="col-md-8">
+                                    <form class="base-form" style="text-align:left; margin-top:0" action="{{route('user.profile.edit.cover')}}" method="POST" enctype="multipart/form-data">
+                                        @csrf
+                                        <label class="" for="fileup">@lang('Upload new cover')</label>
+                                        <input type="file" id="fileup" name="cover" class="input">
                                         <input type="submit" class="main-btn btn" value="@lang('Upload')">
                                     </form>
                                 </div>
