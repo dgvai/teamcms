@@ -1,5 +1,4 @@
 @component('mail::message')
-# {{$data['app_name']}}
 
 {{$data['body']}}
 

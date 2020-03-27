@@ -42,7 +42,7 @@
                         @endforeach
                     </ul>
                     <div class="footer-copyright">
-                        <p>Copyright © {{date('Y')}} {{$site->name}}. All Rights Reserved. Designed by <a href="https://colorlib.com" target="_blank">Colorlib</a></p>
+                        <p>Copyright © {{date('Y')}} {{$site->name}} &bull; {{$site->fullname}} </p>
                     </div>
                 </div>
                

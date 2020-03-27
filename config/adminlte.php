@@ -242,7 +242,7 @@ return [
             'text'  =>  'Profile Management',
             'route'  => 'admin.profile.manage',
             'icon' => 'fas fa-fw fa-brush',
-            'can' => 'manage-frontend',
+            'can' => 'manage-user',
         ],
         [
             'text'  =>  'Contacts',
