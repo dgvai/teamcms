@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Team\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class RolesController extends Controller
 {
@@ -39,5 +40,33 @@ class RolesController extends Controller
         }
 
         return response()->json(['success' => true]);
+    }
+
+    public function settings()
+    {
+        return view('admin.pages.root-settings');
+    }
+
+    public function changePass(Request $request)
+    {
+        if($request->new_password != $request->new_password2)
+        {
+            return redirect()->back()->with('toast_error','The new passwords do not match!');
+        }
+        else
+        {
+            if(Hash::check($request->old_password,auth()->user()->password))
+            {
+                $user = auth()->user();
+                $user->password = Hash::make($request->new_password);
+                $user->save();
+                return redirect()->back()->with('success',__('Password successfully changed!'));
+            }
+            else 
+            {
+                return redirect()->back()->with('toast_error','The old password does not match!');
+            }
+        }
+        
     }
 }

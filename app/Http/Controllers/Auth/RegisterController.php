@@ -3,11 +3,15 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Mail\SignUpNotify;
 use App\Models\Team\User;
 use App\Providers\RouteServiceProvider;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Http\Request;
 
 class RegisterController extends Controller
 {
@@ -73,6 +77,17 @@ class RegisterController extends Controller
         ]);
         $user->details()->create(['first_name' => $data['fname'], 'last_name' => $data['lname']]);
 
+        Mail::to($user->email)->queue(new SignUpNotify);
+
         return $user;
+    }
+
+    public function register(Request $request)
+    {
+        $this->validator($request->all())->validate();
+
+        event(new Registered($user = $this->create($request->all())));
+
+        return redirect()->back()->with('success',__('Your request has been submitted to us! Please wait until we verify the request!'));
     }
 }

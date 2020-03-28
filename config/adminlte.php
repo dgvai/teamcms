@@ -269,6 +269,12 @@ return [
             'icon'  => 'fas fa-fw fa-user-tie',
             'can'   => 'root-permit',
         ],
+        [
+            'text' => 'Root Settings',
+            'route'  => 'admin.root',
+            'icon'  => 'fas fa-fw fa-cogs',
+            'can'   => 'root-permit',
+        ],
     ],
 
     'filters' => [

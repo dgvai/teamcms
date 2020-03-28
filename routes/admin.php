@@ -26,6 +26,7 @@
     Route::get('/mail/notify', 'Admin\MailingController@notify')->name('mail.notify');
     Route::get('/app/config', 'Admin\ConfigController@index')->name('admin.config');
     Route::get('/app/roles', 'Admin\RolesController@index')->name('admin.roles');
+    Route::get('/root/settings', 'Admin\RolesController@settings')->name('admin.root');
 
     Route::post('/user/get', 'Admin\UserController@getUser')->name('user.get');
     Route::post('/user/approve', 'Admin\UserController@approveUser')->name('user.approve');
@@ -101,5 +102,6 @@
 
     Route::post('/assign/role', 'Admin\RolesController@assign')->name('assign.role');
     Route::post('/remove/role', 'Admin\RolesController@remove')->name('remove.role');
+    Route::post('/root/password', 'Admin\RolesController@changePass')->name('root.password');
 
 
