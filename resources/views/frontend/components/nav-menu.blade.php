@@ -13,7 +13,7 @@
 
 <ul class="main-nav nav navbar-nav navbar-right">
     <li><a href="{{route('home')}}">{{__('Home')}}</a></li>
-    <li class="has-dropdown"><a href="#">{{__('Members')}}</a>
+    <li class="has-dropdown"><a href="#!">{{__('Members')}}</a>
         <ul class="dropdown">
             <li><a href="{{route('members.committee')}}">{{__('Committe Members')}}</a></li>
             <li><a href="{{route('members.current')}}">{{__('Current Members')}}</a></li>
@@ -24,7 +24,7 @@
     <li><a href="{{route('blogs')}}">{{__('Blogs')}}</a></li>
     <li><a href="{{route('about')}}">{{__('About Us')}}</a></li>
     @if(!Auth::user())
-    <li class="has-dropdown"><a href="#"><i class="fa fa-sign-in"></i></a>
+    <li class="has-dropdown"><a href="#!"><i class="fa fa-sign-in"></i></a>
         <ul class="dropdown">
             <li><a href="{{route('login')}}">{{__('Login')}}</a></li>
             <li><a href="{{route('register')}}">{{__('Sign Up')}}</a></li>

@@ -3,9 +3,9 @@ use App\Models\Entities\SiteBasics;
 $site = SiteBasics::first();
 ?>
 @extends('frontend.layouts.frame')
-@section('title',__('auth.signup').' - '.$site->name)
+@section('title',__('Sign Up').' - '.$site->name)
 @section('nav')
-@section('header-title',__('auth.page.signup'))
+@section('header-title',__('Sign Up'))
 @include('frontend.includes.nav-other')
 @endsection
 

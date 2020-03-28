@@ -38,7 +38,7 @@
                             <div class="media-body">
                                 <div class="media-heading">
                                     <h3>{{$blog->author->full_name}}</h3>
-                                    <a href="{{route('user.profile',['roll_id' => $blog->author->roll_id])}}">Author's Profile <i class="fa fa-external-link"></i></a>
+                                    <a href="{{route('user.profile',['roll_id' => $blog->author->roll_id])}}">@lang('Author\'s Profile') <i class="fa fa-external-link"></i></a>
                                     @if(count($blog->author->connections) > 0)
                                     <div class="author-social">
                                         @foreach($blog->author->connections as $link)
@@ -60,7 +60,7 @@
                 {{-- <button class="btn btn-danger mb-3 delete" data-id="{{$blog->id}}"><i class="fa fa-trash"></i> @lang('Delete')</button> --}}
                 @endif
                 <div class="widget">
-                    <h3 class="title">Other Posts</h3>
+                    <h3 class="title">@lang('Other Posts')</h3>
                     @foreach($randomBlogs as $rblog)
                     <div class="widget-post">
                         <a href="{{route('blog.show',['slug'=>$rblog->slug])}}" class="text-justify">

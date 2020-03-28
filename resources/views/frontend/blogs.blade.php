@@ -7,7 +7,7 @@ $title = (!isset($meta->blogs)) ? 'Blogs - '.$site->name : $meta->blogs.' - '.$s
 @extends('frontend.layouts.frame')
 @section('title',$title)
 @section('nav')
-@section('header_title',__('layout.blogs'))
+@section('header_title',__('Blogs'))
 @include('frontend.includes.nav-other')
 @endsection
 

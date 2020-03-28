@@ -1,7 +1,3 @@
-<?php 
-
-?>
-
 <div id="blog" class="section md-padding bg-grey-deep">
     <div class="container">
         <div class="row">
