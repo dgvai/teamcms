@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Mail\ApproveUser;
 use App\Models\Entities\SiteBasics;
 use App\Models\Team\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class UserController extends Controller
 {
@@ -23,6 +25,7 @@ class UserController extends Controller
         $committeeUsers = (SiteBasics::first()->member_rank != null) ? User::committee()->get() : null;
         $currentMembers = User::current()->get();
         $alumniUsers = User::alumnis()->get();
+
         return view('admin.pages.user-mgmt',
                     ['newUsers' => $newUsers,
                     'rejectedUsers' => $rejectedUsers,
@@ -45,6 +48,7 @@ class UserController extends Controller
     {
         $user = User::find($request->uid);
         $user->status = 1;
+        Mail::to($user->email)->queue(new ApproveUser);
         return response()->json(($user->save()) ? ['success' => true] : ['error' => true]);
     }
 

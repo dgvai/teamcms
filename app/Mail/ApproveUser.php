@@ -7,7 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class SignUpNotify extends Mailable
+class ApproveUser extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -18,7 +18,7 @@ class SignUpNotify extends Mailable
      */
     public function __construct()
     {
-        $this->subject('['.config('app.name').'] Welcome to the community!');
+        $this->subject('['.config('app.name').'] You are approved!');
     }
 
     /**
@@ -28,6 +28,6 @@ class SignUpNotify extends Mailable
      */
     public function build()
     {
-        return $this->markdown('emails.signup');
+        return $this->markdown('emails.approve');
     }
 }
