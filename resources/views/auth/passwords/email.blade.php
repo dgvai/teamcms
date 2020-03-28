@@ -1,45 +1,43 @@
-@extends('layouts.app')
+<?php 
+use App\Models\Entities\SiteBasics;
+$site = SiteBasics::first();
+?>
 
-@section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Reset Password') }}</div>
+@extends('frontend.layouts.frame')
+@section('title',__('Forget Password').' - '.$site->name)
+@section('nav')
+@section('header-title',__('Forget Password'))
+@include('frontend.includes.nav-other')
+@endsection
 
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
+@section('container')
+<div class="row my-5 py-5">
+    <div class="col-md-4 col-md-offset-4 col-lg-4 col-lg-offset-4">
+        <div class="panel panel-default">
+              <div class="panel-heading">
+                <h3 class="panel-title">{{__('auth.pluc')}}</h3>
+             </div>
+              <div class="panel-body">
+                @if (session('status'))
+                    <div class="alert alert-success" role="alert">
+                        {{ session('status') }}
+                    </div>
+                @endif
+                <form method="POST" action="{{ route('password.email') }}">
+                @csrf
+                <fieldset>
+                    <div class="form-group">
+                        <input class="form-control @error('email') is-invalid @enderror" placeholder="{{__('Email Address')}}" name="email" type="text" value="{{ old('email') }}" required autocomplete="email">
+                        @error('email')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
 
-                    <form method="POST" action="{{ route('password.email') }}">
-                        @csrf
-
-                        <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
-
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Send Password Reset Link') }}
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
+                    <input class="btn-lg main-btn btn-block m-0 mb-2" type="submit" value="{{__('Send Password Reset Link')}}">
+                </fieldset>
+                  </form>
             </div>
         </div>
     </div>
