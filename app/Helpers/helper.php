@@ -15,7 +15,7 @@
         if (count($data) > 0) 
         {
             $env = file_get_contents(base_path().'/.env');
-            $env = preg_split('/\s+/', $env);;
+            $env = preg_split('/(\r\n|\n|\r)/', $env);;
 
             foreach((array) $data as $key => $value) 
             {
@@ -25,7 +25,7 @@
 
                     if ($entry[0] == $key) 
                     {
-                        $env[$env_key] = $key."=".$value;
+                        $env[$env_key] = $key."=\"".$value."\"";
                     } else 
                     {
                         $env[$env_key] = $env_value;
