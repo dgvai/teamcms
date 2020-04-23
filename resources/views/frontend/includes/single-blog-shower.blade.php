@@ -55,7 +55,7 @@
 
 
             <aside id="aside" class="col-md-3">
-                @if(auth()->user()->id == $blog->author->id)
+                @if(auth()->user() && auth()->user()->id == $blog->author->id)
                 <a href="{{route('blog.edit',['slug' => $blog->slug])}}" class="btn btn-primary mb-3"><i class="fa fa-edit"></i> @lang('Edit Blog')</a>
                 {{-- <button class="btn btn-danger mb-3 delete" data-id="{{$blog->id}}"><i class="fa fa-trash"></i> @lang('Delete')</button> --}}
                 @endif

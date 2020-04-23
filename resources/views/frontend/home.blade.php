@@ -10,6 +10,15 @@ $title = (!isset($meta->home)) ? $site->name.' - '.$site->tagline : $meta->home.
 @include('frontend.includes.nav-home')
 @endsection
 
+@section('meta_seo')
+    <meta name="description" content="{{$site->short_description}}">
+    <meta name="keywords" content="{{str_replace(' ',',',$site->short_description)}}">
+    <meta property="og:title" content="{{$site->fullname}}" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="{{url()->current()}}" />
+    <meta property="og:image" content="{{asset('storage/sitebasics')}}/{{$site->home_banner}}" />
+@endsection
+
 @section('container')
 @include('frontend.components.bulletin')
 @include('frontend.includes.recent-blogs',['blogs' => $blogs])

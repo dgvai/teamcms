@@ -1,7 +1,19 @@
+@section('meta_seo')
+    <meta name="description" content="{{$user->about}}">
+    <meta name="keywords" content="{{str_replace(' ',',',$user->full_name)}}">
+    <meta property="og:title" content="{{$user->full_name}}" />
+    <meta property="og:type" content="profile" />
+    <meta property="profile:first_name" content="{{$user->details->first_name}}" />
+    <meta property="profile:last_name" content="{{$user->details->last_name}}" />
+    <meta property="profile:username" content="{{$user->roll_id}}" />
+    <meta property="og:url" content="{{url()->current()}}" />
+    <meta property="og:image" content="{{asset('storage/users/avatars/'.$user->display_photo)}}" />
+@endsection
+
 <div id="profile" class="section sm-padding bg-grey-deep">
     <div class="container">
         <div class="row">
-            <div class="col-sm-4 p-1">
+            <div class="col-sm-3 p-1">
                 <div class="white-bar m-0 p-2 mb-2">
                     <div class="photo">
                         <img class="img-responsive" src="{{asset('storage/users/avatars/'.$user->display_photo)}}" alt="{{$user->full_name}}">
@@ -17,7 +29,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-sm-8 p-1">
+            <div class="col-sm-9 p-1">
                 <div class="white-bar m-0 p-2 mb-2">
                     <h3 class="text-center main-color text-uppercase m-2">@lang('Informations')</h3>
                     <div class="row">
@@ -75,7 +87,7 @@
             <span class="overlay-message">@lang('No Portfolio Posted!')</span>
         </div>
         @else 
-        <div class="masonry">
+        <div class="masonry mb-2">
             @foreach($user->portfolios->sortByDesc('id') as $portfolio)
                 @include('frontend.components.portfolio-card',['portfolio' => $portfolio])
             @endforeach
@@ -87,6 +99,7 @@
 @section('additional-js')
     @parent
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8.19.0/dist/sweetalert2.all.min.js"></script>
+    <script type="text/javascript" src="https://unpkg.com/masonry-layout@4.2.2/dist/masonry.pkgd.min.js"></script>
 @endsection
 
 @section('scripts')
@@ -114,9 +127,11 @@
             })
         })
 
-        $('.masonry').masonry({
-            itemSelector: '.masonry-grid',
-        });
+        $('.container').imagesLoaded(function(){
+            $('.masonry').masonry({
+                itemSelector: '.masonry-grid',
+            });
+        })
     </script>
 @endsection
 

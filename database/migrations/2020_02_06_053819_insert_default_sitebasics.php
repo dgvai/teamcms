@@ -29,6 +29,7 @@ class InsertDefaultSitebasics extends Migration
         $site->meta_page_titles = json_encode([ 'home' => null, 
                                                 'committee' => 'Committee Members',
                                                 'members' => 'All Members',
+                                                'alumnis' => 'Alumni Members',
                                                 'events' => 'Events',
                                                 'blogs' => 'Blogs',
                                                 'about' => 'About',

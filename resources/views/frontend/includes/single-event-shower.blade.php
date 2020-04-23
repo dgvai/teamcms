@@ -13,7 +13,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-8 white-bar m-0 p-0">
-                <div class="poster" style="background-image: url('{{asset('storage/events')}}/{{$event->poster}}')">
+                <div class="poster" style="background-image: url('{{asset('storage/events')}}/{{$event->poster}}'); height: 300px;width: 100%;margin: 0;padding: 0;background-size: cover;">
                     @if($event->is_upcoming)
                     <div class="ribbon">{{__('Upcoming')}}</div>
                     @endif

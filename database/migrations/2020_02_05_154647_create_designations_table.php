@@ -17,7 +17,7 @@ class CreateDesignationsTable extends Migration
             $table->bigIncrements('id');
             $table->string('name')->nullable();
             $table->integer('value')->nullable();
-            $table->integer('active')->nullable();
+            $table->integer('active')->default(1);
             $table->timestamps();
         });
 

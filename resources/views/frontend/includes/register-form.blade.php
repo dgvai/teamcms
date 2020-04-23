@@ -52,7 +52,7 @@
                         @enderror
                     </div>
                     <div class="form-group">
-                        <input type="password" class="form-control" placeholder="{{__('Password')}}" name="password_confirmation" required autocomplete="new-password">
+                        <input type="password" class="form-control" placeholder="{{__('Confirm Password')}}" name="password_confirmation" required autocomplete="new-password">
                     </div>
 
                     <input class="btn-lg main-btn btn-block m-0 mb-2" type="submit" value="{{__('Sign Up')}}">

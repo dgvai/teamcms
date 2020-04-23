@@ -22,7 +22,7 @@ $site = SiteBasics::first();
             @include('admin.widgets.info-box',['bg' => 'info', 'title' => 'Current Members', 'data' => $currentMembers->count(), 'icon' => 'fas fa-users'])
         </div>
         <div class="col-md-3">
-            @include('admin.widgets.info-box',['bg' => 'warning', 'title' => 'Committee Members', 'data' => $committeeUsers->count(), 'icon' => 'fas fa-users-cog'])
+            @include('admin.widgets.info-box',['bg' => 'warning', 'title' => 'Committee Members', 'data' => ($committeeUsers == null) ? 0 :$committeeUsers->count(), 'icon' => 'fas fa-users-cog'])
         </div>
         <div class="col-md-3">
             @include('admin.widgets.info-box',['bg' => 'success', 'title' => 'Alumni Members', 'data' => $alumniUsers->count(), 'icon' => 'fas fa-user-tie'])
@@ -59,7 +59,7 @@ $site = SiteBasics::first();
         </div>
         <div class="col-md-6">
             @component('admin.widgets.card',['bg' => 'success', 'title' => 'Promote Members'])
-                @if($memberUsers->count() == 0)
+                @if($memberUsers == null || $memberUsers->count() == 0)
                 @include('admin.widgets.alert',['type' => 'light', 'title' => 'No Members', 'data' => 'Currently no memebers assigned!'])
                 @else
                 @include('admin.includes.member-promote',['users' => $memberUsers, 'ranks' => $ranks])
@@ -68,7 +68,7 @@ $site = SiteBasics::first();
         </div>
         <div class="col-md-6">
             @component('admin.widgets.card',['bg' => 'success', 'title' => 'Manage Committee'])
-                @if($committeeUsers->count() == 0)
+                @if($committeeUsers == null || $committeeUsers->count() == 0)
                 @include('admin.widgets.alert',['type' => 'light', 'title' => 'No Members', 'data' => 'Currently no memebers assigned!'])
                 @else
                 @include('admin.includes.manage-committee',['users' => $committeeUsers, 'ranks' => $ranks])

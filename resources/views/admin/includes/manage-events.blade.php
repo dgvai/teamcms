@@ -346,6 +346,7 @@
                 let id = $(this).data('id');
                 $.post("{{route('events.edit.get')}}",{evid:id},function(pe){
                     $('#ep-post-editor-body').summernote('code',pe.post);
+                    $('#ep-pe-exst-pics').html('');
                     let images = JSON.parse(pe.images);
                     $.each(images,function(k,v){
                         let img = `<img class="img-responsive" width="100px" src="{{asset('storage/events/post')}}/${v}" >`;
